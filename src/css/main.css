@@ -1,0 +1,77 @@
+header{
+  height: 80px;
+  margin: 10px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  border: 4px solid blue;
+  border-radius: 15px;
+  font-size: 20px;
+}
+
+main{
+  font-size: 20px;
+  height: 700px;
+  margin: 10px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  border: 4px solid blue;
+  border-radius: 15px;
+}
+
+.map{
+  line-height: 500px;
+  font-size: 90px;
+}
+
+section{
+  height: 500px;
+}
+
+.board{
+  display: flex;
+}
+
+article{
+  width: 610px;
+  height: 220px;
+  border: 4px solid blue;
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  text-align: center;
+  line-height: 220px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+
+
+aside{
+  font-size: 20px;
+  width: 100px;
+  height: 620px;
+  background-color: white;
+  text-align: center;
+  line-height: 620px;
+  font-weight: bold;
+  border: 4px solid blue;
+  border-radius: 15px;
+  position: fixed;
+  top:15%;
+  left: 93%;
+  bottom: 15%;
+}
+
+footer{
+      height: 150px;
+      margin: 10px;
+      text-align: center;
+      line-height: 150px;
+      font-weight: bold;
+      border: 4px solid blue;
+      border-radius: 15px;
+      font-size: 20px;
+}
