@@ -10,7 +10,7 @@ class Map extends Component {
         <>
       <main>
           {/* Main */}
-          <div class="map">Map</div>
+          <div className="map">Map</div>
       </main>
     </>
     )
