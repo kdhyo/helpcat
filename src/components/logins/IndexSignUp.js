@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import Header from '../basics/Header'
-import SignupPage from './SignupPage'
-import Aside from '../basics/Aside'
-import Footer from '../basics/Footer'
+import React, { Component } from "react"
+import Header from "../basics/Header"
+import SignupPage from "./SignupPage"
+import Aside from "../basics/Aside"
+import Footer from "../basics/Footer"
 
 
 
