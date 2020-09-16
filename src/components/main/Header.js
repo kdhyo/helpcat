@@ -10,7 +10,7 @@ class Header extends Component {
         <>
         <header>
           <nav>
-            <a href="/"><img alt="logo" src="HC.png" width="120px" /></a>
+            <a href="/"><img alt="logo" src="helpcat.png" width="95px" /></a>
             <li>
               <a href="/"><ul>Board</ul></a>
               <a href="/"><ul>Alarm</ul></a>

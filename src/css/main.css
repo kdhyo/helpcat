@@ -90,6 +90,230 @@ article{
 
 }
 
+.signup{
+  font-size: 30px;
+  height: 1200px;
+  margin: 10px 150px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  /* border: 4px solid blue;
+  border-radius: 15px; */
+}
+
+.signupform{
+  height: 1050px;
+  margin: 20px 150px;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bold;
+  border: 4px solid blue;
+  border-radius: 15px;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+
+.signupform .userName{
+  padding-top: 30px;
+  position: relative;
+  left: 50px;
+}
+
+.signupform .password{
+  position: relative;
+  left: 50px;
+}
+
+.signupform .nickName{
+  position: relative;
+  left: 50px;
+}
+
+.signupform .gender{
+  position: relative;
+  left: -20px;
+}
+
+.signupform .birh{
+  position: relative;
+  left: 40px;
+}
+
+.signupform .email{
+  position: relative;
+  left: 40px;
+}
+
+.signupform .phone{
+  position: relative;
+  left: 40px;
+}
+
+.signupform .address{
+  position: relative;
+  left: 40px;
+}
+
+.signupform input{
+  height: 40px;
+  display: flex;
+  float: right;
+  margin-right: 200px;
+  margin-top: 30px;
+}
+
+.signupform input[type="radio"]{
+  width: 30px;
+}
+
+.signupform .submit{
+  width: 150px;
+  height: 100px;
+  margin: 30px 20px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+
+.signupform .submit:hover{
+  background-color: blue;
+  color: white;
+  border-color: blue;
+}
+
+.signupform .reset{
+  width: 150px;
+  height: 100px;
+  margin: 30px 20px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+
+.signupform .reset:hover{
+  background-color: blue;
+  color: white;
+  border-color: blue;
+}
+
+.login{
+  font-size: 30px;
+  height: 700px;
+  margin: 10px 150px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  /* border: 4px solid blue;
+  border-radius: 15px; */
+}
+
+.loginform{
+  height: 600px;
+  margin: 20px 150px;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bold;
+  border: 4px solid blue;
+  border-radius: 15px;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+
+.loginID {
+  position: relative;
+  left: -150px;
+}
+
+.loginPW {
+  position: relative;
+  left: -150px;
+}
+
+.loginInput {
+  margin: 0px;
+}
+
+.loginform input{
+  width: 1000px;
+  height: 40px;
+  float: right;
+  position: relative;
+  top: 30px;
+  left: -350px;
+}
+
+.loginform .signButton{
+  width: 200px;
+  height: 150px;
+  position: relative;
+  left: 320px;
+  top: -172px;
+}
+
+.loginform .signButton:hover{
+  background-color: blue;
+  color: white;
+  border-color: blue;
+}
+
+.miniID{
+  display: flex;
+  float: left;
+  position: relative;
+  left: 880px;
+  top: -200px;
+}
+
+.miniID .newID{
+  font-size: 20px;
+  border: black;
+}
+
+.miniID .findID{
+  font-size: 20px;
+}
+
+.login span{
+  text-align: center;
+  position: relative;
+  left: -550px;
+  top: -100px;
+}
+
+.GroupSNS{
+  display: flex;
+  float: left;
+}
+
+.NaverID{
+  border: 1px solid black;
+  width: 265px;
+  font-size: 30px;
+  margin: 0px 20px;
+}
+
+.KakaoID{
+  border: 1px solid black;
+  width: 265px;
+  font-size: 30px;
+  margin: 0px 20px;
+}
+
+.FacebookID{
+  border: 1px solid black;
+  width: 265px;
+  font-size: 30px;
+  margin: 0px 20px;
+}
+
 aside{
   width: 100px;
   height: 640px;
