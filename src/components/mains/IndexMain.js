@@ -11,7 +11,7 @@ class IndexMain extends Component {
     return (
       <>
         <Header />
-        <Map />
+        <Map lat={37.403517} lng={126.930044}/>
         <Aside />
         <PreviewBoard />
         <Slider />
