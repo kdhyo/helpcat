@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/config/apikey.json
+/src/config/apikey.json
 /.pnp
 .pnp.js
 
