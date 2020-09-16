@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import '../../css/reset.css';
-import '../../css/main.css';
+import { Link } from 'react-router-dom'
 
 
 
-class Login extends Component {
+
+class LoginPage extends Component {
   render() {
       return (
         <>
@@ -15,22 +15,21 @@ class Login extends Component {
             <div className="loginPW">PW<input></input></div>
             <button className="signButton">Log In</button>
           </div>
-          <div class="miniID">
-            <div class="newID">Sign Up</div>&nbsp;/&nbsp;
-            <div class="findID">Find ID</div>
+          <div className="miniID">
+            <div className="newID"><Link to="/signup">Sign Up</Link></div>&nbsp;/&nbsp;
+            <div className="findID">Find ID</div>
           </div>
           <span>SNS</span>
             <div className="GroupSNS">
-              <div class="NaverID">Naver</div>
-              <div class="KakaoID">Kakao</div>
-              <div class="FacebookID">Facebook</div>
-            </div>  
+              <div className="NaverID">Naver</div>
+              <div className="KakaoID">Kakao</div>
+              <div className="FacebookID">Facebook</div>
+            </div>
         </div>
       </div>
     </>
     )
   }
 }
-  
 
-export default Login
+export default LoginPage

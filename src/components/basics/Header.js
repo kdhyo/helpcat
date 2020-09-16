@@ -1,27 +1,23 @@
 import React, { Component } from 'react'
-import '../../css/reset.css';
-import '../../css/main.css';
-
-
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   render() {
-      return (
-        <>
+    return (
+      <>
         <header>
           <nav>
             <a href="/"><img alt="logo" src="helpcat.png" width="95px" /></a>
             <li>
-              <a href="/"><ul>Board</ul></a>
-              <a href="/"><ul>Alarm</ul></a>
-              <a href="/"><ul>Log-in</ul></a>
+              <Link to="/"><ul>Message</ul></Link>
+              <Link to="/"><ul>Alarm</ul></Link>
+              <Link to={{pathname:"/login"}}><ul>Log-in</ul></Link>
             </li>
           </nav>
         </header>
-    </>
+      </>
     )
   }
 }
-  
 
 export default Header

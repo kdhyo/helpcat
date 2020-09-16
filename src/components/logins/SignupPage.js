@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import '../../css/reset.css';
-import '../../css/main.css';
 
 
-
-class Signup extends Component {
+class SignupPage extends Component {
   render() {
       return (
         <>
@@ -26,6 +23,5 @@ class Signup extends Component {
     )
   }
 }
-  
 
-export default Signup
+export default SignupPage

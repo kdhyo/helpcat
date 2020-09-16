@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import '../../css/reset.css';
-import '../../css/main.css';
 
 
 
-class Board extends Component {
+class PreviewBoard extends Component {
   render() {
       return (
         <>
@@ -24,6 +22,5 @@ class Board extends Component {
     )
   }
 }
-  
 
-export default Board
+export default PreviewBoard

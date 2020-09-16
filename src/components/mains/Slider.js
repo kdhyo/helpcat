@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import '../../css/reset.css';
-import '../../css/main.css';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
-import '../../css/path.css';
 
 
 const slideImages = [
@@ -39,6 +36,5 @@ class Slider extends Component {
     )
   }
 };
-  
 
 export default Slider;
