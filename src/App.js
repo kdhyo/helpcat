@@ -4,6 +4,7 @@ import Main from "./routes/Main"
 import Board from "./routes/Board"
 import Login from "./routes/Login"
 import SignUp from "./routes/SignUp"
+import CreateLink from "./components/links/CreateLink"
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         <Route path="/login" exact={true} component={Login} />
         <Route path="/signup" exact={true} component={SignUp} />
         <Route path="/board" exact={true} component={Board} />
+        <Route path="/link" exact={true} component={CreateLink} />
       </BrowserRouter>
     )
   }
