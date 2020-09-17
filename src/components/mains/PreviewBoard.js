@@ -5,14 +5,32 @@ class PreviewBoard extends Component {
         <>
       <section>
           <div className="board">
-          <article className="article1">Gallery 1</article>
-          <article className="article2">Gallery 2</article>
-          <article className="article3">Gallery 3</article>
+          <article className="article">
+            <div className="previewArea">부산</div>
+            <div className="previewTitle">고양이 밥좀 주세요!</div>
+          </article>
+          <article className="article">
+            <div className="previewArea">서울</div>
+            <div className="previewTitle">강아지 밥좀 주세요!</div>
+          </article>
+          <article className="article">
+            <div className="previewArea">안양</div>
+            <div className="previewTitle">돌고래 밥좀 주세요!</div>
+          </article>
           </div>
           <div className="board">
-          <article className="article4">Gallery 4</article>
-          <article className="article5">Gallery 5</article>
-          <article className="article6">Gallery 6</article>
+           <article className="article">
+            <div className="previewArea">수원</div>
+            <div className="previewTitle">미어캣 밥좀 주세요!</div>
+          </article>
+          <article className="article">
+            <div className="previewArea">전주</div>
+            <div className="previewTitle">앵무새 밥좀 주세요!</div>
+          </article>
+          <article className="article">
+            <div className="previewArea">강릉</div>
+            <div className="previewTitle">침팬치 밥좀 주세요!</div>
+          </article>
           </div>
       </section>
     </>

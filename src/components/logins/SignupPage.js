@@ -5,20 +5,21 @@ class SignupPage extends Component {
   render() {
       return (
         <>
-      <div className="signup">Sign Up
-        <div className="signupform">
-            <div className="userName">userName<input></input></div>
-            <div className="password">password<input></input></div>
-            <div className="nickName">nickName<input></input></div>
-            <div className="gender">gender<input type="radio"></input><input type="radio"></input></div>
-            <div className="birh">birh<input></input></div>
-            <div className="email">email<input></input></div>
-            <div className="phone">phone<input></input></div>
-            <div className="address">address<input></input></div>
-            <button className="submit">Submit</button>
-            <button className="reset">Reset</button>
-        </div>
-      </div>
+      <div className="signup">회원가입
+        <form className="signupform">
+            <div className="userName">아이디<input placeholder="아이디를 입력하세요"></input></div>
+            <div className="password">비밀번호<input type="password" placeholder="비밀번호를 입력하세요"></input></div>
+            <div className="passwordcheck">비밀번호 확인<input type="password" placeholder="비밀번호를 재입력하세요"></input></div>
+            <div className="nickName">이름<input placeholder="이름을 입력하세요"></input></div>
+            <div className="gender">성별<input placeholder="성별을 골라주세요"></input></div>
+            <div className="birth">생년월일<input placeholder="생년월일을 골라주세요"></input></div>
+            <div className="email">e-mail<input placeholder="e-mail을 입력하세요"></input></div>
+            <div className="phone">전화번호<input placeholder="+82 010-0000-0000"></input></div>
+            <div className="address">주소<input placeholder="주소를 입력하세요"></input></div>
+            <input type="submit" className="submit" value="&nbsp;&nbsp;&nbsp;가입"></input>
+            <input type="reset" className="reset" value="&nbsp;&nbsp;&nbsp;취소"></input>
+      </form>
+    </div>
     </>
     )
   }

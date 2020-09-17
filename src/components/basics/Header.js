@@ -7,11 +7,11 @@ class Header extends Component {
       <>
         <header>
           <nav>
-            <a href="/"><img alt="logo" src="helpcat.png" width="95px" /></a>
+            <a classname="logo" href="/"><img alt="logo" src="helpcat.png" width="45px" height="45px"/></a>
             <li>
-              <Link to="/"><ul>Message</ul></Link>
-              <Link to="/"><ul>Alarm</ul></Link>
-              <Link to={{pathname:"/login"}}><ul>Log-in</ul></Link>
+              <Link to={{pathname:"/board"}}><ul>게시판</ul></Link>
+              <Link to="/"><ul>알람</ul></Link>
+              <Link to={{pathname:"/login"}}><ul>로그인</ul></Link>
             </li>
           </nav>
         </header>
