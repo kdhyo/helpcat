@@ -5,6 +5,7 @@ import { AUTH_TOKEN } from '../constants'
 
 class AllLink extends Component {
   render() {
+    console.log(this.props.history)
     const authToken = localStorage.getItem(AUTH_TOKEN)
     return (
       <div className="flex pa1 justify-between nowrap orange">

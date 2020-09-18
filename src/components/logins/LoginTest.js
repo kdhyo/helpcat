@@ -78,9 +78,9 @@ class LoginTest extends Component {
   }
 
   _confirm = async data => {
-    console.log(data);
     const { token } = this.state.login ? data.login : data.signup
     this._saveUserData(token)
+    console.log(this.props.history)
     this.props.history.push(`/link`)
   };
 
