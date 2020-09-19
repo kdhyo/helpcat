@@ -6,7 +6,7 @@ import gql from "graphql-tag";
 
 const SIGNUP_MUTATION = gql`
   mutation SignupMutation($email: String!, $password: String!, $userName: String!,
-    $nickName: String!, $gender: String!, $phone: Int!, $address: String!, $birh: String!) {
+    $nickName: String!, $gender: String!, $phone: String!, $address: String!, $birh: String!) {
     signup(email: $email, password: $password, userName: $userName, nickName: $nickName,
       gender: $gender, phone:$phone, address: $address, birh: $birh) {
       token
@@ -21,7 +21,7 @@ class SignupPage extends Component {
     userName: "",
     nickName: "",
     gender: "",
-    phone: 0,
+    phone: "",
     address: "",
     birh: ""
   };
@@ -98,7 +98,7 @@ class SignupPage extends Component {
               <input
                 value={phone}
                 onChange={(e) => this.setState({ phone: e.target.value })}
-                type="number"
+                type="text"
                 placeholder="ex)12345678"
               />
             </div>
