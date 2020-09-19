@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { Route } from "react-router-dom"
+
 import Map from "./Map";
 import Aside from "../basics/Aside";
 import PreviewBoard from "./PreviewBoard";
@@ -9,7 +11,7 @@ class IndexMain extends Component {
   render() {
     return (
       <>
-        <Map lat={37.403517} lng={126.930044}/>
+        <Route component={Map} />
         <Aside />
         <PreviewBoard />
         <Slider />
