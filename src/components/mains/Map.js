@@ -56,7 +56,7 @@ class Map extends Component {
               const golink = "/login";
               var content = `
                 <div class="customoverlay">
-                  <a href="${golink}" target="_blank">
+                  <a href="${golink}" >
                     <span class="title">${golink}</span>
                   </a>
                 </div>
