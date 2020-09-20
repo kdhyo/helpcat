@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./styles/index.css";
 import App from "./App";
 import { BrowserRouter } from 'react-router-dom'
+
 // import * as serviceWorker from "./serviceWorker";
 
 import { ApolloProvider } from "react-apollo"
@@ -25,11 +26,13 @@ const authLink = setContext((_, { headers }) => {
     }
   }
 })
-
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 })
+
+
+
 
 ReactDOM.render(
   <BrowserRouter>
