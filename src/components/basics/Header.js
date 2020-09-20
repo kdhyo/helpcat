@@ -10,11 +10,11 @@ class Header extends Component {
       <>
         <header>
           <nav>
-            <a className="logo" href="/"><img alt="logo" src="helpcat.png" width="45px" height="45px"/></a>
+          <Link to={{pathname:"/"}}><img src="helpcat.png" width="45px" height="45px"/></Link>
             <li>
               <div className="flex flex-fixed">
                 {authToken ? (<>
-                  <Link to={{pathname:"/board"}}><ul>메세지</ul></Link>
+                  <Link to={{pathname:"/login"}}><ul>메세지</ul></Link>
                   <Link to="/"><ul>알람</ul></Link>
                   <ul
                     className="ml1 pointer black"
