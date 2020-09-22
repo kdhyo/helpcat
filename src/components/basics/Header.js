@@ -2,6 +2,14 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { withRouter } from "react-router";
 import { AUTH_TOKEN } from '../../constants'
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+
+const USER_WITHDRAWAL_MUTATION = gql`
+  mutation UserWithdrawalMutation{
+    UserDelete
+  }
+`;
 
 class Header extends Component {
   render() {
@@ -26,6 +34,22 @@ class Header extends Component {
                   >
                     logout
                   </ul>
+                  <Mutation
+                    mutation={USER_WITHDRAWAL_MUTATION}
+                  >
+                    {(mutation) => (
+                      <ul
+                        onClick={mutation}
+                          // ()=>{
+                          //   localStorage.removeItem(AUTH_TOKEN);
+                          //   this.props.history.push(`/`);
+                          // }
+                        
+                      >
+                        회원탈퇴
+                      </ul>
+                    )}
+                  </Mutation>
                 </>
                 ) : (
                   <Link to="/login">

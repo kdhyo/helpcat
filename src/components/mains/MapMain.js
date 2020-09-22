@@ -6,7 +6,7 @@ import KakaoMap from "./KakaoMap";
 
 const USER_DATA = gql`
   query{
-    userAll{
+    user{
       id,
       userName,
       address

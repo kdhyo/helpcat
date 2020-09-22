@@ -6,18 +6,20 @@ import API from "../../config/apikey.json"
 class KakaoMap extends Component {
   constructor(props) {
     super(props);
-    this.state = {isToggleOn: true};
+    this.state = {
+      MapToggle: true,
+      tokenData: localStorage.getItem("auth-token")
+    };
   }
 
   placeToggle() {
     this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+      MapToggle: !state.MapToggle
     }));
-  }
+  };
+
 
   render() {
-    console.log(this.state.isToggleOn)
-    const userHomeAddress = this.props.data.userAll[0].address;
     const API_KEY = API.kakaoMapAPI.API_KEY;
     const mapScript = document.createElement("script");
     mapScript.async = true;
@@ -47,10 +49,9 @@ class KakaoMap extends Component {
         );
 
 
-        if (this.state.isToggleOn) { //토글이 true이면 현재위치 false면 유저집주소 지도 세팅
+        if (this.state.MapToggle) { //토글이 true이면 현재위치 false면 유저집주소 지도 세팅
           // GPS로 현재 위치를 가져와 지도의 메인으로 정함
           navigator.geolocation.getCurrentPosition(function(result) {
-
             var lat = result.coords.latitude, // 위도
                 lon = result.coords.longitude; // 경도
             //현재 위치로 메인을 잡아줌
@@ -60,13 +61,14 @@ class KakaoMap extends Component {
               level: 7
             };
             const map = new kakao.maps.Map(container, options);
-
+            console.log(lat,lon)
             MarkersOverlay(map)// 현재위치 맵에 심부름 마커뿌리기
           });
         }else{
+          const userData = this.props.data.user;
+          const userHomeAddress = userData.address;
           // GPS기능을 사용안할경우 유저의 집으로 지도의 메인을 정함
           geocoder.addressSearch(userHomeAddress, function(result, status) {
-
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {
 
@@ -78,6 +80,7 @@ class KakaoMap extends Component {
                 center: new kakao.maps.LatLng(lat, lon),
                 level: 7
               };
+              console.log("false",lat,lon)
               const map = new kakao.maps.Map(container, options);
               MarkersOverlay(map) // 유저집주소 맵에 심부름 마커뿌리기
             }
@@ -135,7 +138,7 @@ class KakaoMap extends Component {
           Loding...
         </main>
         <button onClick={this.placeToggle = this.placeToggle.bind(this)}>
-          {this.state.isToggleOn ? "현재장소" : "우리집"}
+          {this.state.MapToggle ? "현재장소" : "우리집"}
         </button>
       </>
     )
