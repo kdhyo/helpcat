@@ -18,7 +18,7 @@ class Header extends Component {
       <>
         <header>
           <nav>
-          <Link to={{pathname:"/"}}><img class="logopng" alt="logo" src="logo.png" width="180px" height="40px"/></Link>
+          <Link to={{pathname:"/"}}><img className="logopng" alt="logo" src="logo.png" width="180px" height="40px"/></Link>
             <li>
               <div className="flex flex-fixed">
                 {authToken ? (
@@ -36,6 +36,7 @@ class Header extends Component {
                   </ul>
                   <Mutation
                     mutation={USER_WITHDRAWAL_MUTATION}
+                    onCompleted={() => this._userDelete()}
                   >
                     {(mutation) => (
                       <ul
@@ -44,7 +45,6 @@ class Header extends Component {
                           //   localStorage.removeItem(AUTH_TOKEN);
                           //   this.props.history.push(`/`);
                           // }
-                        
                       >
                         회원탈퇴
                       </ul>
@@ -53,7 +53,7 @@ class Header extends Component {
                 </>
                 ) : (
                   <Link to="/login">
-                    <img class="loginpng" src="./login.png" width="45px" title="로그인" alt="로그인"></img>
+                    <img className="loginpng" src="./login.png" width="45px" title="로그인" alt="로그인"></img>
                   </Link>
                 )}
               </div>
@@ -63,6 +63,10 @@ class Header extends Component {
       </>
     )
   }
+  _userDelete = async => {
+    localStorage.removeItem(AUTH_TOKEN);
+    window.location="/"
+  };
 }
 
 export default withRouter(Header);

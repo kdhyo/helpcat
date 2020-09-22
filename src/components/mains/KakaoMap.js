@@ -1,32 +1,42 @@
 /*global kakao*/
 import React, { Component } from "react"
 import API from "../../config/apikey.json"
+import { AUTH_TOKEN } from '../../constants'
 
 
 class KakaoMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      MapToggle: true,
-      tokenData: localStorage.getItem("auth-token")
+      mapGpsOn: false,
+      tokenData: localStorage.getItem("auth-token"),
+      userData: Object
     };
   }
 
   placeToggle() {
     this.setState(state => ({
-      MapToggle: !state.MapToggle
+      mapGpsOn: !state.mapGpsOn
     }));
   };
 
+  componentDidMount(){ //render가 끝나면 바로실행
+    if(this.props.data){
+      this.setState(() => ({
+        userData: this.props.data.user
+      }));
+    }
+  }
 
   render() {
+    const authToken = localStorage.getItem(AUTH_TOKEN)
     const API_KEY = API.kakaoMapAPI.API_KEY;
     const mapScript = document.createElement("script");
     mapScript.async = true;
     mapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false&libraries=services`;
     document.head.appendChild(mapScript);
     mapScript.onload = () => {
-      kakao.maps.load(() => {
+      kakao.maps.load(() => { // 카카오 맵이 로딩이 다 되면
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();
 
@@ -48,12 +58,52 @@ class KakaoMap extends Component {
           }
         );
 
+        // 로그인이 되어있고, 토글이 true이면 유저집으로 세팅 / false면 현재위치 지도 세팅
+        if (authToken && !(this.state.mapGpsOn)) { //로그인 되있고, GPS기능 꺼져 있을때
 
-        if (this.state.MapToggle) { //토글이 true이면 현재위치 false면 유저집주소 지도 세팅
+          // GPS기능을 사용안할경우 유저의 집으로 지도의 메인을 정함
+          geocoder.addressSearch(this.state.userData.address, function(result, status) {
+
+            // 정상적으로 검색이 완료됐으면
+            if (status === kakao.maps.services.Status.OK) {
+
+              var lat = result[0].y, // 위도
+              lon = result[0].x; // 경도
+
+              //현재 위치로 메인을 잡아줌
+              let container = document.getElementById("map");
+              let options = {
+                center: new kakao.maps.LatLng(lat, lon),
+                level: 7
+              };
+
+              const map = new kakao.maps.Map(container, options);
+              MarkersOverlay(map) // 유저집주소 맵에 심부름 마커뿌리기
+              console.log("유저집 실행")
+            }
+          });
+        }
+        else if(!authToken && !(this.state.mapGpsOn)){ //로그인 되있고, GPS기능 켜져 있을때
+          var lat = 37.403625, // 위도 ,
+          lon = 126.930337; // 경도
+
+          //현재 위치로 메인을 잡아줌
+          let container = document.getElementById("map");
+          let options = {
+            center: new kakao.maps.LatLng(lat, lon),
+            level: 7
+          };
+          const map = new kakao.maps.Map(container, options);
+          MarkersOverlay(map)// 현재위치 맵에 심부름 마커뿌리기
+          console.log("디폴트 대림대학교 실행")
+        }
+        else if(this.state.mapGpsOn){ //비로그인이고, GPS기능 꺼져있을때
+
           // GPS로 현재 위치를 가져와 지도의 메인으로 정함
           navigator.geolocation.getCurrentPosition(function(result) {
             var lat = result.coords.latitude, // 위도
                 lon = result.coords.longitude; // 경도
+
             //현재 위치로 메인을 잡아줌
             let container = document.getElementById("map");
             let options = {
@@ -61,29 +111,8 @@ class KakaoMap extends Component {
               level: 7
             };
             const map = new kakao.maps.Map(container, options);
-            console.log(lat,lon)
             MarkersOverlay(map)// 현재위치 맵에 심부름 마커뿌리기
-          });
-        }else{
-          const userData = this.props.data.user;
-          const userHomeAddress = userData.address;
-          // GPS기능을 사용안할경우 유저의 집으로 지도의 메인을 정함
-          geocoder.addressSearch(userHomeAddress, function(result, status) {
-            // 정상적으로 검색이 완료됐으면
-            if (status === kakao.maps.services.Status.OK) {
-
-              var lat = result[0].y, // 위도
-              lon = result[0].x; // 경도
-              //현재 위치로 메인을 잡아줌
-              let container = document.getElementById("map");
-              let options = {
-                center: new kakao.maps.LatLng(lat, lon),
-                level: 7
-              };
-              console.log("false",lat,lon)
-              const map = new kakao.maps.Map(container, options);
-              MarkersOverlay(map) // 유저집주소 맵에 심부름 마커뿌리기
-            }
+            console.log("현재위치 실행")
           });
         }
 
@@ -128,7 +157,6 @@ class KakaoMap extends Component {
             });
           }
         }
-
       });
     }
 
@@ -138,7 +166,7 @@ class KakaoMap extends Component {
           Loding...
         </main>
         <button onClick={this.placeToggle = this.placeToggle.bind(this)}>
-          {this.state.MapToggle ? "현재장소" : "우리집"}
+          {this.state.mapGpsOn ? "현재장소" : "우리집"}
         </button>
       </>
     )

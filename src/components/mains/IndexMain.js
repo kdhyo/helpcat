@@ -11,7 +11,7 @@ class IndexMain extends Component {
   render() {
     return (
       <>
-        <Route component={MapMain} />
+        <MapMain />
         <Aside />
         <PreviewBoard />
         <Slider />

@@ -20,8 +20,8 @@ class MapMain extends Component {
       <>
         <Query query={USER_DATA}>
           {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>
-            if (error) return <p>Error!</p>
+            if (loading) return <><div className="map">Loading...</div></>
+            if (error) return console.log(error),<KakaoMap/>
             return (
               <KakaoMap data={data}/>
             )
