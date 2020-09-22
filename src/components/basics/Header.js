@@ -10,7 +10,7 @@ class Header extends Component {
       <>
         <header>
           <nav>
-          <Link to={{pathname:"/"}}><img alt="logo" src="helpcat.png" width="45px" height="45px"/></Link>
+          <Link to={{pathname:"/"}}><img class="logopng" alt="logo" src="logo.png" width="180px" height="40px"/></Link>
             <li>
               <div className="flex flex-fixed">
                 {authToken ? (
@@ -29,7 +29,7 @@ class Header extends Component {
                 </>
                 ) : (
                   <Link to="/login">
-                    login
+                    <img class="loginpng" src="./login.png" width="45px" title="로그인" alt="로그인"></img>
                   </Link>
                 )}
               </div>

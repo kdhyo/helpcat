@@ -23,7 +23,7 @@ class LoginPage extends Component {
     return (
       <>
         <div className="login">
-          Help Cat
+          {/* Help Cat */}
           <div className="loginform">
             환영합니다!
             <div className="loginInput">
