@@ -5,9 +5,7 @@ class PreviewBoard extends Component {
     return (
       <>
         <section>
-          <Link to={{pathname:"/board"}}>
-            <div>전체보기</div>
-          </Link>
+
           <div className="board">
             <article className="article">
               <div className="previewArea">부산</div>
@@ -36,6 +34,9 @@ class PreviewBoard extends Component {
               <div className="previewTitle">침팬치 밥좀 주세요!</div>
             </article>
           </div>
+          <Link to={{pathname:"/board"}}>
+            <div>전체보기</div>
+          </Link>
         </section>
       </>
     );
