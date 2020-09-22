@@ -21,3 +21,5 @@
 > (1) 현재 위치와 집주소 위치 바꾸기 (2) Graphql에서 유저 집주소 가져오기(임시)
 
 11. 2020-09-22 (화) - (Logo, Nav icon, Board)완료, (Detail,Chatting)제작중 - 문승익
+
+10. 2020-09-20 (일) - token Clear! - 최지율
