@@ -78,8 +78,8 @@ class LoginPage extends Component {
 
   _confirm = async data => {
     const { token } = data.login
-    this._saveUserData(token)
-    this.props.history.push(`/`)
+      this._saveUserData(token)
+      this.props.history.push(`/`)
   };
 
   _saveUserData = (token) => {

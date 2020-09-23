@@ -14,9 +14,16 @@ class KakaoMap extends Component {
     };
   }
 
-  placeToggle() {
-    this.setState(state => ({
-      mapGpsOn: !state.mapGpsOn
+  GPSOFF() {
+    console.log("GPSOFF")
+    this.setState(() => ({
+      mapGpsOn: false
+    }));
+  };
+  GPSON() {
+    console.log("GPSON")
+    this.setState(() => ({
+      mapGpsOn: true
     }));
   };
 
@@ -165,11 +172,11 @@ class KakaoMap extends Component {
         <main id="map" className="map">
           Loding...
         </main>
-        <button className="mapbutton1" onClick={this.placeToggle = this.placeToggle.bind(this)}>
-          {this.state.mapGpsOn ? "현재장소" : "현재위치"}
+        <button className={this.state.mapGpsOn ? "mapbutton1": "mapbutton1_Clicked"} onClick={this.GPSOFF = this.GPSOFF.bind(this)}>
+          {this.state.mapGpsOn ? "내집" : "내집"}
         </button>
-        <button className="mapbutton2" onClick={this.placeToggle = this.placeToggle.bind(this)}>
-          {this.state.mapGpsOn ? "현재장소" : "내위치"}
+        <button className={this.state.mapGpsOn ? "mapbutton2_Clicked": "mapbutton2"} onClick={this.GPSON = this.GPSON.bind(this)}>
+          {this.state.mapGpsOn ? "현재위치" : "현재위치"}
         </button>
       </>
     )
