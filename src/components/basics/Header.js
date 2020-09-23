@@ -18,7 +18,8 @@ class Header extends Component {
       <>
         <header>
           <nav>
-          <Link to={{pathname:"/"}}><img className="logopng" alt="logo" src="logo.png" width="180px" height="40px"/></Link>
+          <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="logo.png"/></Link>
+          <input className="headersearch" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;HelpCat 검색"></input>
             <li>
               <div className="flex flex-fixed">
                 {authToken ? (
@@ -53,7 +54,7 @@ class Header extends Component {
                 </>
                 ) : (
                   <Link to="/login">
-                    <img className="loginpng" src="./login.png" width="45px" title="로그인" alt="로그인"></img>
+                    <img className="loginpng" src="./login.png" title="로그인" alt="로그인"></img>
                   </Link>
                 )}
               </div>

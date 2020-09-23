@@ -165,8 +165,11 @@ class KakaoMap extends Component {
         <main id="map" className="map">
           Loding...
         </main>
-        <button onClick={this.placeToggle = this.placeToggle.bind(this)}>
-          {this.state.mapGpsOn ? "현재장소" : "우리집"}
+        <button className="mapbutton1" onClick={this.placeToggle = this.placeToggle.bind(this)}>
+          {this.state.mapGpsOn ? "현재장소" : "현재위치"}
+        </button>
+        <button className="mapbutton2" onClick={this.placeToggle = this.placeToggle.bind(this)}>
+          {this.state.mapGpsOn ? "현재장소" : "내위치"}
         </button>
       </>
     )
