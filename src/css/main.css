@@ -541,14 +541,14 @@ article{
 }
 
 .writeform{
-  width: 905px;
+  width: 600px;
   height: 800px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
   box-sizing: border-box;
   background-color: white;
   margin-top: 100px;
-  margin-left: 500px;
+  margin-left: 670px;
 }
 
 .writeheader{
@@ -566,7 +566,26 @@ article{
   border: none;
   background-color: #f0f2f5;
   border-radius: 7px;
-  width: 5000px;
+  height: 50px;
+  width: 500px;
+  outline-color: #bababa;
+}
+
+.writecontent{
+  font-weight: bold;
+  font-size: 30px;
+  margin: 30px 0px 20px 50px
+}
+
+.writecontentinput{
+  margin-left: 50px;
+  border: none;
+  background-color: #f0f2f5;
+  border-radius: 7px;
+  height: 250px;
+  width: 500px;
+  resize: none;
+  outline-color: #bababa;
 }
 
 /* aside{
@@ -649,7 +668,7 @@ aside{
   margin-top: 0px;
   width: 150px;
   height: 50px;
-  margin-left: 650px;
+  margin-left: 670px;
   margin-top: 7px;
 }
 .asider1:hover{

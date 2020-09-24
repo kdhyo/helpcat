@@ -11,6 +11,8 @@ class WritePage extends Component {
           <div className="writeheader">글쓰기</div>
           <div className="writetitle">제목</div>
           <input className="writetitleinput"></input>
+          <div className="writecontent">내용</div>
+          <textarea className="writecontentinput"></textarea>
         </div>
         </>
     )
