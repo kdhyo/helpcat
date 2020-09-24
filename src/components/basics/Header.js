@@ -50,6 +50,7 @@ class Header extends Component {
                       </ul>
                     )}
                   </Mutation>
+                  <Link to="/update"><ul>회원수정</ul></Link>
                 </>
                 ) : (
                   <Link to="/login">

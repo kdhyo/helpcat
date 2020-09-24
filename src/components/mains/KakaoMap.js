@@ -170,7 +170,6 @@ class KakaoMap extends Component {
     return (
       <>
         <main id="map" className="map">
-          Loding...
         </main>
         <button className={this.state.mapGpsOn ? "mapbutton1": "mapbutton1_Clicked"} onClick={this.GPSOFF = this.GPSOFF.bind(this)}>
           {this.state.mapGpsOn ? "내집" : "내집"}
