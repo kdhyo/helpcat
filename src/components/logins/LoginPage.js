@@ -25,24 +25,22 @@ class LoginPage extends Component {
         <div className="login">
           {/* Help Cat */}
           <div className="loginform">
-            환영합니다!
+          <img className="nomargin" src="logincat.png" width="80px"></img>
             <div className="loginInput">
               <div className="loginID">
-                ID :
                 <input
                   value={email}
                   onChange={(e) => this.setState({ email: e.target.value })}
                   type="text"
-                  placeholder="ID"
+                  placeholder="&nbsp;아이디를 입력하세요"
                 />
               </div>
               <div className="loginPW">
-                PW :
                 <input
                   value={password}
                   onChange={(e) => this.setState({ password: e.target.value })}
                   type="password"
-                  placeholder="Password"
+                  placeholder="&nbsp;비밀번호를 입력하세요"
                 />
               </div>
               <Mutation
@@ -60,15 +58,13 @@ class LoginPage extends Component {
             <div className="miniID">
               <div className="newID">
                 <Link to="/signup">회원가입</Link>
-              </div>
-              &nbsp;/&nbsp;
-              <div className="findID">ID 찾기</div>
+              </div>&nbsp;/&nbsp;
+              <div className="findID">ID찾기</div>
             </div>
-            <span>SNS</span>
             <div className="GroupSNS">
-              <div className="GoogleID">Google</div>
-              <div className="KakaoID">Kakao</div>
-              <div className="FacebookID">Facebook</div>
+              <div className="GoogleID"><img src="googlelogo.png" width="100px"></img></div>
+              <div className="NaverID"><img src="naverlogo.svg" width="100px"></img></div>
+              <div className="FacebookID"><img src="facebooklogo.png" width="100px"></img></div>
             </div>
           </div>
         </div>

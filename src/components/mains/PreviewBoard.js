@@ -4,7 +4,7 @@ class PreviewBoard extends Component {
   render() {
     return (
       <>
-        <section>
+        <section className="previewsection">
 
           <div className="board">
             <article className="article">

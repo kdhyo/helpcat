@@ -16,17 +16,17 @@ class Slider extends Component {
         <Slide easing="ease">
           <div className="each-slide">
             <div style={{"backgroundImage": `url(${slideImages[0]})`}}>
-            <div className="slidetext">슬라이더 1</div>
+            <div className="slidetext">슬라이더 <span>1</span></div>
             </div>
           </div>
           <div className="each-slide">
             <div style={{"backgroundImage": `url(${slideImages[1]})`}}>
-              <div className="slidetext">슬라이더 2</div>
+              <div className="slidetext">슬라이더 <span>2</span></div>
             </div>
           </div>
           <div className="each-slide">
             <div style={{"backgroundImage": `url(${slideImages[2]})`}}>
-            <div className="slidetext">슬라이더 3</div>
+            <div className="slidetext">슬라이더 <span>3</span></div>
             </div>
           </div>
         </Slide>

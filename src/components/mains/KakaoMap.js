@@ -81,7 +81,7 @@ class KakaoMap extends Component {
               let container = document.getElementById("map");
               let options = {
                 center: new kakao.maps.LatLng(lat, lon),
-                level: 7
+                level: 6
               };
 
               const map = new kakao.maps.Map(container, options);
@@ -98,7 +98,7 @@ class KakaoMap extends Component {
           let container = document.getElementById("map");
           let options = {
             center: new kakao.maps.LatLng(lat, lon),
-            level: 7
+            level: 6
           };
           const map = new kakao.maps.Map(container, options);
           MarkersOverlay(map)// 현재위치 맵에 심부름 마커뿌리기
@@ -115,7 +115,7 @@ class KakaoMap extends Component {
             let container = document.getElementById("map");
             let options = {
               center: new kakao.maps.LatLng(lat, lon),
-              level: 7
+              level: 6
             };
             const map = new kakao.maps.Map(container, options);
             MarkersOverlay(map)// 현재위치 맵에 심부름 마커뿌리기
@@ -172,10 +172,10 @@ class KakaoMap extends Component {
         <main id="map" className="map">
         </main>
         <button className={this.state.mapGpsOn ? "mapbutton1": "mapbutton1_Clicked"} onClick={this.GPSOFF = this.GPSOFF.bind(this)}>
-          {this.state.mapGpsOn ? "내집" : "내집"}
+          {this.state.mapGpsOn ? "우리집" : "우리집"}
         </button>
         <button className={this.state.mapGpsOn ? "mapbutton2_Clicked": "mapbutton2"} onClick={this.GPSON = this.GPSON.bind(this)}>
-          {this.state.mapGpsOn ? "현재위치" : "현재위치"}
+          {this.state.mapGpsOn ? "현위치" : "현위치"}
         </button>
       </>
     )

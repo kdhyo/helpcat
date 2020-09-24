@@ -30,11 +30,10 @@ class SignupPage extends Component {
     return (
       <>
         <div className="signup">
-          회원가입
           <form className="signupform">
+          <img className="nomargin" src="signupcat.png" width="80px"></img>
           <div className="email">
-              이메일
-              <input
+              <input className="signupinput1"
                 value={email}
                 onChange={(e) => this.setState({ email: e.target.value })}
                 type="text"
@@ -42,7 +41,6 @@ class SignupPage extends Component {
               />
             </div>
             <div className="nickName">
-              닉네임
               <input
                 value={nickName}
                 onChange={(e) => this.setState({ nickName: e.target.value })}
@@ -51,7 +49,6 @@ class SignupPage extends Component {
               />
             </div>
             <div className="userName">
-              이름
               <input
                 value={userName}
                 onChange={(e) => this.setState({ userName: e.target.value })}
@@ -60,7 +57,6 @@ class SignupPage extends Component {
               />
             </div>
             <div className="password">
-              비밀번호
               <input
                 value={password}
                 onChange={(e) => this.setState({ password: e.target.value })}
@@ -69,14 +65,12 @@ class SignupPage extends Component {
               />
             </div>
             <div className="passwordcheck">
-              비밀번호 확인
               <input
                 type="password"
                 placeholder="비밀번호를 재입력하세요"
               ></input>
             </div>
             <div className="gender">
-              성별
               <input
                 value={gender}
                 onChange={(e) => this.setState({ gender: e.target.value })}
@@ -85,7 +79,6 @@ class SignupPage extends Component {
               />
             </div>
             <div className="birth">
-              생년월일
               <input
                 value={birh}
                 onChange={(e) => this.setState({ birh: e.target.value })}
@@ -94,7 +87,6 @@ class SignupPage extends Component {
               />
             </div>
             <div className="phone">
-              전화번호
               <input
                 value={phone}
                 onChange={(e) => this.setState({ phone: e.target.value })}
@@ -103,7 +95,6 @@ class SignupPage extends Component {
               />
             </div>
             <div className="address">
-              주소
               <input
                 value={address}
                 onChange={(e) => this.setState({ address: e.target.value })}
@@ -112,23 +103,17 @@ class SignupPage extends Component {
               />
             </div>
 
-            <div>
               <Mutation
                 mutation={SIGNUP_MUTATION}
                 variables={{ email, password, userName, nickName, gender, phone, address, birh }}
                 onCompleted={(data) => this._confirm(data)}
               >
                 {(mutation) => (
-                  <div className="submit" onClick={mutation}>
-                    가입
-                  </div>
+                  <input className="submit" onClick={mutation} value="제출"></input>
                 )}
               </Mutation>
-            </div>
             <Link to="/login">
-              <div type="reset" className="reset">
-                취소
-              </div>
+              <input type="reset" className="reset"></input>
             </Link>
           </form>
         </div>
