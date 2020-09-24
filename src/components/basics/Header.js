@@ -19,7 +19,6 @@ class Header extends Component {
         <header>
           <nav>
           <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="logo.png"/></Link>
-          <input className="headersearch" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;HelpCat 검색"></input>
             <li>
               <div className="flex flex-fixed">
                 {authToken ? (
