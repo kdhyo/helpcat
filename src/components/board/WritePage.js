@@ -13,6 +13,16 @@ class WritePage extends Component {
           <input className="writetitleinput"></input>
           <div className="writecontent">내용</div>
           <textarea className="writecontentinput"></textarea>
+          <form className="writeday" action="" method="">
+            기간<br></br>
+          <input className="startday" type="datetime-local" id="" name=""></input>
+          ~
+          <input className="endday" type="datetime-local" id="" name=""></input>
+          </form>
+          <form>
+            <input className="writesubmit" type="submit"></input>
+            <input className="writereset" type="reset"></input>
+          </form>
         </div>
         </>
     )

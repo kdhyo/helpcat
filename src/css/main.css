@@ -588,6 +588,64 @@ article{
   outline-color: #bababa;
 }
 
+.writeday{
+  font-weight: bold;
+  font-size: 30px;
+  margin: 20px 0px 00px 50px;
+}
+
+.startday{
+  margin-right: 10px;
+  background-color: #f0f2f5;
+  outline-color: #bababa;
+  border: none;
+  width: 230px;
+  height: 50px;
+  border-radius: 7px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+.endday{
+  margin-left: 10px;
+  background-color: #f0f2f5;
+  outline-color: #bababa;
+  border: none;
+  width: 230px;
+  height: 50px;
+  border-radius: 7px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.writesubmit{
+  margin-top: 50px;
+  background-color: #f0f2f5;
+  outline-color: #bababa;
+  border: none;
+  margin-left: 155px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  width: 120px;
+  height: 50px;
+}
+
+.writereset{
+  background-color: #f0f2f5;
+  outline-color: #bababa;
+  border: none;
+  margin-left: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  width: 120px;
+  height: 50px;
+}
+
 /* aside{
   width: 100px;
   height: 640px;
