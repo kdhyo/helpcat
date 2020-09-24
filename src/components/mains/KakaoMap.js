@@ -57,8 +57,8 @@ class KakaoMap extends Component {
 
         //마커 아이콘 바꾸기
         var icon = new kakao.maps.MarkerImage(
-          'HC.png', new kakao.maps.Size(31, 35),{
-              offset: new kakao.maps.Point(16, 34),
+          'fixedmarker.gif', new kakao.maps.Size(61, 65),{
+              offset: new kakao.maps.Point(36, 54),
               alt: "마커다냥",
               shape: "poly",
               coords: "1,20,1,9,5,2,10,0,21,0,27,3,30,9,30,20,17,33,14,33"
