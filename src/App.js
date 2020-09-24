@@ -4,6 +4,7 @@ import Main from "./routes/Main"
 import Board from "./routes/Board"
 import Login from "./routes/Login"
 import SignUp from "./routes/SignUp"
+import Write from "./routes/Write"
 import CreateLink from "./components/links/CreateLink"
 import LinkList from "./components/links/LinkList"
 import LoginTest from "./components/logins/LoginTest"
@@ -22,6 +23,7 @@ class App extends Component {
         <Route path="/create" exact={true} component={CreateLink} />
         <Route path="/link" exact={true} component={LinkList} />
         <Route path="/logintest" exact={true} component={LoginTest} />
+        <Route path="/Write" exact={true} component={Write} />
       </>
     )
   }

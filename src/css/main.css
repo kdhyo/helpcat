@@ -27,6 +27,10 @@ header{
   margin-top: 8px;
 }
 
+.logotext{
+  float: left;
+}
+
 .headersearch{
   border: none;
   background-color: #f0f2f5;
@@ -536,6 +540,35 @@ article{
   margin-top: 40px;
 }
 
+.writeform{
+  width: 905px;
+  height: 800px;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 500px;
+}
+
+.writeheader{
+  color: white;
+}
+
+.writetitle{
+  font-weight: bold;
+  font-size: 30px;
+  margin: 50px 0px 20px 50px
+}
+
+.writetitleinput{
+  margin-left: 50px;
+  border: none;
+  background-color: #f0f2f5;
+  border-radius: 7px;
+  width: 5000px;
+}
+
 /* aside{
   width: 100px;
   height: 640px;
@@ -620,7 +653,6 @@ aside{
   margin-top: 7px;
 }
 .asider1:hover{
-  fill: #1877f2;
   border-bottom: 3px solid #1877f2;
   border-radius: 1px;
 }
@@ -632,7 +664,6 @@ aside{
   margin-top: 7px;
 }
 .asider2:hover{
-  fill: #1877f2;
   border-bottom: 3px solid #1877f2;
   border-radius: 1px;
 }
@@ -644,7 +675,6 @@ aside{
   margin-top: 7px;
 }
 .asider3:hover{
-  fill: #1877f2;
   border-bottom: 3px solid #1877f2;
   border-radius: 1px;
 }
@@ -656,7 +686,6 @@ aside{
   margin-top: 7px;
 }
 .asider4:hover{
-  fill: #1877f2;
   border-bottom: 3px solid #1877f2;
   border-radius: 1px;
 }
