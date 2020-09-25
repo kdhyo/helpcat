@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { AUTH_TOKEN } from "../../constants";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -8,9 +7,7 @@ const SIGNUP_MUTATION = gql`
   mutation SignupMutation($email: String!, $password: String!, $userName: String!,
     $nickName: String!, $gender: String!, $phone: String!, $address: String!, $birh: String!) {
     signup(email: $email, password: $password, userName: $userName, nickName: $nickName,
-      gender: $gender, phone:$phone, address: $address, birh: $birh) {
-      token
-    }
+      gender: $gender, phone:$phone, address: $address, birh: $birh)
   }
 `;
 
@@ -106,7 +103,7 @@ class SignupPage extends Component {
               <Mutation
                 mutation={SIGNUP_MUTATION}
                 variables={{ email, password, userName, nickName, gender, phone, address, birh }}
-                onCompleted={(data) => this._confirm(data)}
+                onCompleted={() => this._confirm()}
               >
                 {(mutation) => (
                   <input className="submit" onClick={mutation} value="제출"></input>
@@ -120,15 +117,10 @@ class SignupPage extends Component {
       </>
     );
   }
-  _confirm = async (data) => {
-    const { token } = data.signup;
-    this._saveUserData(token);
+  _confirm = async () => {
     this.props.history.push(`/`);
   };
 
-  _saveUserData = (token) => {
-    localStorage.setItem(AUTH_TOKEN, token);
-  };
 }
 
 export default SignupPage;

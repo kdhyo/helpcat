@@ -7,6 +7,7 @@ import SignUp from "./routes/SignUp"
 import Write from "./routes/Write"
 import Header from "./components/basics/Header"
 import UserUpdate from "./routes/UserUpdate"
+import ValidateEmail from "./components/mains/ValidateEmail"
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
         <Route path="/update" exact={true} component={UserUpdate} />
         <Route path="/board" exact={true} component={Board} />
         <Route path="/Write" exact={true} component={Write} />
+        <Route path="/validateEmail" exact={true} component={ValidateEmail} />
       </>
     )
   }

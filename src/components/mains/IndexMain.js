@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import { Route } from "react-router-dom"
-
 import Aside from "../basics/Aside";
 import PreviewBoard from "./PreviewBoard";
 import Slider from "./Slider";
