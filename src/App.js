@@ -6,8 +6,10 @@ import Login from "./routes/Login"
 import SignUp from "./routes/SignUp"
 import Write from "./routes/Write"
 import Header from "./components/basics/Header"
-import UserUpdate from "./routes/UserUpdate"
 import ValidateEmail from "./components/mains/ValidateEmail"
+import BoardDetail from "./components/board/BoardDetail"
+import IndexUpdate from "./components/logins/IndexUpdate"
+import BoardUpdate from "./components/board/BoardUpdate"
 
 class App extends Component {
 
@@ -18,9 +20,11 @@ class App extends Component {
         <Route path="/" exact={true} component={Main} />
         <Route path="/login" exact={true} component={Login} />
         <Route path="/signup" exact={true} component={SignUp} />
-        <Route path="/update" exact={true} component={UserUpdate} />
+        <Route path="/userUpdate" exact={true} component={IndexUpdate} />
         <Route path="/board" exact={true} component={Board} />
-        <Route path="/Write" exact={true} component={Write} />
+        <Route path="/board/:id" exact={true} component={BoardDetail} />
+        <Route path="/board/update/:id" exact={true} component={BoardUpdate} />
+        <Route path="/write" exact={true} component={Write} />
         <Route path="/validateEmail" exact={true} component={ValidateEmail} />
       </>
     )

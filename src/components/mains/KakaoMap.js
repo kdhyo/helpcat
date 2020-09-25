@@ -15,13 +15,11 @@ class KakaoMap extends Component {
   }
 
   GPSOFF() {
-    console.log("GPSOFF")
     this.setState(() => ({
       mapGpsOn: false
     }));
   };
   GPSON() {
-    console.log("GPSON")
     this.setState(() => ({
       mapGpsOn: true
     }));
@@ -86,7 +84,6 @@ class KakaoMap extends Component {
 
               const map = new kakao.maps.Map(container, options);
               MarkersOverlay(map) // 유저집주소 맵에 심부름 마커뿌리기
-              console.log("유저집 실행")
             }
           });
         }
@@ -102,7 +99,6 @@ class KakaoMap extends Component {
           };
           const map = new kakao.maps.Map(container, options);
           MarkersOverlay(map)// 현재위치 맵에 심부름 마커뿌리기
-          console.log("디폴트 대림대학교 실행")
         }
         else if(this.state.mapGpsOn){ //비로그인이고, GPS기능 꺼져있을때
 
@@ -119,7 +115,6 @@ class KakaoMap extends Component {
             };
             const map = new kakao.maps.Map(container, options);
             MarkersOverlay(map)// 현재위치 맵에 심부름 마커뿌리기
-            console.log("현재위치 실행")
           });
         }
 

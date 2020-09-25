@@ -28,7 +28,7 @@ class SignupPage extends Component {
       <>
         <div className="signup">
           <form className="signupform">
-          <img className="nomargin" src="signupcat.png" width="80px"></img>
+          <img alt="회원가입" className="nomargin" src="signupcat.png" width="80px"></img>
           <div className="email">
               <input className="signupinput1"
                 value={email}
@@ -99,18 +99,19 @@ class SignupPage extends Component {
                 placeholder="ex)경기도 안양시 동안구 임곡로 29, 전산관 5층"
               />
             </div>
-
               <Mutation
                 mutation={SIGNUP_MUTATION}
                 variables={{ email, password, userName, nickName, gender, phone, address, birh }}
-                onCompleted={() => this._confirm()}
+
               >
                 {(mutation) => (
-                  <input className="submit" onClick={mutation} value="제출"></input>
+                  <Link to="/">
+                    <button className="submit" onClick={mutation}>제출</button>
+                  </Link>
                 )}
               </Mutation>
             <Link to="/login">
-              <input type="reset" className="reset"></input>
+              <button type="reset" className="reset">초기화</button>
             </Link>
           </form>
         </div>
@@ -118,7 +119,7 @@ class SignupPage extends Component {
     );
   }
   _confirm = async () => {
-    this.props.history.push(`/`);
+    this.props.history.push('/');
   };
 
 }

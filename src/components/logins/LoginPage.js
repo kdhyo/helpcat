@@ -25,7 +25,7 @@ class LoginPage extends Component {
         <div className="login">
           {/* Help Cat */}
           <div className="loginform">
-          <img className="nomargin" src="logincat.png" width="80px"></img>
+          <img alt="로그인" className="nomargin" src="logincat.png" width="80px"></img>
             <div className="loginInput">
               <div className="loginID">
                 <input
@@ -62,9 +62,9 @@ class LoginPage extends Component {
               <div className="findID">ID찾기</div>
             </div>
             <div className="GroupSNS">
-              <div className="GoogleID"><img src="googlelogo.png" width="100px"></img></div>
-              <div className="NaverID"><img src="naverlogo.svg" width="100px"></img></div>
-              <div className="FacebookID"><img src="facebooklogo.png" width="100px"></img></div>
+              <div className="GoogleID"><img alt="googlelogo" src="googlelogo.png" width="100px"></img></div>
+              <div className="NaverID"><img alt="naverlogo" src="naverlogo.svg" width="100px"></img></div>
+              <div className="FacebookID"><img alt="facebooklogo" src="facebooklogo.png" width="100px"></img></div>
             </div>
           </div>
         </div>

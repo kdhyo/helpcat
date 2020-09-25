@@ -41,16 +41,12 @@ class Header extends Component {
                     {(mutation) => (
                       <ul
                         onClick={mutation}
-                          // ()=>{
-                          //   localStorage.removeItem(AUTH_TOKEN);
-                          //   this.props.history.push(`/`);
-                          // }
                       >
                         회원탈퇴
                       </ul>
                     )}
                   </Mutation>
-                  <Link to="/update"><ul>회원수정</ul></Link>
+                  <Link to="/userUpdate"><ul>회원수정</ul></Link>
                 </>
                 ) : (
                   <Link to="/login">
