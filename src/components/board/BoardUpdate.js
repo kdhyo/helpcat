@@ -37,10 +37,8 @@ class BoardUpdate extends Component {
 
   render() {
     const beforeData = this.props.location.serviceBoardData;
-    console.log(beforeData)
     const { title, contents, price, address, startAt, endAt } = this.state;
     const id = Number(beforeData.id)
-    console.log(id)
     return (
       <>
         <div className="writeform">
@@ -73,7 +71,7 @@ class BoardUpdate extends Component {
             <input
               className="startday"
               type="datetime-local"
-              onChange={(e) => this.setState({ startAt: Date(e.target.value) })}
+              onChange={(e) => this.setState({ startAt: e.target.value })}
             ></input>
             <p>부터</p>
             <input

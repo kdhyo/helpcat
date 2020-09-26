@@ -29,7 +29,6 @@ class ValidateEmail extends Component {
 
   render() {
     const validateEmailToken = this.getParameterByName("validateEmailToken")
-    console.log(validateEmailToken)
     return (
       <>              <br></br>
       <br></br>
@@ -54,8 +53,8 @@ class ValidateEmail extends Component {
   }
 
   _confirm = async data => {
-    console.log(data.validateEmail.token)
-    const { token } = data.validateEmail.token
+    const token = data.validateEmail.token
+    console.log(token)
       this._saveUserData(token)
       this.props.history.push(`/`)
   };

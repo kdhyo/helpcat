@@ -11,12 +11,43 @@ const SELECT_SERVICE_BOARD = gql`
       contents
       price
       address
+      startAt
+      endAt
     }
   }
 `;
 
+const NEW_LINKS_SUBSCRIPTION = gql`
+subscription{
+  newService{
+    id
+    title
+    contents
+    price
+    address
+    startAt
+    endAt
+  }
+}
+`;
+
 class BoardPage extends Component {
-  state = {
+  _subscribeToNewLinks = (subscribeToMore) => {
+    subscribeToMore({
+      document: NEW_LINKS_SUBSCRIPTION,
+      updateQuery: (prev, { subscriptionData }) => {
+        console.log(prev)
+        console.log(subscriptionData.data)
+        if (!subscriptionData.data) return prev;
+        const newServiceData = subscriptionData.data.newService;
+        const exists = prev.serviceAll.find(({ id }) => id === newServiceData.id);
+        if (exists) return prev;
+
+        return Object.assign({}, prev, {
+          serviceAll: [newServiceData, ...prev.serviceAll],
+        });
+      },
+    });
   };
 
   render() {
@@ -35,12 +66,15 @@ class BoardPage extends Component {
     return (
       <>
         <Query query={SELECT_SERVICE_BOARD}>
-          {({ loading, error, data }) => {
+          {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <><div>Loading...</div></>
             if (error) return console.log(error)
             if (data){
-              this.state = data.serviceAll.reverse()
+              this.state = data.serviceAll
             }
+
+            this._subscribeToNewLinks(subscribeToMore);
+
             // this.state = data.serviceAll.reverse() // graphql query 셀렉트로 가져온 값
             return (
               <div>

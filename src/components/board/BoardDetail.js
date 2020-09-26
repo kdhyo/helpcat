@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
+import Moment from 'react-moment';
 
 const DELETE_SERVICE_BOARD = gql`
   mutation DeleteServiceBoard($id: Int!){
@@ -18,6 +19,9 @@ class BoardDetail extends Component {
   render() {
     const serviceBoardData = this.props.location.serviceBoardData;
     const id = Number(serviceBoardData.id)
+    const startAt = new Date(serviceBoardData.startAt);
+    const endAt = new Date(serviceBoardData.endAt);
+    console.log(serviceBoardData.startAt)
     return (
       <>
         <div className="writeform">
@@ -37,24 +41,10 @@ class BoardDetail extends Component {
           <input
             className="writetitleinput" value={serviceBoardData.address} readOnly
           ></input>
-          <form className="writeday" action="" method="">
-            기간<br></br>
-            <input
-              value="2020-09-20T11:14"
-              className="startday"
-              type="datetime-local"
-              readOnly
-            >
-            </input>
-            <p>부터</p>
-            <input
-              value="2020-09-30T23:31"
-              className="endday"
-              type="datetime-local"
-              readOnly
-            ></input>
-            <p>&nbsp;&nbsp;&nbsp;까지</p>
-          </form>
+          <div className="writecontent">시작일</div>
+          <Moment format="YYYY년MM월DD일 hh시mm분">{startAt}</Moment>
+          <div className="writecontent">종료일</div>
+          <Moment format="YYYY년MM월DD일 hh시mm분">{endAt}</Moment>
           <a href="/board">
             <input className="writereset" type="reset" value="뒤로가기" readOnly></input>
           </a>

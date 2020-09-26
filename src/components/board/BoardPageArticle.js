@@ -3,21 +3,24 @@ import { Link } from "react-router-dom";
 
 class BoardPageArticle extends Component {
   render() {
+    const serviceBoardData = this.props.serviceBoardData;
     return (
       <>
         <Link
           to={
             {
-              pathname:`/board/${this.props.serviceBoardData.id}`,
-              serviceBoardData: this.props.serviceBoardData
+              pathname:`/board/${serviceBoardData.id}`,
+              serviceBoardData: serviceBoardData
             }
           }
         >
           <article className="article">
-            title : {this.props.serviceBoardData.title}<br />
-            contents : {this.props.serviceBoardData.contents}<br />
-            price : {this.props.serviceBoardData.price}<br />
-            address : {this.props.serviceBoardData.address}
+            title : {serviceBoardData.title}<br />
+            contents : {serviceBoardData.contents}<br />
+            price : {serviceBoardData.price}<br />
+            address : {serviceBoardData.address}<br />
+            시작일 : {serviceBoardData.startAt}<br />
+            종료일 : {serviceBoardData.endAt}
           </article>
         </Link>
       </>

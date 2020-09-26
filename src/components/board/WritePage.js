@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import {KeyboardDateTimePicker} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import MomentUtils from "@date-io/moment";
 
 const BOARD_UPROAD = gql`
   mutation BoardUproad(
@@ -28,19 +31,30 @@ const BOARD_UPROAD = gql`
 `;
 
 class WritePage extends Component {
-  state = {
-    title: "",
-    contents: "",
-    price: Number,
-    address: "",
-    startAt: Date,
-    endAt: Date,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      contents: "",
+      price: Number,
+      address: "",
+      startAt: Date(),
+      endAt: Date(),
+    };
+  }
+
+  changePickerData(target, value) {
+    console.log(value);
+    this.setState({
+      [target]: value,
+    });
+  }
 
   render() {
     const { title, contents, price, address, startAt, endAt } = this.state;
+
     return (
-      <>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
         <div className="writeform">
           <img
             alt="글쓰기"
@@ -68,26 +82,35 @@ class WritePage extends Component {
             className="writetitleinput"
             onChange={(e) => this.setState({ address: e.target.value })}
           ></input>
-          <form className="writeday" action="" method="">
-            기간<br></br>
-            <input
-              className="startday"
-              type="datetime-local"
-              onChange={(e) => this.setState({ startAt: Date(e.target.value) })}
-            ></input>
-            <p>부터</p>
-            <input
-              className="endday"
-              type="datetime-local"
-              onChange={(e) => this.setState({ endAt: Date(e.target.value) })}
-            ></input>
-            <p>&nbsp;&nbsp;&nbsp;까지</p>
-          </form>
+          <KeyboardDateTimePicker
+            disableToolbar
+            placeholder="10/10/2018"
+            value={this.state.startAt}
+            onChange={this.changePickerData.bind(this, "startAt")}
+            variant="inline"
+            format="yyyy/MM/DD LT"
+            margin="normal"
+            label="시작 예정일"
+            style={{ width: "50%" }}
+            KeyboardButtonProps={{ "aria-label": "change time" }}
+          />
+          <KeyboardDateTimePicker
+            disableToolbar
+            placeholder="10/10/2018"
+            value={this.state.endAt}
+            onChange={this.changePickerData.bind(this, "endAt")}
+            variant="inline"
+            format="yyyy/MM/DD LT"
+            margin="normal"
+            label="종료 예정일"
+            style={{ width: "50%" }}
+            KeyboardButtonProps={{ "aria-label": "change time" }}
+          />
           <form>
           <a href="/board">
             <Mutation
               mutation={BOARD_UPROAD}
-              variables={{ title, contents, price, address}}
+              variables={{ title, contents, price, address, startAt, endAt}}
             >
               {(mutation) => (
                 <input
@@ -103,7 +126,7 @@ class WritePage extends Component {
             <input className="writereset" type="reset"></input>
           </form>
         </div>
-      </>
+        </MuiPickersUtilsProvider>
     );
   }
 
