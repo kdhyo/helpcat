@@ -19,21 +19,27 @@ class UserUpdatePage extends Component {
       <>
         <div className="login">
           <div className="loginform">
+          <img
+            alt="글쓰기"
+            className="nomargin"
+            src="membercat.png"
+            width="80px"
+          ></img>
             <div className="loginInput">
               <div className="loginID">
-                현재 비밀번호 :
                 <input
                   value={oldPwd}
                   onChange={(e) => this.setState({ oldPwd: e.target.value })}
                   type="text"
+                  placeholder="현재 비밀번호"
                 />
               </div>
               <div className="loginPW">
-                새로운 비밀번호 :
                 <input
                   value={newPwd}
                   onChange={(e) => this.setState({ newPwd: e.target.value })}
                   type="password"
+                  placeholder="새 비밀번호"
                 />
               </div>
               <Mutation

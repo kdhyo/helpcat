@@ -78,28 +78,29 @@ class WritePage extends Component {
             className="writetitleinput"
             onChange={(e) => this.setState({ address: e.target.value })}
           ></input>
+          <div className="startday">
           <KeyboardDateTimePicker
             disableToolbar
             value={this.state.startAt}
             onChange={this.changePickerData.bind(this, "startAt")}
-            variant="inline"
             format="yyyy/MM/DD LT"
-            margin="normal"
             label="시작 예정일"
-            style={{ width: "50%" }}
             KeyboardButtonProps={{ "aria-label": "change time" }}
           />
+          </div>
+          <div className="endday">
           <KeyboardDateTimePicker
+<<<<<<< HEAD
+=======
             disableToolbar
+>>>>>>> 6c7caf6edcf88c19037ca03498071d588d0ae3cd
             value={this.state.endAt}
             onChange={this.changePickerData.bind(this, "endAt")}
-            variant="inline"
             format="yyyy/MM/DD LT"
-            margin="normal"
             label="종료 예정일"
-            style={{ width: "50%" }}
             KeyboardButtonProps={{ "aria-label": "change time" }}
           />
+          </div>
           <form>
           <a href="/board">
             <Mutation

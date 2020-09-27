@@ -20,19 +20,20 @@ class Header extends Component {
           <nav>
           <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="logo.png"/></Link>
             <li>
-              <div className="flex flex-fixed">
+              <div className="">
                 {authToken ? (
                 <>
-                  <Link to={{pathname:"/login"}}><ul>메세지</ul></Link>
-                  <Link to="/"><ul>알람</ul></Link>
+              <img className="loginpng3" src="./dropbutton.png" title="메뉴"></img>
+                  <Link to={{pathname:"/login"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
+                  <Link to="/"><ul><img className="loginpng2" src="./alarm.png" title="알람"></img></ul></Link>
                   <ul
-                    className="ml1 pointer black"
+                   
                     onClick={() => {
                       localStorage.removeItem(AUTH_TOKEN);
                       this.props.history.push(`/`);
                     }}
                   >
-                    logout
+                    <img className="loginpng2" src="./logout.png" title="로그아웃"></img>
                   </ul>
                   <Mutation
                     mutation={USER_REMOVE_MUTATION}
@@ -42,15 +43,15 @@ class Header extends Component {
                       <ul
                         onClick={mutation}
                       >
-                        회원탈퇴
+                        <img className="loginpng2" src="./userX.png" title="회원탈퇴"></img>
                       </ul>
                     )}
                   </Mutation>
-                  <Link to="/userUpdate"><ul>회원수정</ul></Link>
+                  <Link to="/userUpdate"><ul><img className="loginpng2" src="./user.png" title="회원수정"></img></ul></Link>
                 </>
                 ) : (
                   <Link to="/login">
-                    <img className="loginpng" src="./login.png" title="로그인" alt="로그인"></img>
+                    <img className="loginpng4" src="./login.png" title="로그인"></img>
                   </Link>
                 )}
               </div>
