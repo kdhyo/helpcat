@@ -22,10 +22,7 @@ const BOARD_UPROAD_MUTATION = gql`
       address: $address
       startAt: $startAt
       endAt: $endAt
-    ) {
-      id
-      title
-    }
+    )
   }
 `;
 
@@ -83,7 +80,6 @@ class WritePage extends Component {
           ></input>
           <KeyboardDateTimePicker
             disableToolbar
-            placeholder="10/10/2018"
             value={this.state.startAt}
             onChange={this.changePickerData.bind(this, "startAt")}
             variant="inline"
@@ -95,7 +91,6 @@ class WritePage extends Component {
           />
           <KeyboardDateTimePicker
             disableToolbar
-            placeholder="10/10/2018"
             value={this.state.endAt}
             onChange={this.changePickerData.bind(this, "endAt")}
             variant="inline"
