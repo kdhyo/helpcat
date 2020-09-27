@@ -14,7 +14,7 @@ class BoardPageArticle extends Component {
             }
           }
         >
-          <article className="article">
+          <article className="articleBPA">
             title : {serviceBoardData.title}<br />
             contents : {serviceBoardData.contents}<br />
             price : {serviceBoardData.price}<br />

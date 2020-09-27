@@ -35,6 +35,7 @@ class Header extends Component {
                   >
                     <img className="loginpng2" src="./logout.png" title="로그아웃"></img>
                   </ul>
+                  <Link to="/userUpdate"><ul><img className="loginpng2" src="./user.png" title="회원수정"></img></ul></Link>
                   <Mutation
                     mutation={USER_REMOVE_MUTATION}
                     onCompleted={() => this._userDelete()}
@@ -47,7 +48,6 @@ class Header extends Component {
                       </ul>
                     )}
                   </Mutation>
-                  <Link to="/userUpdate"><ul><img className="loginpng2" src="./user.png" title="회원수정"></img></ul></Link>
                 </>
                 ) : (
                   <Link to="/login">
