@@ -50,7 +50,7 @@ class Header extends Component {
                 </>
                 ) : (
                   <Link to="/login">
-                    <img className="loginpng" src="./login.png" title="로그인" alt="로그인"></img>
+                    <img className="loginpng" src="./login.png" title="로그인"></img>
                   </Link>
                 )}
               </div>
