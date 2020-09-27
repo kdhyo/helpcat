@@ -79,7 +79,7 @@ class BoardUpdate extends Component {
           ></input>
           <KeyboardDateTimePicker
             disableToolbar
-            value={beforeData.startAt}
+            value={this.state.startAt ? this.state.startAt : beforeData.startAt}
             onChange={this.changePickerData.bind(this, "startAt")}
             variant="inline"
             format="yyyy/MM/DD LT"
@@ -90,7 +90,7 @@ class BoardUpdate extends Component {
           />
           <KeyboardDateTimePicker
             disableToolbar
-            value={beforeData.endAt}
+            value={this.state.endAt ? this.state.endAt : beforeData.endAt}
             onChange={this.changePickerData.bind(this, "endAt")}
             variant="inline"
             format="yyyy/MM/DD LT"
