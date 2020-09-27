@@ -5,9 +5,9 @@ import { AUTH_TOKEN } from '../../constants'
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-const USER_WITHDRAWAL_MUTATION = gql`
-  mutation UserWithdrawalMutation{
-    UserDelete
+const USER_REMOVE_MUTATION = gql`
+  mutation UserRemoveMutaion{
+    removeUser
   }
 `;
 
@@ -35,7 +35,7 @@ class Header extends Component {
                     logout
                   </ul>
                   <Mutation
-                    mutation={USER_WITHDRAWAL_MUTATION}
+                    mutation={USER_REMOVE_MUTATION}
                     onCompleted={() => this._userDelete()}
                   >
                     {(mutation) => (

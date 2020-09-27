@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import Moment from 'react-moment';
 
-const DELETE_SERVICE_BOARD = gql`
-  mutation DeleteServiceBoard($id: Int!){
-    serviceDelete(id:$id)
+const DELETE_SERVICE_BOARD_MUTATION = gql`
+  mutation DeleteServiceBoardMutation($id: Int!){
+    removeService(id:$id)
   }
 `;
 
@@ -50,7 +50,7 @@ class BoardDetail extends Component {
           </a>
           <a href="/board">
             <Mutation
-              mutation={DELETE_SERVICE_BOARD}
+              mutation={DELETE_SERVICE_BOARD_MUTATION}
               variables={{id}}
             >
               {(mutation) => (

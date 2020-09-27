@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-const User_Update = gql`
-  mutation UserUpdate($oldPwd: String!, $newPwd: String!) {
-    updatePassword(oldPassword: $oldPwd, newPassword: $newPwd)
+const USER_PASSWORD_UPDATE_MUTATION = gql`
+  mutation UserPasswordUpdateMutation($oldPwd: String!, $newPwd: String!) {
+    editPwd(oldPassword: $oldPwd, newPassword: $newPwd)
   }
 `;
 
@@ -37,7 +37,7 @@ class UserUpdatePage extends Component {
                 />
               </div>
               <Mutation
-                mutation={User_Update}
+                mutation={USER_PASSWORD_UPDATE_MUTATION}
                 variables={{ oldPwd, newPwd }}
                 onCompleted={() => this._confirm()}
               >
