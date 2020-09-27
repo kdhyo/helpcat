@@ -5,9 +5,15 @@ import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
 const LOGIN_MUTATION = gql`
-  mutation LoginMutation($email: String!, $password: String!) {
-    login(userid: $email, password: $password) {
+  mutation login($email: Email!, $password: String!) {
+    login(email: $email, password: $password) {
       token
+      user{
+        id
+        email
+        userName
+        nickName
+      }
     }
   }
 `;
@@ -20,6 +26,7 @@ class LoginPage extends Component {
   };
   render() {
     const { email, password, name } = this.state;
+    console.log(email,password)
     return (
       <>
         <div className="login">
@@ -45,7 +52,7 @@ class LoginPage extends Component {
               </div>
               <Mutation
                 mutation={LOGIN_MUTATION}
-                variables={{ email, password, name }}
+                variables={{ email, password }}
                 onCompleted={(data) => this._confirm(data)}
               >
                 {(mutation) => (

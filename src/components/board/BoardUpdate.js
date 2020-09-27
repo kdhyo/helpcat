@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-const BOARD_UPDATE = gql`
-  mutation BoardUpdate(
+const BOARD_UPDATE_MUTATION = gql`
+  mutation BoardUpdateMutation(
     $id : Int!
     $title: String!
     $contents: String!
-    $price: Int
-    $address: String
+    $price: Int!
+    $address: String!
     $startAt: DateTime
-    $endAt: DateTime
+    $endAt: DateTime!
   ) {
     editService(
       id: $id
@@ -84,7 +84,7 @@ class BoardUpdate extends Component {
           <form>
           <a href="/board">
             <Mutation
-              mutation={BOARD_UPDATE}
+              mutation={BOARD_UPDATE_MUTATION}
               variables={{ id, title, contents, price, address}}
             >
               {(mutation) => (

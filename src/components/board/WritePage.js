@@ -6,17 +6,16 @@ import {KeyboardDateTimePicker} from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
 
-const BOARD_UPROAD = gql`
-  mutation BoardUproad(
+const BOARD_UPROAD_MUTATION = gql`
+  mutation BoardUproadMutation(
     $title: String!
     $contents: String!
     $price: Int
     $address: String
     $startAt: DateTime
     $endAt: DateTime
-
   ) {
-    serviceUproad(
+    addService(
       title: $title
       contents: $contents
       price: $price
@@ -104,7 +103,7 @@ class WritePage extends Component {
           <form>
           <a href="/board">
             <Mutation
-              mutation={BOARD_UPROAD}
+              mutation={BOARD_UPROAD_MUTATION}
               variables={{ title, contents, price, address, startAt, endAt}}
             >
               {(mutation) => (

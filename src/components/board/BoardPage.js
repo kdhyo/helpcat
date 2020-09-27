@@ -3,9 +3,9 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import BoardPageArticle from "./BoardPageArticle";
 
-const SELECT_SERVICE_BOARD = gql`
+const VIEW_SERVICES_BOARD_QUERY = gql`
   query{
-    serviceAll{
+    showServices(orderBy:desc){
       id
       title
       contents
@@ -17,7 +17,7 @@ const SELECT_SERVICE_BOARD = gql`
   }
 `;
 
-const NEW_LINKS_SUBSCRIPTION = gql`
+const NEW_SERVICE_SUBSCRIPTION = gql`
 subscription{
   newService{
     id
@@ -34,7 +34,7 @@ subscription{
 class BoardPage extends Component {
   _subscribeToNewLinks = (subscribeToMore) => {
     subscribeToMore({
-      document: NEW_LINKS_SUBSCRIPTION,
+      document: NEW_SERVICE_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
         console.log(prev)
         console.log(subscriptionData.data)
@@ -65,7 +65,7 @@ class BoardPage extends Component {
 
     return (
       <>
-        <Query query={SELECT_SERVICE_BOARD}>
+        <Query query={VIEW_SERVICES_BOARD_QUERY}>
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <><div>Loading...</div></>
             if (error) return console.log(error)

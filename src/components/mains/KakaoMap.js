@@ -28,7 +28,7 @@ class KakaoMap extends Component {
   componentDidMount(){ //render가 끝나면 바로실행
     if(this.props.data){
       this.setState(() => ({
-        userData: this.props.data.user
+        userData: this.props.data.me
       }));
     }
   }

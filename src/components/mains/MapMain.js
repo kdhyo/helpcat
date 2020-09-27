@@ -4,10 +4,11 @@ import gql from "graphql-tag";
 import KakaoMap from "./KakaoMap";
 
 
-const USER_DATA = gql`
+const USER_DATA_QUERY = gql`
   query{
-    user{
+    me{
       id,
+      email,
       userName,
       address
     }
@@ -18,7 +19,7 @@ class MapMain extends Component {
   render(){
     return (
       <>
-        <Query query={USER_DATA}>
+        <Query query={USER_DATA_QUERY}>
           {({ loading, error, data }) => {
             if (loading) return <><div className="map2">Loading...</div></>
             if (error) return <KakaoMap/>
