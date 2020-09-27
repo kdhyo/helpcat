@@ -21,7 +21,6 @@ class BoardDetail extends Component {
     const id = Number(serviceBoardData.id)
     const startAt = new Date(serviceBoardData.startAt);
     const endAt = new Date(serviceBoardData.endAt);
-    console.log(serviceBoardData.startAt)
     return (
       <>
         <div className="writeform">

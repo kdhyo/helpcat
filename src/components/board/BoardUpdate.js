@@ -34,12 +34,12 @@ class BoardUpdate extends Component {
     contents: "",
     price: Number,
     address: "",
-    startAt: Date(),
-    endAt: Date(),
+    startAt: "",
+    endAt: "",
   };
 
   changePickerData(target, value) {
-    console.log(value);
+    console.log("발루는 : "+ value, "타겟은 : " + target  );
     this.setState({
       [target]: value,
     });
@@ -79,7 +79,7 @@ class BoardUpdate extends Component {
           ></input>
           <KeyboardDateTimePicker
             disableToolbar
-            value={this.state.startAt ? this.state.startAt : beforeData.startAt}
+            value={startAt ? startAt : beforeData.startAt}
             onChange={this.changePickerData.bind(this, "startAt")}
             variant="inline"
             format="yyyy/MM/DD LT"
@@ -90,7 +90,7 @@ class BoardUpdate extends Component {
           />
           <KeyboardDateTimePicker
             disableToolbar
-            value={this.state.endAt ? this.state.endAt : beforeData.endAt}
+            value={endAt ? endAt : beforeData.endAt}
             onChange={this.changePickerData.bind(this, "endAt")}
             variant="inline"
             format="yyyy/MM/DD LT"
