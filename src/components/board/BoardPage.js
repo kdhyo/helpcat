@@ -70,7 +70,7 @@ class BoardPage extends Component {
             if (loading) return <><div>Loading...</div></>
             if (error) return console.log(error)
             if (data){
-              this.state = data.serviceAll
+              this.state = data.showServices
             }
 
             this._subscribeToNewLinks(subscribeToMore);
