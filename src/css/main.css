@@ -1,6 +1,8 @@
 body{
   background-color: #f0f2f5;
   position: relative;
+  width: 100%;
+  font-size: 100%;
 }
 
 header{
@@ -130,47 +132,38 @@ ul{
 }
 
 main{
-  width: 900px;
   font-size: 30px;
-  height: 600px;
   text-align: center;
   line-height: 50px;
   font-weight: bold;
   border-radius: 15px;
-  margin-top: 100px;
   background-color: white;
   box-shadow: 0px 0px 20px -12px black;
-  margin-left: 520px;
 }
 
 .map{
   box-sizing: border-box;
-  width: 900px;
-  height: 600px;
+  width: 45%;
+  height: 65vh;
   border-radius: 15px;
-  margin-top: 100px;
+  margin-top: 5%;
   background-color: white;
   box-shadow: 0px 0px 20px -12px black;
-  margin-left: 520px;
+  margin-left: 28%;
 }
 
 .map2{
   box-sizing: border-box;
-  background-color: white;
-  padding-top: 50px;
-  padding-bottom: 30px;
-  box-sizing: border-box;
-  width: 900px;
-  font-size: 50px;
+  width: 45%;
   height: 600px;
-  text-align: center;
-  line-height: 450px;
-  font-weight: bold;
   border-radius: 15px;
-  margin-top: 100px;
+  margin-top: 5%;
   background-color: white;
   box-shadow: 0px 0px 20px -12px black;
-  margin-left: 520px;
+  margin-left: 28%;
+  font-size: 5rem;
+  text-align: center;
+  line-height: 50vh;
 }
 
 .mapbutton1{
@@ -240,9 +233,9 @@ main{
 
 .previewsection{
   height: 460px;
-  width: 900px;
-  margin-left: 520px;
-  margin-top: 50px;
+  width: 45%;
+  margin-left: 28%;
+  margin-top: 2%;
   position: relative;
   z-index: 4;
 }
@@ -258,10 +251,6 @@ article{
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
   margin-top: 15px;
-  text-align: center;
-  line-height: 220px;
-  font-weight: bold;
-  font-size: 30px;
   background-color: white;
 }
 
@@ -273,25 +262,24 @@ article{
   margin-top: 15px;
   background-color: white;
   font-size: 14px;
-  line-height: 30px;
+  line-height: 1rem;
   text-align: left;
   margin-top: 30px;
   margin-left: 100px;
 }
 
 .board .article .previewArea{
-  font-size: 18px;
+  font-size: 1rem;
   color: #1877f2;
-  position: relative;
-  z-index: 2;
-  height: 30px;
-  margin-top: -50px;
-  margin-bottom: 30px;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
 }
 .board .article .previewTitle{
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: bolder;
-  height: 10px;
+  text-align: center;
 }
 
 .BPA p{
@@ -299,10 +287,10 @@ article{
 }
 
 .viewall{
-  width: 80px;
+  width: 15%;
   height: 30px;
   text-align: center;
-  line-height: 30px;
+  line-height: 2rem;
   font-weight: bold;
   background-color: white;
   box-shadow: 0px 0px 15px -6px black;
@@ -319,7 +307,7 @@ article{
 }
 
 .review{
-  width: 900px;
+  width: 45%;
   height: 200px;
   margin-top: 50px;
   text-align: center;
@@ -329,7 +317,7 @@ article{
   border-radius: 15px;
   font-size: 20px;
   background-color: white;
-  margin-left: 520px;
+  margin-left: 28%;
   position: relative;
 }
 
@@ -553,14 +541,15 @@ article{
 }
 
 .writeform{
-  width: 900px;
+  width: 45%;
   height: 1000px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
   box-sizing: border-box;
   background-color: white;
-  margin-top: 100px;
-  margin-left: 520px;
+  margin-top: 5%;
+  margin-left: 28%;
+  font-size: 100%;
 }
 
 .writeheader{
@@ -569,17 +558,17 @@ article{
 
 .writetitle{
   font-weight: bold;
-  font-size: 30px;
-  margin: 50px 0px 20px 50px
+  font-size: 2rem;
+  margin: 20px 0px 20px 50px
 }
 
 .writetitleinput{
-  margin-left: 50px;
+  margin-left: 2%;
   border: none;
   background-color: #f0f2f5;
   border-radius: 7px;
   height: 50px;
-  width: 500px;
+  width: 30%;
   padding-right: 300px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
@@ -587,17 +576,17 @@ article{
 
 .writecontent{
   font-weight: bold;
-  font-size: 30px;
-  margin: 30px 0px 20px 50px;
+  font-size: 2rem;
+  margin: 20px 0px 20px 50px;
 }
 
 .writecontentinput{
-  margin-left: 50px;
+  margin-left: 2%;
   border: none;
   background-color: #f0f2f5;
   border-radius: 7px;
   height: 250px;
-  width: 800px;
+  width: 94%;
   resize: none;
   border: 2px solid #bababa;
   outline-color: #1877f2;
@@ -668,69 +657,6 @@ article{
   border-color: #1877f2;
 }
 
-/* aside{
-  width: 100px;
-  height: 640px;
-  background-color: white;
-  box-shadow: 0px 0px 20px -12px black;
-  border-radius: 15px;
-  position: fixed;
-  z-index: 1;
-  top:15%;
-  right: 1%;
-  bottom: 15%;
-  text-align: center;
-}
-
-.asider1{
-  text-align: center;
-  position: relative;
-  font-size: 20px;
-  z-index: 2;
-  font-weight: bold;
-  right: 1%;
-  border-bottom: 2px solid lightgray;
-  line-height: 160px;
-}
-
-.asider2{
-  text-align: center;
-  position: relative;
-  font-size: 20px;
-  z-index: 2;
-  font-weight: bold;
-  right: 1%;
-  border-bottom: 2px solid lightgray;
-  line-height: 160px;
-}
-
-.asider3{
-  text-align: center;
-  position: relative;
-  font-size: 20px;
-  z-index: 2;
-  font-weight: bold;
-  right: 1%;
-  border-bottom: 2px solid lightgray;
-  line-height: 160px;
-}
-
-.asider4{
-  text-align: center;
-  position: relative; 
-  font-size: 20px;
-  z-index: 2;
-  font-weight: bold;
-  right: 1%;
-  line-height: 160px;
-}
-
-.asiderpng{
-  width: 50px;
-  background-color: white;
-  box-sizing: border-box;
-} */
-
 aside{
   display: flex;
   float: left;
@@ -741,6 +667,7 @@ aside{
   text-align: center;
   margin-top: 5px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .asider1{
@@ -820,3 +747,174 @@ footer{
 .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:10px;font-weight:bold;overflow:hidden;background: #00b1f7;background: #00b1f7 url('/arrow_white.png') no-repeat right 8px center;}
 .customoverlay .title {display:block;text-align:center;background:#fff;height:35px;margin-top:-15px;padding:3px;font-size:14px;font-weight:bold; border-left: 7px solid #1877f2;}
 .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('/vertex_white.png')}
+
+/* PC , 테블릿 가로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:800px) {
+
+}
+
+/* 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) {
+  aside{
+    display: flex;
+    float: left;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    margin-top: 5px;
+    box-sizing: border-box;
+    margin-left: -500px;
+    width: 100%;
+  }
+
+  .map{
+    box-sizing: border-box;
+    width: 45%;
+    height: 50vh;
+    border-radius: 15px;
+    margin-top: 10%;
+    background-color: white;
+    box-shadow: 0px 0px 20px -12px black;
+    margin-left: 28%;
+  }
+
+  .map2{
+    box-sizing: border-box;
+    width: 45%;
+    height: 50vh;
+    border-radius: 15px;
+    margin-top: 10%;
+    background-color: white;
+    box-shadow: 0px 0px 20px -12px black;
+    margin-left: 28%;
+    text-align: center;
+    font-size: 3rem;
+    text-align: center;
+    line-height: 50vh;
+  }
+
+  .board .article .previewTitle{
+    font-size: 0.9rem;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  .writeform{
+    width: 45%;
+    height: 900px;
+    box-shadow: 0px 0px 20px -12px black;
+    border-radius: 15px;
+    box-sizing: border-box;
+    background-color: white;
+    margin-top: 10%;
+    margin-left: 28%;
+    font-size: 100%;
+  }
+  
+  .writeheader{
+    color: white;
+  }
+  
+  .writetitle{
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 20px 0px 20px 50px
+  }
+  
+  .writetitleinput{
+    margin-left: 2%;
+    border: none;
+    background-color: #f0f2f5;
+    border-radius: 7px;
+    height: 30px;
+    width: 40px;
+    padding-right: 300px;
+    border: 2px solid #bababa;
+    outline-color: #1877f2;
+  }
+  
+  .writecontent{
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 20px 0px 20px 50px;
+  }
+  
+  .writecontentinput{
+    margin-left: 2%;
+    border: none;
+    background-color: #f0f2f5;
+    border-radius: 7px;
+    height: 200px;
+    width: 95%;
+    resize: none;
+    border: 2px solid #bababa;
+    outline-color: #1877f2;
+  }
+  
+  .writeday{
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 20px 0px 0px 50px;
+  }
+  
+  .startday{
+    margin-top: 5%;
+    margin-right: 15px;
+    background-color: #f0f2f5;
+    border: 2px solid #bababa;
+    outline-color: #1877f2;
+    border-radius: 7px;
+    width: 50%;
+    display: block;
+    margin-left: 25%;
+    height: 50px;
+  }
+  
+  .endday{
+    margin-top: 5%;
+    background-color: #f0f2f5;
+    border: 2px solid #bababa;
+    outline-color: #1877f2;
+    border-radius: 7px;
+    width: 50%;
+    display: block;
+    margin-left: 25%;
+    height: 50px;
+  }
+
+  .writesubmit{
+    margin-top: 50px;
+    background-color: #f0f2f5;
+    border: 2px solid #bababa;
+    outline-color: #1877f2;
+    margin-left: 25%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    width: 21%;
+  }
+  
+  .writereset{
+    background-color: #f0f2f5;
+    border: 2px solid #bababa;
+    outline-color: #1877f2;
+    margin-left: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    width: 22%;
+  }
+}
+
+/* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
+@media all and (min-width:480px) and (max-width:767px) {
+  aside{
+    display: block;
+    top: 5%;
+  }
+}
+
+/* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
+@media all and (max-width:479px) {
+
+}
