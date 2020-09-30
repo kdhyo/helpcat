@@ -37,8 +37,6 @@ class BoardPage extends Component {
     subscribeToMore({
       document: NEW_SERVICE_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
-        console.log(prev)
-        console.log(subscriptionData.data)
         if (!subscriptionData.data) return prev;
         const newServiceData = subscriptionData.data.newService;
         const exists = prev.serviceAll.find(({ id }) => id === newServiceData.id);

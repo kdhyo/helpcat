@@ -15,12 +15,6 @@ const USER_DATA_QUERY = gql`
   }
 `;
 
-const GET_LOCAL_DATA = gql`
-  {
-    id @client
-    email @client
-  }
-`
 
 class MapMain extends Component {
   render(){

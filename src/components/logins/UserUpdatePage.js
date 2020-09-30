@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import { Link } from "react-router-dom";
+
 
 const USER_PASSWORD_UPDATE_MUTATION = gql`
   mutation UserPasswordUpdateMutation($oldPwd: String!, $newPwd: String!) {
-    editPwd(oldPassword: $oldPwd, newPassword: $newPwd)
+    editPwd(oldPwd: $oldPwd, newPwd: $newPwd)
   }
 `;
 
@@ -20,7 +22,7 @@ class UserUpdatePage extends Component {
         <div className="login">
           <div className="loginform">
           <img
-            alt="글쓰기"
+            alt="회원수정"
             className="nomargin"
             src="membercat.png"
             width="80px"
@@ -42,10 +44,10 @@ class UserUpdatePage extends Component {
                   placeholder="새 비밀번호"
                 />
               </div>
+              <Link to="/">
               <Mutation
                 mutation={USER_PASSWORD_UPDATE_MUTATION}
                 variables={{ oldPwd, newPwd }}
-                onCompleted={() => this._confirm()}
               >
                 {(mutation) => (
                   <button className="signButton" onClick={mutation}>
@@ -53,6 +55,7 @@ class UserUpdatePage extends Component {
                   </button>
                 )}
               </Mutation>
+              </Link>
             </div>
           </div>
         </div>
@@ -60,9 +63,6 @@ class UserUpdatePage extends Component {
     );
   }
 
-  _confirm = async () => {
-      this.props.history.push(`/`)
-  };
 }
 
 export default UserUpdatePage;

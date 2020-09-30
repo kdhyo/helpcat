@@ -10,7 +10,6 @@ import ValidateEmail from "./components/mains/ValidateEmail"
 import BoardDetail from "./components/board/BoardDetail"
 import IndexUpdate from "./components/logins/IndexUpdate"
 import BoardUpdate from "./components/board/BoardUpdate"
-import Testtt from "./components/board/Testtt"
 
 class App extends Component {
 
@@ -19,7 +18,6 @@ class App extends Component {
       <>
         <Header />
         <Route path="/" exact={true} component={Main} />
-        <Route path="/testtt" exact={true} component={Testtt} />
         <Route path="/login" exact={true} component={Login} />
         <Route path="/signup" exact={true} component={SignUp} />
         <Route path="/userUpdate" exact={true} component={IndexUpdate} />
