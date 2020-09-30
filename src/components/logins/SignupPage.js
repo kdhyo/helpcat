@@ -22,6 +22,7 @@ class SignupPage extends Component {
     address: "",
     birh: ""
   };
+
   render() {
     const { email, password, userName, nickName, gender, phone, address, birh } = this.state;
     return (

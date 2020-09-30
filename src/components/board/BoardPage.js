@@ -17,6 +17,7 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
   }
 `;
 
+
 const NEW_SERVICE_SUBSCRIPTION = gql`
 subscription{
   newService{
