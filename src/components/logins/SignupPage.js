@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { AUTH_TOKEN } from "../../constants";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
-import { MapsLocalDining } from "material-ui/svg-icons";
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: Email!, $password: String!, $userName: String!,
@@ -55,7 +54,7 @@ class SignupPage extends Component {
   }
 
   render() {
-    const { email, emailComplete, password, userName, nickName, gender, phone, address, birh } = this.state;
+    const { email, password, userName, nickName, gender, phone, address, birh } = this.state;
     return (
       <>
         <div className="signup">
@@ -94,9 +93,13 @@ class SignupPage extends Component {
                 placeholder="이메일 인증코드를 입력하세요"
               />
             </div>
-            {!this.state.emailComplete ?
+            {!this.state.emailComplete ? //이메일이 인증이 안되었는지 묻기
             <>
-              {this.state.emailNotComplete ? <div>인증값이 올바르지 않습니다.</div> : "" }
+              {this.state.emailNotComplete ? //이메일 인증 안된상태로 버튼 눌렀는지 묻기
+                <div>인증값이 올바르지 않습니다.</div>
+                :
+                ""
+              }
               <input className="submit" readOnly value="인증값 확인" onClick={this.emailValueChecking.bind(this)}></input>
             </>
             :
