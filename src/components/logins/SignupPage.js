@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { AUTH_TOKEN } from "../../constants";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import { MapsLocalDining } from "material-ui/svg-icons";
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: Email!, $password: String!, $userName: String!,
@@ -11,26 +13,55 @@ const SIGNUP_MUTATION = gql`
   }
 `;
 
+const SEND_EMAIL_MUTATION = gql`
+  mutation SendEmailMutation($email:String!){
+    sendEmail(email:$email)
+  }
+`
+
 class SignupPage extends Component {
-  state = {
-    email: "",
-    password: "",
-    userName: "",
-    nickName: "",
-    gender: "",
-    phone: "",
-    address: "",
-    birh: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      emailComplete: false,
+      emailNotComplete: false,
+      emailAuthenticationValue: false,
+      emailUserInput: null,
+      password: "",
+      userName: "",
+      nickName: "",
+      gender: "",
+      phone: "",
+      address: "",
+      birh: ""
+    };
+  }
+
+  emailValueChecking() {
+    if(this.state.emailUserInput === this.state.emailAuthenticationValue){
+      this.setState({
+        emailComplete: true,
+      });
+    }else{
+      this.setState({
+        emailNotComplete: true,
+      });
+    }
+  }
+
+  emailAlert() {
+    alert("이메일 인증이 필요합니다.")
+  }
 
   render() {
-    const { email, password, userName, nickName, gender, phone, address, birh } = this.state;
+    const { email, emailComplete, password, userName, nickName, gender, phone, address, birh } = this.state;
     return (
       <>
         <div className="signup">
           <form className="signupform">
-          <img alt="회원가입" className="nomargin" src="signupcat.png" width="80px"></img>
-          <div className="email">
+            <img alt="회원가입" className="nomargin" src="signupcat.png" width="80px"></img>
+            <div className="email">
               <input className="signupinput1"
                 value={email}
                 onChange={(e) => this.setState({ email: e.target.value })}
@@ -38,6 +69,39 @@ class SignupPage extends Component {
                 placeholder="ex)123@gmail.com"
               />
             </div>
+            <Mutation
+              mutation={SEND_EMAIL_MUTATION}
+              variables={{ email }}
+              onCompleted={(data) => this._sendconfirm(data)}
+            >
+              {(mutation) => (
+                <>
+                {this.state.emailAuthenticationValue ?
+                  <>
+                    <h1>발송 되었습니다!</h1>
+                    <input className="submit" readOnly onClick={mutation} value="재발송하기"></input>
+                  </>
+                  :
+                  <input className="submit" readOnly onClick={mutation} value="이메일 인증"></input>
+                }
+                </>
+              )}
+            </Mutation>
+            <div className="email">
+              <input
+                onChange={(e) => this.setState({ emailUserInput: e.target.value })}
+                type="text"
+                placeholder="이메일 인증코드를 입력하세요"
+              />
+            </div>
+            {!this.state.emailComplete ?
+            <>
+              {this.state.emailNotComplete ? <div>인증값이 올바르지 않습니다.</div> : "" }
+              <input className="submit" readOnly value="인증값 확인" onClick={this.emailValueChecking.bind(this)}></input>
+            </>
+            :
+            <div>이메일이 인증되었습니다.!</div>
+            }
             <div className="nickName">
               <input
                 value={nickName}
@@ -100,10 +164,11 @@ class SignupPage extends Component {
                 placeholder="ex)경기도 안양시 동안구 임곡로 29, 전산관 5층"
               />
             </div>
+            {this.state.emailComplete ?
               <Mutation
                 mutation={SIGNUP_MUTATION}
                 variables={{ email, password, userName, nickName, gender, phone, address, birh }}
-
+                // onCompleted={(data) => this._confirm(data)}
               >
                 {(mutation) => (
                   <Link to="/">
@@ -111,6 +176,9 @@ class SignupPage extends Component {
                   </Link>
                 )}
               </Mutation>
+              :
+              <input className="submit" onClick={this.emailAlert.bind(this)} readOnly value="제출"></input>
+            }
             <Link to="/login">
               <button type="reset" className="reset">초기화</button>
             </Link>
@@ -119,10 +187,21 @@ class SignupPage extends Component {
       </>
     );
   }
-  _confirm = async () => {
-    this.props.history.push('/');
+  _sendconfirm = async data => {
+    this.setState({
+      emailAuthenticationValue: data.sendEmail
+    });
   };
 
+  _confirm = async data => {
+    const { token } = data.login
+      this._saveUserData(token)
+      this.props.history.push(`/`)
+  };
+
+  _saveUserData = (token) => {
+    localStorage.setItem(AUTH_TOKEN, token);
+  };
 }
 
 export default SignupPage;

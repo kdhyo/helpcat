@@ -13,6 +13,16 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
       address
       startAt
       endAt
+      reqUser{
+        id
+        userName
+        nickName
+      }
+      ansUser{
+        id
+        userName
+        nickName
+      }
     }
   }
 `;

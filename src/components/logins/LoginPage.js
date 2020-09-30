@@ -26,7 +26,6 @@ class LoginPage extends Component {
   };
   render() {
     const { email, password, name } = this.state;
-    console.log(email,password)
     return (
       <>
         <div className="login">
