@@ -10,7 +10,7 @@ const USER_PASSWORD_UPDATE_MUTATION = gql`
   }
 `;
 
-class UserUpdatePage extends Component {
+class UserPwdEdit extends Component {
   state = {
     oldPwd: "",
     newPwd: "",
@@ -19,16 +19,8 @@ class UserUpdatePage extends Component {
     const { oldPwd, newPwd } = this.state;
     return (
       <>
-        <div className="login">
-          <div className="loginform">
-          <img
-            alt="회원수정"
-            className="nomargin"
-            src="membercat.png"
-            width="80px"
-          ></img>
             <div className="loginInput">
-              <div className="loginID">
+              <div className="updatePWD">
                 <input
                   value={oldPwd}
                   onChange={(e) => this.setState({ oldPwd: e.target.value })}
@@ -36,7 +28,7 @@ class UserUpdatePage extends Component {
                   placeholder="현재 비밀번호"
                 />
               </div>
-              <div className="loginPW">
+              <div className="updateNewPWD">
                 <input
                   value={newPwd}
                   onChange={(e) => this.setState({ newPwd: e.target.value })}
@@ -57,12 +49,11 @@ class UserUpdatePage extends Component {
               </Mutation>
               </Link>
             </div>
-          </div>
-        </div>
+
       </>
     );
   }
 
 }
 
-export default UserUpdatePage;
+export default UserPwdEdit;
