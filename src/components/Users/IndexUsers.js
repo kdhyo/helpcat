@@ -1,14 +1,15 @@
 import React, { Component } from "react"
-import { Route } from "react-router-dom"
 import Aside from "../basics/Aside";
 import Footer from "../basics/Footer";
-import UserUpdatePage from "./UserUpdatePage";
+import UserInformation from "./UserInformation";
 
-class IndexUpdate extends Component {
+
+
+class IndexUsers extends Component {
   render() {
     return (
       <>
-        <Route component={UserUpdatePage} />
+        <UserInformation />
         <Aside />
         <Footer />
       </>
@@ -17,4 +18,4 @@ class IndexUpdate extends Component {
 }
 
 
-export default IndexUpdate
+export default IndexUsers

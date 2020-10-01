@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import { Link } from "react-router-dom";
+
 
 const USER_PASSWORD_UPDATE_MUTATION = gql`
   mutation UserPasswordUpdateMutation($oldPwd: String!, $newPwd: String!) {
-    editPwd(oldPassword: $oldPwd, newPassword: $newPwd)
+    editPwd(oldPwd: $oldPwd, newPwd: $newPwd)
   }
 `;
 
-class UserUpdatePage extends Component {
+class UserPwdEdit extends Component {
   state = {
     oldPwd: "",
     newPwd: "",
@@ -17,16 +19,8 @@ class UserUpdatePage extends Component {
     const { oldPwd, newPwd } = this.state;
     return (
       <>
-        <div className="login">
-          <div className="loginform">
-          <img
-            alt="글쓰기"
-            className="nomargin"
-            src="membercat.png"
-            width="80px"
-          ></img>
             <div className="loginInput">
-              <div className="loginID">
+              <div className="updatePWD">
                 <input
                   value={oldPwd}
                   onChange={(e) => this.setState({ oldPwd: e.target.value })}
@@ -34,7 +28,7 @@ class UserUpdatePage extends Component {
                   placeholder="현재 비밀번호"
                 />
               </div>
-              <div className="loginPW">
+              <div className="updateNewPWD">
                 <input
                   value={newPwd}
                   onChange={(e) => this.setState({ newPwd: e.target.value })}
@@ -42,10 +36,10 @@ class UserUpdatePage extends Component {
                   placeholder="새 비밀번호"
                 />
               </div>
+              <Link to="/">
               <Mutation
                 mutation={USER_PASSWORD_UPDATE_MUTATION}
                 variables={{ oldPwd, newPwd }}
-                onCompleted={() => this._confirm()}
               >
                 {(mutation) => (
                   <button className="signButton" onClick={mutation}>
@@ -53,16 +47,13 @@ class UserUpdatePage extends Component {
                   </button>
                 )}
               </Mutation>
+              </Link>
             </div>
-          </div>
-        </div>
+
       </>
     );
   }
 
-  _confirm = async () => {
-      this.props.history.push(`/`)
-  };
 }
 
-export default UserUpdatePage;
+export default UserPwdEdit;

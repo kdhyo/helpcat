@@ -15,6 +15,7 @@ const USER_DATA_QUERY = gql`
   }
 `;
 
+
 class MapMain extends Component {
   render(){
     return (

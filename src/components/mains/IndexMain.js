@@ -5,6 +5,7 @@ import Slider from "./Slider";
 import Footer from "../basics/Footer";
 import MapMain from "./MapMain";
 
+
 class IndexMain extends Component {
   render() {
     return (

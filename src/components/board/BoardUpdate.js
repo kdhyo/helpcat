@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import {KeyboardDateTimePicker} from "@material-ui/pickers";
@@ -30,7 +29,7 @@ const BOARD_UPDATE_MUTATION = gql`
 
 class BoardUpdate extends Component {
   state = {
-    title: "",
+    title: this.props.location.serviceBoardData.title,
     contents: "",
     price: Number,
     address: "",
@@ -39,7 +38,6 @@ class BoardUpdate extends Component {
   };
 
   changePickerData(target, value) {
-    console.log("발루는 : "+ value, "타겟은 : " + target  );
     this.setState({
       [target]: value,
     });
@@ -48,6 +46,8 @@ class BoardUpdate extends Component {
   render() {
     const beforeData = this.props.location.serviceBoardData;
     const { title, contents, price, address, startAt, endAt } = this.state;
+    console.log(title, contents  );
+
     const id = Number(beforeData.id)
     return (
       <>
