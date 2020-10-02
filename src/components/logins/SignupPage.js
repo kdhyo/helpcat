@@ -187,6 +187,7 @@ class SignupPage extends Component {
                 placeholder="주소를 입력해주세요"
               />
             </div>
+            <div>
             {this.state.emailComplete ?
               <Mutation
                 mutation={SIGNUP_MUTATION}
@@ -201,6 +202,7 @@ class SignupPage extends Component {
               <input className="submit" onClick={this.emailAlert.bind(this)} readOnly value="제출"></input>
             }
               <input type="reset" className="reset" onClick={this.reload} readOnly value="초기화"></input>
+            </div>
             </div>
           </form>
         </div>

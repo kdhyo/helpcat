@@ -35,6 +35,7 @@ class UserInforContents extends Component {
             }
             if (error){console.log(error)}
             return(
+              <div className="map3">
               <Switch>
                 <Route path="/userInfor/" exact render={() => <UserRequest me={data}/>} />
                 <Route path="/userInfor/reqComplete" exact render={() => <UserReqComplete me={data}/>} />
@@ -44,6 +45,7 @@ class UserInforContents extends Component {
                 <Route path="/userInfor/userEdit" exact component={UserEdit} />
                 <Route path="/userInfor/userWithdrawal" exact component={UserWithdrawal} />
               </Switch>
+              </div>
             )
           }}
         </Query>

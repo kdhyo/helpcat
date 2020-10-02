@@ -42,7 +42,9 @@ class Header extends Component {
               return(
               <header>
                 <nav>
-                <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="logo.png"/></Link>
+                <div className="helpcatlogomain">
+                  <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="logo.png"/></Link>
+                </div>
                   <li>
                     <div className="">
                       {authToken ? (
