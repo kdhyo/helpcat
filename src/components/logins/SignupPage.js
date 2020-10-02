@@ -187,6 +187,7 @@ class SignupPage extends Component {
                 placeholder="주소를 입력해주세요"
               />
             </div>
+            <div>
             {this.state.emailComplete ?
               <Mutation
                 mutation={SIGNUP_MUTATION}
@@ -205,6 +206,7 @@ class SignupPage extends Component {
             <Link to="/login">
               <button type="reset" className="reset">초기화</button>
             </Link>
+            </div>
             </div>
           </form>
         </div>
