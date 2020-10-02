@@ -27,10 +27,9 @@ class Header extends Component {
                   <Link to={{pathname:"/login"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
                   <Link to="/"><ul><img className="loginpng2" src="./alarm.png" title="알람"></img></ul></Link>
                   <ul
-                   
                     onClick={() => {
                       localStorage.removeItem(AUTH_TOKEN);
-                      this.props.history.push(`/`);
+                      window.location.href="/";
                     }}
                   >
                     <img className="loginpng2" src="./logout.png" title="로그아웃"></img>

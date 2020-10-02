@@ -40,6 +40,7 @@ class BoardDetail extends Component {
     };
   }
 
+
   render() {
     const serviceBoardData = this.props.location.serviceBoardData; //게시글 전체 값
     const id = Number(serviceBoardData.id);
@@ -88,14 +89,13 @@ class BoardDetail extends Component {
                     <Moment format="YYYY년MM월DD일 hh시mm분">{startAt}</Moment>
                     <div className="writecontent">종료일</div>
                     <Moment format="YYYY년MM월DD일 hh시mm분">{endAt}</Moment>
-                    <a href="/board">
-                      <input
-                        className="writereset"
-                        type="reset"
-                        value="뒤로가기"
-                        readOnly
-                      ></input>
-                    </a>
+                    <input
+                      className="writereset"
+                      type="reset"
+                      value="뒤로가기"
+                      readOnly
+                      onClick={this.Goback}
+                    ></input>
                   </div>
                 </>
               );
@@ -137,14 +137,13 @@ class BoardDetail extends Component {
                   <Moment format="YYYY년MM월DD일 hh시mm분">{startAt}</Moment>
                   <div className="writecontent">종료일</div>
                   <Moment format="YYYY년MM월DD일 hh시mm분">{endAt}</Moment>
-                  <a href="/board">
                     <input
                       className="writereset"
                       type="reset"
                       value="뒤로가기"
                       readOnly
+                      onClick={this.Goback}
                     ></input>
-                  </a>
                   {this.state.requesterTrue ? (
                     <>
                       <a href="/board">
@@ -197,7 +196,9 @@ class BoardDetail extends Component {
       </>
     );
   }
-  back() {window.history.go(-1);}
+  Goback(){
+    window.history.go(-1)
+  }
 }
 
 export default BoardDetail;
