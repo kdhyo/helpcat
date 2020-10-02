@@ -3,6 +3,7 @@ body{
   position: relative;
   width: 100%;
   font-size: 100%;
+  overflow: scroll;
 }
 
 header{
@@ -25,6 +26,11 @@ title{
   font-size: larger;
   font-weight: bold;
   color: #1877f2;
+}
+
+.gender{
+  display: flex;
+  margin-left: 45%;
 }
 
 .logopng{
@@ -344,78 +350,167 @@ article{
 }
 
 .signup{
-  margin-top: 100px;
 }
 
 .signupform{
   width: 45%;
-  height: 790px;
+  height: 300px;
   font-weight: bold;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
-  font-size: 25px;
+  font-size: 1rem;
   box-sizing: border-box;
   background-color: white;
   margin-left: 28%;
-  margin-top: 10%;
+  margin-top: 5%;
+  text-align: center;
+}
+
+.signupform2{
+  width: 45%;
+  height: 290px;
+  font-weight: bold;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: white;
+  margin-left: 28%;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.signupform3{
+  width: 45%;
+  height: 350px;
+  font-weight: bold;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: white;
+  margin-left: 28%;
+  margin-top: 2%;
+  text-align: center;
 }
 
 .signupinput1{
-  width: 1000px;
+  width: 70%;
   height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 20px;
-  margin-left: 200px;
-  margin-top: 100px;
-  text-align: left;
+  margin-top: 70px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+.signupinput2{
+  width: 70%;
+  height: 40px;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+.signupinput3{
+  width: 70%;
+  height: 40px;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
 }
 
 .signupform input{
-  width: 1000px;
+  width: 70%;
   height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 20px;
-  margin-left: 200px;
-  margin-bottom: 20px;
-  text-align: left;
 }
 
-.signupform .submit{
+.signupform2 input{
+  width: 70%;
+  height: 40px;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  margin-top: 3%;
+}
+
+.signupform3 input{
+  width: 70%;
+  height: 40px;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  margin-top: 3%;
+}
+
+.signupform .mailsubmit{
+  background-color: #f0f2f5;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 15%;
+  height: 40px;
+  margin: 0;
+  text-align: center;
+  position: relative;
+  left: 40%;
+  z-index: 2;
+  display: inline-block;
+  bottom:45px;
+}
+
+.signupform3 .submit{
   margin-top: 20px;
   background-color: #f0f2f5;
   border: 2px solid #bababa;
   outline-color: #1877f2;
-  margin-left: 300px;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
-  width: 120px;
-  height: 50px;
+  font-size: 1rem;
+  width: 12%;
+  height: 40px;
 }
 
-.signupform .submit:hover{
+.signupform .mailsubmit:hover{
   background-color: #1877f2;
   color: white;
   border-color: #1877f2;
 }
 
-.signupform .reset{
+.signupform3 .submit:hover{
+  background-color: #1877f2;
+  color: white;
+  border-color: #1877f2;
+}
+
+.signupform3 .reset{
+  margin-top: 20px;
   background-color: #f0f2f5;
   border: 2px solid #bababa;
   outline-color: #1877f2;
-  margin-left: 20px;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
-  width: 120px;
-  height: 50px;
+  font-size: 1rem;
+  width: 12%;
+  height: 40px;
 }
 
-.signupform .reset:hover{
+.signupform3 .reset:hover{
   background-color: #1877f2;
   color: white;
   border-color: #1877f2;
@@ -429,7 +524,7 @@ article{
   font-weight: bold;
   /* border: 4px solid blue;
   border-radius: 15px; */
-  margin-top: 100px;
+  margin-top: 5%;
   margin-bottom: 80px;
 }
 
@@ -455,11 +550,9 @@ article{
 
 .loginID{
   margin-top: 70px;
-  margin-left: auto;
 }
 
 .loginPW {
-  margin-left: -270px;
 }
 
 .loginInput {
@@ -472,11 +565,11 @@ article{
   outline-color: #1877f2;
   font-size: 20px;
   line-height: 20px;
-  margin-left: 15%;
+  margin-left: 0%;
 }
 
 .loginform .signButton{
-  width: 500px;
+  width:30%;
   height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
@@ -491,38 +584,37 @@ article{
 }
 
 .miniID .newID{
-  font-size: 20px;
+  font-size: 1rem;
   border: black;
   display: inline;
 }
 
 .miniID .findID{
-  font-size: 20px;
+  font-size: 1rem;
   display: inline;
 }
 
 .GroupSNS{
   display: flex;
-  float: left;
-  margin-top: 150px;
+  float: center;
+  margin-top: 10%;
+  justify-content: center;
+  text-align: center;
 }
 
 .GoogleID{
-  width: 10%;
+  width: 50%;
   font-size: 30px;
-  margin: 0px 20px;
 }
 
 .NaverID{
-  width: 250px;
+  width: 50%;
   font-size: 30px;
-  margin: 0px 20px;
 }
 
 .FacebookID{
-  width: 250px;
+  width: 50%;
   font-size: 30px;
-  margin: 0px 20px;
 }
 
 .boardmain{
@@ -565,15 +657,15 @@ article{
 }
 
 .writetitleinput{
-  margin-left: 2%;
-  border: none;
-  background-color: #f0f2f5;
-  border-radius: 7px;
-  height: 50px;
-  width: 30%;
-  padding-right: 300px;
+  width: 70%;
+  height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  margin-top: 3%;
+  margin: auto;
+  margin-left: 5%;
 }
 
 .writecontent{
@@ -583,15 +675,16 @@ article{
 }
 
 .writecontentinput{
-  margin-left: 2%;
-  border: none;
-  background-color: #f0f2f5;
-  border-radius: 7px;
+  width: 90%;
   height: 250px;
-  width: 94%;
-  resize: none;
   border: 2px solid #bababa;
   outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  margin-top: 3%;
+  margin: auto;
+  margin-left: 5%;
+  resize: none;
 }
 
 .writeday{
@@ -601,26 +694,27 @@ article{
 }
 
 .startday{
-  margin-top: 10px;
-  margin-right: 15px;
-  background-color: #f0f2f5;
+  width: 35%;
+  height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
-  border-radius: 7px;
-  width: 220px;
+  font-size: 1rem;
+  line-height: 20px;
+  margin-top: 3%;
+  margin-left: 13%;
   display: inline-block;
-  margin-left: 230px;
-  height: 50px;
 }
 
 .endday{
-  background-color: #f0f2f5;
+  width: 35%;
+  height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
-  border-radius: 7px;
-  width: 220px;
+  font-size: 1rem;
+  line-height: 20px;
+  margin-top: 3%;
+  margin-left: 5%;
   display: inline-block;
-  height: 50px;
 }
 
 .writesubmit{
@@ -932,6 +1026,7 @@ footer{
     box-sizing: border-box;
     background-color: white;
   }
+
 }
 
 /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
@@ -948,6 +1043,7 @@ footer{
 }
 /* 마이페이지 임의로 만들기 시작 */
 .UserInformation{
+  width: 45%;
   margin: 6rem;
   padding: 22rem 0;
   background-color: white;

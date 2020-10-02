@@ -58,14 +58,15 @@ class SignupPage extends Component {
     return (
       <>
         <div className="signup">
-          <form className="signupform">
+          <form>
+            <div className="signupform">
             <img alt="회원가입" className="nomargin" src="signupcat.png" width="80px"></img>
             <div className="email">
               <input className="signupinput1"
                 value={email}
                 onChange={(e) => this.setState({ email: e.target.value })}
                 type="text"
-                placeholder="ex)123@gmail.com"
+                placeholder="인증받으실 이메일을 입력해주세요"
               />
             </div>
             <Mutation
@@ -78,19 +79,19 @@ class SignupPage extends Component {
                 {this.state.emailAuthenticationValue ?
                   <>
                     <h1>발송 되었습니다!</h1>
-                    <input className="submit" readOnly onClick={mutation} value="재발송하기"></input>
+                    <input className="mailsubmit" readOnly onClick={mutation} value="재발송하기"></input>
                   </>
                   :
-                  <input className="submit" readOnly onClick={mutation} value="이메일 인증"></input>
+                  <input className="mailsubmit" readOnly onClick={mutation} value="이메일 인증"></input>
                 }
                 </>
               )}
             </Mutation>
             <div className="email">
-              <input
+              <input className="signupinput2"
                 onChange={(e) => this.setState({ emailUserInput: e.target.value })}
                 type="text"
-                placeholder="이메일 인증코드를 입력하세요"
+                placeholder="전송받으신 인증코드를 입력해주세요"
               />
             </div>
             {!this.state.emailComplete ? //이메일이 인증이 안되었는지 묻기
@@ -100,17 +101,21 @@ class SignupPage extends Component {
                 :
                 ""
               }
-              <input className="submit" readOnly value="인증값 확인" onClick={this.emailValueChecking.bind(this)}></input>
+              <input className="mailsubmit" readOnly value="인증값 확인" onClick={this.emailValueChecking.bind(this)}></input>
             </>
             :
             <div>이메일이 인증되었습니다.!</div>
             }
+            </div>
+            </form>
+            <form>
+              <div className="signupform2">
             <div className="nickName">
-              <input
+              <input className="signupinput3"
                 value={nickName}
                 onChange={(e) => this.setState({ nickName: e.target.value })}
                 type="text"
-                placeholder="닉네임을 입력하세요"
+                placeholder="사용할 닉네임을 입력해주세요"
               />
             </div>
             <div className="userName">
@@ -118,7 +123,7 @@ class SignupPage extends Component {
                 value={userName}
                 onChange={(e) => this.setState({ userName: e.target.value })}
                 type="text"
-                placeholder="이름을 입력하세요"
+                placeholder="사용자 이름을 입력해주세요"
               />
             </div>
             <div className="password">
@@ -126,29 +131,41 @@ class SignupPage extends Component {
                 value={password}
                 onChange={(e) => this.setState({ password: e.target.value })}
                 type="password"
-                placeholder="비밀번호를 입력하세요"
+                placeholder="비밀번호를 입력해주세요"
               />
             </div>
             <div className="passwordcheck">
               <input
                 type="password"
-                placeholder="비밀번호를 재입력하세요"
+                placeholder="비밀번호를 재입력해주세요"
               ></input>
             </div>
+            </div>
+            </form>
+            <form>
+            <div className="signupform3">
             <div className="gender">
+              <label>
               <input
                 value={gender}
                 onChange={(e) => this.setState({ gender: e.target.value })}
-                type="text"
-                placeholder="ex) 남자, 여자"
-              />
+                type="radio"
+                name="gender"
+              /> 남자</label>
+              <label>
+              <input
+                value={gender}
+                onChange={(e) => this.setState({ gender: e.target.value })}
+                type="radio"
+                name="gender"
+              /> 여자</label>
             </div>
             <div className="birth">
               <input
                 value={birh}
                 onChange={(e) => this.setState({ birh: e.target.value })}
                 type="text"
-                placeholder="ex)2000-01-01"
+                placeholder="생년월일을 -없이 입력해주세요                        ex)971006"
               />
             </div>
             <div className="phone">
@@ -156,7 +173,7 @@ class SignupPage extends Component {
                 value={phone}
                 onChange={(e) => this.setState({ phone: e.target.value })}
                 type="text"
-                placeholder="ex)12345678"
+                placeholder="전화번호를 -없이 입력해주세요                        ex)01012345678"
               />
             </div>
             <div className="address">
@@ -164,7 +181,7 @@ class SignupPage extends Component {
                 value={address}
                 onChange={(e) => this.setState({ address: e.target.value })}
                 type="text"
-                placeholder="ex)경기도 안양시 동안구 임곡로 29, 전산관 5층"
+                placeholder="주소를 입력해주세요"
               />
             </div>
             {this.state.emailComplete ?
@@ -185,6 +202,7 @@ class SignupPage extends Component {
             <Link to="/login">
               <button type="reset" className="reset">초기화</button>
             </Link>
+            </div>
           </form>
         </div>
       </>
