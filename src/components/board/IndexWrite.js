@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Route } from "react-router-dom"
-import WritePage from "./WritePage"
+import BoardWrite from "./BoardWrite"
 import Aside from "../basics/Aside"
 import Footer from "../basics/Footer"
 
@@ -10,7 +10,7 @@ class IndexWrite extends Component {
   render() {
       return (
         <>
-        <Route component={WritePage} />
+        <Route component={BoardWrite} />
         <Aside />
         <Footer />
     </>

@@ -25,19 +25,18 @@ class UserInforContents extends Component {
   render() {
     return (
       <>
-          <Query query={USER_DATA_QUERY}>
+        <Query query={USER_DATA_QUERY}>
           {({ loading, error, data }) => {
             if (loading){
               return (
-                <>
-                  <div className="map2">Loading...</div>
-                </>
+                <div>Loading...
+                </div>
               )
             }
             if (error){console.log(error)}
             return(
               <Switch>
-                <Route path="/userInfor/request" exact render={() => <UserRequest me={data}/>} />
+                <Route path="/userInfor/" exact render={() => <UserRequest me={data}/>} />
                 <Route path="/userInfor/reqComplete" exact render={() => <UserReqComplete me={data}/>} />
                 <Route path="/userInfor/accept" exact render={() => <UserAccept me={data}/>} />
                 <Route path="/userInfor/accComplete" exact render={() => <UserAccComplete me={data}/>} />

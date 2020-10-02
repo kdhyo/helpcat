@@ -17,14 +17,14 @@ const USER_DATA_QUERY = gql`
 `;
 
 const DELETE_SERVICE_BOARD_MUTATION = gql`
-  mutation DeleteServiceBoardMutation($id: Int!) {
-    removeService(id: $id)
+  mutation DeleteServiceBoardMutation($serviceId: Int!) {
+    removeService(id: $serviceId)
   }
 `;
 
 const SERVICE_ACCEPT_MUTATION = gql`
-  mutation ServiceAcceptMutation($id: Int!) {
-    giveService(id: $id){
+  mutation ServiceAcceptMutation($serviceId: Int!) {
+    giveService(id: $serviceId) {
       id
     }
   }
@@ -40,10 +40,9 @@ class BoardDetail extends Component {
     };
   }
 
-
   render() {
     const serviceBoardData = this.props.location.serviceBoardData; //게시글 전체 값
-    const id = Number(serviceBoardData.id);
+    const serviceId = Number(serviceBoardData.id);
     const startAt = new Date(serviceBoardData.startAt);
     const endAt = new Date(serviceBoardData.endAt);
     this.state.requester = serviceBoardData.reqUser.id;
@@ -57,7 +56,8 @@ class BoardDetail extends Component {
                   <div className="map2">Loading...</div>
                 </>
               );
-            if (error) //비 로그인시
+            if (error)
+              //비 로그인시
               return (
                 <>
                   <div className="writeform">
@@ -99,13 +99,14 @@ class BoardDetail extends Component {
                   </div>
                 </>
               );
-            //로그인 시
+            // 게시글 작성자 id와 로그인된 id값이 일치할 경우 true
             if (data) {
-              this.state.acceptor = data.me.id;
-              if (this.state.requester === this.state.acceptor) {
+              this.state.me = data.me.id;
+              if (this.state.requester === this.state.me) {
                 this.state.requesterTrue = true;
               }
             }
+            //로그인 시
             return (
               <>
                 <div className="writeform">
@@ -137,19 +138,38 @@ class BoardDetail extends Component {
                   <Moment format="YYYY년MM월DD일 hh시mm분">{startAt}</Moment>
                   <div className="writecontent">종료일</div>
                   <Moment format="YYYY년MM월DD일 hh시mm분">{endAt}</Moment>
-                    <input
-                      className="writereset"
-                      type="reset"
-                      value="뒤로가기"
-                      readOnly
-                      onClick={this.Goback}
-                    ></input>
-                  {this.state.requesterTrue ? (
+                  <input
+                    className="writereset"
+                    type="reset"
+                    value="뒤로가기"
+                    readOnly
+                    onClick={this.Goback}
+                  ></input>
+                  {serviceBoardData.progress ? (//서비스가 완료 되었으면 아무버튼 안뜨게
+                  <></>
+                  ):(serviceBoardData.ansUser ? ( // 서비스 수락자가 있다면
+                    (this.state.requesterTrue ? ( // 서비스 수락자가 있고 글쓴이라면
+                      <Link
+                        to={{
+                          pathname: `/reviewWrite`,
+                          serviceBoardData: serviceBoardData,
+                          serviceBoardId: serviceId,
+                          userData: data
+                        }}
+                      >
+                        <button className="writereset">
+                          완료하고 후기 작성하기
+                        </button>
+                      </Link>
+
+                      ):(<></>)//서비스 수락자가 있고 글쓴이가 아니라면 아무 버튼없음
+                    )
+                  ) : (this.state.requesterTrue ? ( //서비스 수락자가 없고 글쓴이라면
                     <>
                       <a href="/board">
                         <Mutation
                           mutation={DELETE_SERVICE_BOARD_MUTATION}
-                          variables={{ id }}
+                          variables={{ serviceId }}
                         >
                           {(mutation) => (
                             <button className="writereset" onClick={mutation}>
@@ -160,7 +180,7 @@ class BoardDetail extends Component {
                       </a>
                       <Link
                         to={{
-                          pathname: `/board/update/${serviceBoardData.id}`,
+                          pathname: `/board/update/${serviceId}`,
                           serviceBoardData: serviceBoardData,
                         }}
                       >
@@ -172,22 +192,27 @@ class BoardDetail extends Component {
                         ></input>
                       </Link>
                     </>
-                  ) : (
+                    )
+                    :
+                    ( // 서비스 수락자가 없고 글쓴이가 아니라면
                     <>
                     <a href="/board">
-                    <Mutation
-                      mutation={SERVICE_ACCEPT_MUTATION}
-                      variables={{ id }}
-                    >
-                      {(mutation) => (
-                        <button className="writereset" onClick={mutation}>
-                          신청하기
-                        </button>
-                      )}
-                    </Mutation>
-                  </a>
-                  </>
-                  )}
+                        <Mutation
+                          mutation={SERVICE_ACCEPT_MUTATION}
+                          variables={{ serviceId }}
+                        >
+                          {(mutation) => (
+                            <button className="writereset" onClick={mutation}>
+                              신청하기
+                            </button>
+                          )}
+                        </Mutation>
+                      </a>
+                    </>
+                    )
+                    )
+                  )
+                  }
                 </div>
               </>
             );
@@ -196,8 +221,8 @@ class BoardDetail extends Component {
       </>
     );
   }
-  Goback(){
-    window.history.go(-1)
+  Goback() {
+    window.history.go(-1);
   }
 }
 

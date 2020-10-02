@@ -8,7 +8,7 @@ class UserInforList extends Component {
     return (
       <>
         <ul className="UserInformation-ul">의뢰 게시글<br/>
-          <Link to={{pathname:"/userInfor/request"}}>
+          <Link to={{pathname:"/userInfor"}}>
             <li className="UserInformation-li">진행 중</li><br/>
           </Link>
           <Link to={{pathname:"/userInfor/reqComplete"}}>

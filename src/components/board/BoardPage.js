@@ -13,6 +13,7 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
       address
       startAt
       endAt
+      progress
       reqUser {
         id
         userName
@@ -37,6 +38,7 @@ const NEW_SERVICE_SUBSCRIPTION = gql`
       address
       startAt
       endAt
+      progress
       reqUser {
         id
         userName
@@ -103,13 +105,15 @@ class BoardPage extends Component {
     const mapToComponent = (data) => {
       if (data[0]) {
         return data.map((serviceBoardData, i) => {
-          return (
-            <BoardPageArticle
-              serviceBoardData={serviceBoardData}
-              key={i}
-              Proceeding={proceeding}
-            />
-          );
+          if(!serviceBoardData.progress){
+            return (
+              <BoardPageArticle
+                serviceBoardData={serviceBoardData}
+                key={i}
+                Proceeding={proceeding}
+              />
+            );
+          }
         });
       } else {
         return <div>등록된 게시글이 없습니다.</div>;

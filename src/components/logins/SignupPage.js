@@ -150,14 +150,14 @@ class SignupPage extends Component {
             <div className="gender">
               <label>
               <input
-                value={gender}
+                value="M"
                 onChange={(e) => this.setState({ gender: e.target.value })}
                 type="radio"
                 name="gender"
               /> 남자</label>
               <label>
               <input
-                value={gender}
+                value="W"
                 onChange={(e) => this.setState({ gender: e.target.value })}
                 type="radio"
                 name="gender"
@@ -193,18 +193,14 @@ class SignupPage extends Component {
                 variables={{ email, password, userName, nickName, gender, phone, address, birh }}
                 onCompleted={(data) => this._confirm(data)}
               >
-                {(mutation) => (
-                  <Link to={"/"}>
-                    <button className="submit" onClick={mutation}>제출</button>
-                  </Link>
-                )}
+                  {(mutation) => (
+                    <input className="submit" onClick={mutation} readOnly value="제출"></input>
+                  )}
               </Mutation>
               :
               <input className="submit" onClick={this.emailAlert.bind(this)} readOnly value="제출"></input>
             }
-            <Link to="/login">
-              <button type="reset" className="reset">초기화</button>
-            </Link>
+              <input type="reset" className="reset" onClick={this.reload} readOnly value="초기화"></input>
             </div>
           </form>
         </div>
@@ -223,6 +219,7 @@ class SignupPage extends Component {
   _confirm = async data => {
     const tokendata = data.signup.token
     this._saveUserData(tokendata)
+    this.props.history.push(`/`)
   };
 
   _saveUserData = (tokendata) => {

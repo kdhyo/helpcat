@@ -66,7 +66,6 @@ class UserRequest extends Component {
       reqUser: "",
       startAt: "",
       title: "",
-      proceeding: "",
     };
   }
 
@@ -87,17 +86,6 @@ class UserRequest extends Component {
       },
     });
   };
-
-  nowProceeding() {
-    this.setState({
-      proceeding: true,
-    });
-  }
-  notProceeding() {
-    this.setState({
-      proceeding: false,
-    });
-  }
 
   render() {
     const mapToComponent = (data) => {

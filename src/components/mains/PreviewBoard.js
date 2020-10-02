@@ -35,9 +35,9 @@ class PreviewBoard extends Component {
               <div className="previewTitle">lorem ipsum is simply</div>
             </article>
           </div>
-          <Link to={{pathname:"/board"}}>
+          <a href="/board">
             <div className="viewall">더보기</div>
-          </Link>
+          </a>
         </section>
       </>
     );

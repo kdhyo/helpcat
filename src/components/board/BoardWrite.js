@@ -25,7 +25,7 @@ const BOARD_UPROAD_MUTATION = gql`
   }
 `;
 
-class WritePage extends Component {
+class BoardWrite extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -114,13 +114,15 @@ class WritePage extends Component {
               )}
             </Mutation>
             </a>
-            <input className="writereset" type="reset"></input>
+            <input type="reset" className="writereset" onClick={this.reload} readOnly value="초기화"></input>
           </form>
         </div>
         </MuiPickersUtilsProvider>
     );
   }
-
+  reload(){
+    window.location.reload();
+  }
 }
 
-export default WritePage;
+export default BoardWrite;
