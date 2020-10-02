@@ -268,6 +268,46 @@ article{
   margin-left: 100px;
 }
 
+.articleUBA1{
+  width: 400px;
+  height: 180px;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  margin-top: 15px;
+  background-color: rgba(243, 60, 60, 0.342);
+  font-size: 14px;
+  line-height: 1rem;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+.articleUBA2{
+  width: 400px;
+  height: 180px;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  margin-top: 15px;
+  background-color: rgba(0, 162, 255, 0.37);
+  font-size: 14px;
+  line-height: 1rem;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+.articleUBA3{
+  width: 400px;
+  height: 180px;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  margin-top: 15px;
+  background-color: rgba(0, 255, 76, 0.37);
+  font-size: 14px;
+  line-height: 1rem;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
 .board .article .previewArea{
   font-size: 1rem;
   color: #1877f2;
@@ -927,14 +967,14 @@ footer{
 }
 .UserInformation-article1{
   float: left;
-  width: 30%;
+  width: 20%;
   margin: -230px 0 0 0;
   padding: 0;
 }
 .UserInformation-article2{
   float: right;
   margin: -230px 0 0 0;
-  width: 70%;
+  width: 80%;
 }
 .updatePWD{
   margin-top: 0px;

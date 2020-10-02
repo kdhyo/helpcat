@@ -29,6 +29,8 @@ class BoardPageArticle extends Component {
                 종료일 : {serviceBoardData.endAt}
                 <br />
                 게시자: {serviceBoardData.reqUser.userName}
+                <br />
+                닉네임: {serviceBoardData.reqUser.nickName}
               </article>
             </Link>
           </>
@@ -61,6 +63,8 @@ class BoardPageArticle extends Component {
                 종료일 : {serviceBoardData.endAt}
                 <br />
                 게시자: {serviceBoardData.reqUser.userName}
+                <br />
+                닉네임: {serviceBoardData.reqUser.nickName}
               </article>
             </Link>
           </>

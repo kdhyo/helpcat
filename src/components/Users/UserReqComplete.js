@@ -1,14 +1,156 @@
 import React, { Component } from "react";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import UserBoardArticle from "./UserBoardArticle";
 
-class UserReqComplete extends Component {
+const VIEW_SERVICES_BOARD_QUERY = gql`
+  query {
+    showServices(orderBy: desc) {
+      id
+      title
+      contents
+      price
+      address
+      startAt
+      endAt
+      progress
+      reqUser {
+        id
+        userName
+        nickName
+      }
+      ansUser {
+        id
+        userName
+        nickName
+      }
+    }
+  }
+`;
+
+const NEW_SERVICE_SUBSCRIPTION = gql`
+  subscription {
+    newService {
+      id
+      title
+      contents
+      price
+      address
+      startAt
+      endAt
+      progress
+      reqUser {
+        id
+        userName
+        nickName
+      }
+      ansUser {
+        id
+        userName
+        nickName
+      }
+    }
+  }
+`;
+
+class UserRequest extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      address: "",
+      ansUser: "",
+      contents: "",
+      endAt: "",
+      id: Number,
+      price: Number,
+      reqUser: "",
+      startAt: "",
+      title: "",
+      proceeding: "",
+    };
+  }
+
+  _subscribeToNewLinks = (subscribeToMore) => {
+    subscribeToMore({
+      document: NEW_SERVICE_SUBSCRIPTION,
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const newServiceData = subscriptionData.data.newService;
+        const exists = prev.showServices.find(
+          ({ id }) => id === newServiceData.id
+        );
+        if (exists) return prev;
+
+        return Object.assign({}, prev, {
+          showServices: [newServiceData, ...prev.showServices],
+        });
+      },
+    });
+  };
+
+  nowProceeding() {
+    this.setState({
+      proceeding: true,
+    });
+  }
+  notProceeding() {
+    this.setState({
+      proceeding: false,
+    });
+  }
+
   render() {
+    const mapToComponent = (data) => {
+      if (data[0]) {
+        return data.map((serviceBoardData, i) => {
+          if(this.props.me.me.id === serviceBoardData.reqUser.id){//유저 아이디와 게시글 올린이 아이디 일치하는지
+            if(serviceBoardData.progress){
+              return (
+                <>
+                <UserBoardArticle
+                  key={i}
+                  serviceBoardData={serviceBoardData}
+                />
+                </>
+              );
+            }
+          }
+        });
+      } else {
+        return <div>등록된 게시글이 없습니다.</div>;
+      }
+    };
+
     return (
       <>
-        <h2>의뢰 게시글</h2>
-        <div>의뢰 완료 게시글</div>
+        <Query query={VIEW_SERVICES_BOARD_QUERY}>
+          {({ loading, error, data, subscribeToMore }) => {
+            if (loading)
+              return (
+                <>
+                  <div>Loading...</div>
+                </>
+              );
+            if (error) return console.log(error);
+            if (data) {
+              this.state = data.showServices;
+            }
+            this._subscribeToNewLinks(subscribeToMore);
+            // this.state = data.serviceAll.reverse() // graphql query 셀렉트로 가져온 값
+            return (
+              <>
+                <div>
+                  <section className="boardmain">
+                    <div className="board">{mapToComponent(this.state)}</div>
+                  </section>
+                </div>
+              </>
+            );
+          }}
+        </Query>
       </>
     );
   }
 }
 
-export default UserReqComplete;
+export default UserRequest;

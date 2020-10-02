@@ -8,7 +8,9 @@ const SIGNUP_MUTATION = gql`
   mutation signup($email: Email!, $password: String!, $userName: String!,
     $nickName: String!, $gender: String!, $phone: String!, $address: String!, $birh: String!) {
     signup(email: $email, password: $password, userName: $userName, nickName: $nickName,
-      gender: $gender, phone:$phone, address: $address, birh: $birh)
+      gender: $gender, phone:$phone, address: $address, birh: $birh){
+        token
+      }
   }
 `;
 
@@ -25,8 +27,8 @@ class SignupPage extends Component {
       email: "",
       emailComplete: false,
       emailNotComplete: false,
-      emailAuthenticationValue: false,
-      emailUserInput: null,
+      emailAuthenticationValue: false, //이메일 인증코드 값
+      emailUserInput: null, // 이메일 인증코드 사용자 입력값
       password: "",
       userName: "",
       nickName: "",
@@ -55,6 +57,7 @@ class SignupPage extends Component {
 
   render() {
     const { email, password, userName, nickName, gender, phone, address, birh } = this.state;
+    console.log(this.state.emailAuthenticationValue)
     return (
       <>
         <div className="signup">
@@ -171,10 +174,10 @@ class SignupPage extends Component {
               <Mutation
                 mutation={SIGNUP_MUTATION}
                 variables={{ email, password, userName, nickName, gender, phone, address, birh }}
-                // onCompleted={(data) => this._confirm(data)}
+                onCompleted={(data) => this._confirm(data)}
               >
                 {(mutation) => (
-                  <Link to="/">
+                  <Link to={"/"}>
                     <button className="submit" onClick={mutation}>제출</button>
                   </Link>
                 )}
@@ -182,13 +185,14 @@ class SignupPage extends Component {
               :
               <input className="submit" onClick={this.emailAlert.bind(this)} readOnly value="제출"></input>
             }
-            <Link to="/login">
-              <button type="reset" className="reset">초기화</button>
-            </Link>
+            <button type="reset" className="reset" onClick={this.reload}>초기화</button>
           </form>
         </div>
       </>
     );
+  }
+  reload(){
+    window.location.reload();
   }
   _sendconfirm = async data => {
     this.setState({
@@ -197,13 +201,12 @@ class SignupPage extends Component {
   };
 
   _confirm = async data => {
-    const { token } = data.login
-      this._saveUserData(token)
-      this.props.history.push(`/`)
+    const tokendata = data.signup.token
+    this._saveUserData(tokendata)
   };
 
-  _saveUserData = (token) => {
-    localStorage.setItem(AUTH_TOKEN, token);
+  _saveUserData = (tokendata) => {
+    localStorage.setItem(AUTH_TOKEN, tokendata);
   };
 }
 
