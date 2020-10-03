@@ -49,7 +49,7 @@ class Header extends Component {
                         {authToken ? (
                         <>
                           <img className="loginpng3" src="./dropbutton.png" title="메뉴"></img>
-                          <Link to={{pathname:"/login"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
+                          <Link to={{pathname:"/message"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
                           <Link to="/"><ul><img className="loginpng2" src="./alarm.png" title="알람"></img></ul></Link>
                           <ul
                             onClick={() => {
@@ -98,7 +98,7 @@ class Header extends Component {
                       <>
                         <div className="welcome">환영합니다 <span className="welcomenick">{data.me.nickName}</span>님</div>
                         <img className="loginpng3" src="./dropbutton.png" title="메뉴"></img>
-                        <Link to={{pathname:"/login"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
+                        <Link to={{pathname:"/message"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
                         <Link to="/"><ul><img className="loginpng2" src="./alarm.png" title="알람"></img></ul></Link>
                         <ul
                           onClick={() => {
