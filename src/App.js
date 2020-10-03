@@ -11,6 +11,7 @@ import BoardDetail from "./components/board/BoardDetail"
 import BoardUpdate from "./components/board/BoardUpdate"
 import IndexUsers from "./components/Users/IndexUsers"
 import ReviewWrite from "./components/reviews/ReviewWrite"
+import IndexMessage from "./components/messages/IndexMessage"
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
         <Route path="/validateEmail" exact={true} component={ValidateEmail} />
         <Route path="/userInfor" component={IndexUsers} />
         <Route path="/reviewWrite" component={ReviewWrite} />
+        <Route path="/message" component={IndexMessage} />
       </>
     )
   }
