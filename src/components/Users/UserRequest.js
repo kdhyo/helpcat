@@ -128,8 +128,8 @@ class UserRequest extends Component {
             return (
               <>
                 <div>
-                  <section className="boardmain">
-                    <div className="board">{mapToComponent(this.state)}</div>
+                  <section className="">
+                    <div className="">{mapToComponent(this.state)}</div>
                   </section>
                 </div>
               </>

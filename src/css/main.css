@@ -27,7 +27,7 @@ header{
   position: fixed;
   z-index: 8;
   top: 0;
-  right: 6%;
+  right: 7%;
   margin-left: 1%;
 }
 
@@ -82,16 +82,17 @@ title{
 }
 
 .loginpng2{
-  margin-right: 0px;
   box-sizing: border-box;
-  margin-top: 7px;
-  width: 45px;
+  width: 100%;
+  height: 50px;
   border-radius: 15px;
   background-color: white;
-  padding: 8px;
-  border: 2px solid #1877f2;
-  display: flex;
-  float: left;
+  border: 2px solid black;
+  z-index: 8;
+  position: relative;
+  font-size: 1rem;
+  display: inline-block;
+  line-height: 3rem;
 }
 
 .loginpng3{
@@ -105,16 +106,18 @@ title{
 }
 
 .loginpng4{
-  margin-right: 50px;
+  margin-right: 65px;
   box-sizing: border-box;
-  margin-top: 7px;
-  width: 45px;
+  width: 60%;
+  height: 50px;
   border-radius: 15px;
   background-color: white;
-  padding: 8px;
-  border: 2px solid #1877f2;
+  border: 2px solid black;
   z-index: 8;
   position: relative;
+  font-size: 1rem;
+  display: inline-block;
+  line-height: 3rem;
 }
 
 .loginpng:hover{
@@ -123,15 +126,15 @@ title{
 }
 
 .loginpng2:hover{
-  border: 3px solid #1877f2;
-  border-radius: 3px;
-  background-color: white;
-  transition: 0.15s;
+  color: white;
+  background-color: #1877f2;
+  border: 2px solid #1877f2;
 }
 
-.loginpng3:hover{
-  /* border: 2px solid #c2c5ca;
-  background-color: #c2c5ca; */
+.loginpng4:hover{
+  color: white;
+  background-color: #1877f2;
+  border: 2px solid #1877f2;
 }
 
 a{ text-decoration: none; color: black; }
@@ -187,16 +190,31 @@ main{
   line-height: 50vh;
 }
 
+/*my page*/
 .map3{
   box-sizing: border-box;
   width: 100%;
   height: 800px;
-  border-radius: 15px;
+  border-left: 1px solid #d2d5da;
   background-color: white;
-  box-shadow: 0px 0px 20px -12px black;
-  font-size: 5rem;
+  font-size: 1.5rem;
   text-align: center;
-  line-height: 700px;
+  line-height: auto;
+  overflow-y: scroll;
+}
+
+/*message*/
+.map4{
+  box-sizing: border-box;
+  width: 100%;
+  height: 800px;
+  border-left: 1px solid #d2d5da;
+  background-color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: auto;
+  overflow-y: scroll;
+  position: relative;
 }
 
 .mapbutton1{
@@ -1104,6 +1122,12 @@ footer{
     margin-left: 1%;
   }
 
+
+  .welcome{
+    font-size: 1px;
+    display: none;
+  }
+
 }
 
 /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
@@ -1147,6 +1171,7 @@ footer{
   float: right;
   width: 80%;
 }
+
 .updatePWD{
 }
 
@@ -1157,16 +1182,103 @@ footer{
   font-size: 1.05rem;
   font-weight: 900;
   float: left;
-  margin-bottom: 30%;
+  margin-bottom: 50%;
   margin-top: 50%;
   color: #1877f2;
 }
 
 .UserInformation-li{
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 900;
   float: left;
-  margin-top: 20%;
-  margin-bottom: 5%;
+  margin-bottom: 15%;
+  margin-top: 15%;
+}
+
+.chatting-title{
+  font-size: 1.05rem;
+  font-weight: 900;
+  float: left;
+  margin-bottom: 30px;
+  margin-top: 50%;
+  color: #1877f2;
+}
+
+.chattitle{
+  margin-bottom: 30%;
+}
+
+.chatting-box{
+  margin-bottom: 40%;
+  background-color: #f0f2f5;
+  height: 60px;
+  width: 150%;
+  border-radius: 15px;
+  padding-left: 0%;
+}
+
+.chatting-user{
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  float: left;
+  margin-left: 10%;
+  margin-bottom: 1%;
+}
+
+.chatting-text{
+  font-size: 0.8rem;
+  display: inline-block;
+  float: left;
+  margin-left: 10%;
+  margin-top: 5%;
+  color: #888;
+}
+
+.chatting-time{
+  font-size: 0.35rem;
+  display: inline-block;
+  float: right;
+  margin-right: 5%;
+  margin-top: 6.5%;
+  color: #888;
+}
+
+.chat-input-box{
+  position: absolute;
+  bottom: 0;
+  margin-left: 0;
+}
+
+.chat-input{
+  background-color: #f0f2f5;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  width: 300%;
+  height: 65px;
+  margin-left: 60px;
+  font-weight: 600;
+}
+
+.your-message{
+  height: 60px;
+  background-color: #f0f2f5;
+  font-size: 1.3rem;
+  line-height: 21px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.my-message{
+  height: 60px;
+  background-color: #1877f2;
+  color: white;
+  font-size: 1.3rem;
+  line-height: 21px;
+  margin-right: -400px;
+  margin-left: 400px;
+  margin-bottom: 10px;
 }
 /* 마이페이지 임의로 만들기 끝 */

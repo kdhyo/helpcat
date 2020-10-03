@@ -48,34 +48,19 @@ class Header extends Component {
                       <div className="">
                         {authToken ? (
                         <>
-                          <img className="loginpng3" src="./dropbutton.png" title="메뉴"></img>
-                          <Link to={{pathname:"/message"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
-                          <Link to="/"><ul><img className="loginpng2" src="./alarm.png" title="알람"></img></ul></Link>
                           <ul
                             onClick={() => {
                               localStorage.removeItem(AUTH_TOKEN);
                               window.location.href="/";
                             }}
                           >
-                            <img className="loginpng2" src="./logout.png" title="로그아웃"></img>
+                            <span class="loginpng2">로그아웃</span>
                           </ul>
-                          <Link to="/userInfor"><ul><img className="loginpng2" src="./user.png" title="회원수정"></img></ul></Link>
-                          <Mutation
-                            mutation={USER_REMOVE_MUTATION}
-                            onCompleted={() => this._userDelete()}
-                          >
-                            {(mutation) => (
-                              <ul
-                                onClick={mutation}
-                              >
-                                <img className="loginpng2" src="./userX.png" title="회원탈퇴"></img>
-                              </ul>
-                            )}
-                          </Mutation>
+
                         </>
                         ) : (
                           <Link to="/login">
-                            <img className="loginpng4" src="./login.png" title="로그인"></img>
+                            <span class="loginpng4">로그인</span>
                           </Link>
                         )}
                       </div>
@@ -97,34 +82,18 @@ class Header extends Component {
                       {authToken ? (
                       <>
                         <div className="welcome">환영합니다 <span className="welcomenick">{data.me.nickName}</span>님</div>
-                        <img className="loginpng3" src="./dropbutton.png" title="메뉴"></img>
-                        <Link to={{pathname:"/message"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
-                        <Link to="/"><ul><img className="loginpng2" src="./alarm.png" title="알람"></img></ul></Link>
                         <ul
                           onClick={() => {
                             localStorage.removeItem(AUTH_TOKEN);
                             window.location.href="/";
                           }}
                         >
-                          <img className="loginpng2" src="./logout.png" title="로그아웃"></img>
+                          <span class="loginpng2">로그아웃</span>
                         </ul>
-                        <Link to="/userInfor"><ul><img className="loginpng2" src="./user.png" title="회원수정"></img></ul></Link>
-                        <Mutation
-                          mutation={USER_REMOVE_MUTATION}
-                          onCompleted={() => this._userDelete()}
-                        >
-                          {(mutation) => (
-                            <ul
-                              onClick={mutation}
-                            >
-                              <img className="loginpng2" src="./userX.png" title="회원탈퇴"></img>
-                            </ul>
-                          )}
-                        </Mutation>
                       </>
                       ) : (
                         <Link to="/login">
-                          <img className="loginpng4" src="./login.png" title="로그인"></img>
+                          <span class="loginpng4">로그인</span>
                         </Link>
                       )}
                     </div>
