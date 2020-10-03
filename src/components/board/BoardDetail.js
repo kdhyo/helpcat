@@ -41,6 +41,7 @@ class BoardDetail extends Component {
   }
 
   render() {
+    const paramsId = this.props.match.params.id
     const serviceBoardData = this.props.location.serviceBoardData; //게시글 전체 값
     const serviceId = Number(serviceBoardData.id);
     const startAt = new Date(serviceBoardData.startAt);

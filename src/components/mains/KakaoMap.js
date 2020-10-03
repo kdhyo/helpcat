@@ -3,14 +3,12 @@ import React, { Component } from "react"
 import API from "../../config/apikey.json"
 import { AUTH_TOKEN } from '../../constants'
 
-
 class KakaoMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mapGpsOn: false,
       tokenData: localStorage.getItem("auth-token"),
-      userData: Object
     };
   }
 
@@ -25,15 +23,10 @@ class KakaoMap extends Component {
     }));
   };
 
-  componentDidMount(){ //render가 끝나면 바로실행
-    if(this.props.data){
-      this.setState(() => ({
-        userData: this.props.data.me
-      }));
-    }
-  }
 
   render() {
+    const userData = this.props.meData.me //현재 로그인된 유저 데이터
+    const serviceData = this.props.serviceData // 등록되있는 서비스 데이터
     const authToken = localStorage.getItem(AUTH_TOKEN)
     const API_KEY = API.kakaoMapAPI.API_KEY;
     const mapScript = document.createElement("script");
@@ -45,13 +38,12 @@ class KakaoMap extends Component {
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();
 
-        // DB에서 온 심부름장소들 데이터
-        var errandPlace = [
-          {id:1, name:"이마트", place:'경기도 안양시 동안구 비산동 411-8'},
-          {id:2, name:"종합운동장", place:'경기도 안양시 동안구 비산3동 평촌대로 389'},
-          {id:3, name:"한양스포츠센터", place:'경기도 안양시 동안구 달안동 1101-2'},
-          {id:4, name:"버거킹", place:'경기도 안양시 동안구 관양동 관악대로 312'},
-        ];
+
+        const errandPlace = []; // DB에서 온 심부름장소 담을 배열 생성
+        for(let i = 0; i < serviceData.length; i++){ //심부름 장소 담기
+          errandPlace[i] = {id: i, name: serviceData[i].title, place: serviceData[i].address}
+          console.log(serviceData[i].id, serviceData[i].title, serviceData[i].address)
+        }
 
         //마커 아이콘 바꾸기
         var icon = new kakao.maps.MarkerImage(
@@ -67,7 +59,8 @@ class KakaoMap extends Component {
         if (authToken && !(this.state.mapGpsOn)) { //로그인 되있고, GPS기능 꺼져 있을때
 
           // GPS기능을 사용안할경우 유저의 집으로 지도의 메인을 정함
-          geocoder.addressSearch(this.state.userData.address, function(result, status) {
+
+          geocoder.addressSearch(userData.address, function(result, status) {
 
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {
@@ -118,13 +111,11 @@ class KakaoMap extends Component {
           });
         }
 
-
         function MarkersOverlay(map) {
           //마커들 뿌리는 반복문 시작
           for (let i = 0; i < errandPlace.length; i++) {
             // 심부름장소들 데이터 위도 적도로 변환
             geocoder.addressSearch(errandPlace[i].place, function(result, status) {
-
               // 정상적으로 검색이 완료됐으면
               if (status === kakao.maps.services.Status.OK) {
 
@@ -142,7 +133,7 @@ class KakaoMap extends Component {
                 //커스텀 오버레이에 표시될 텍스트
                 var content = `
                   <div class="customoverlay">
-                    <a href="board${errandPlace[i].id}" >
+                    <a href="/board/${(errandPlace[i].id+1)}" >
                       <span class="title">${errandPlace[i].name}</span>
                     </a>
                   </div>
