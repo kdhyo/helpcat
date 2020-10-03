@@ -37,7 +37,55 @@ class Header extends Component {
                   <div className="map2">Loading...</div>
                 </>
               );
-            if (error){console.log(error)}
+            if (error){
+              return(
+              <>
+                <header>
+                  <nav>
+                  <div className="helpcatlogomain">
+                    <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="logo.png"/></Link>
+                  </div>
+                    <li>
+                      <div className="">
+                        {authToken ? (
+                        <>
+                          <img className="loginpng3" src="./dropbutton.png" title="메뉴"></img>
+                          <Link to={{pathname:"/login"}}><ul><img className="loginpng2" src="./message.png" title="메시지"></img></ul></Link>
+                          <Link to="/"><ul><img className="loginpng2" src="./alarm.png" title="알람"></img></ul></Link>
+                          <ul
+                            onClick={() => {
+                              localStorage.removeItem(AUTH_TOKEN);
+                              window.location.href="/";
+                            }}
+                          >
+                            <img className="loginpng2" src="./logout.png" title="로그아웃"></img>
+                          </ul>
+                          <Link to="/userInfor"><ul><img className="loginpng2" src="./user.png" title="회원수정"></img></ul></Link>
+                          <Mutation
+                            mutation={USER_REMOVE_MUTATION}
+                            onCompleted={() => this._userDelete()}
+                          >
+                            {(mutation) => (
+                              <ul
+                                onClick={mutation}
+                              >
+                                <img className="loginpng2" src="./userX.png" title="회원탈퇴"></img>
+                              </ul>
+                            )}
+                          </Mutation>
+                        </>
+                        ) : (
+                          <Link to="/login">
+                            <img className="loginpng4" src="./login.png" title="로그인"></img>
+                          </Link>
+                        )}
+                      </div>
+                    </li>
+                  </nav>
+                </header>
+              </>
+              )
+              }
             if(data){
               return(
               <header>
