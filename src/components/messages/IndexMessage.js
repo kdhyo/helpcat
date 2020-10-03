@@ -16,5 +16,4 @@ class IndexMessage extends Component {
   }
 }
 
-
 export default IndexMessage
