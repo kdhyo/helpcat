@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Aside from "../basics/Aside";
@@ -7,8 +7,6 @@ import Slider from "./Slider";
 import Footer from "../basics/Footer";
 import MapMain from "./MapMain";
 
-
-
 const VIEW_SERVICES_BOARD_QUERY = gql`
   query {
     showServices(orderBy: desc) {
@@ -16,7 +14,7 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
       title
       contents
       price
-      address
+      address1
       startAt
       endAt
       progress
@@ -46,32 +44,32 @@ class IndexMain extends Component {
                   <div>Loading...</div>
                 </>
               );
-            if (error) return (
-              <>
-              <MapMain serviceData={undefined} />
-              <Aside />
-              <PreviewBoard serviceData={undefined} />
-              <Slider />
-              <Footer />
-              </>
-            )
-            if(data){
-              return(
-              <>
-                <MapMain serviceData={data}/>
-                <Aside />
-                <PreviewBoard serviceData={data}/>
-                <Slider />
-                <Footer />
-              </>
-              )
+            if (error)
+              return (
+                <>
+                  <MapMain serviceData={undefined} />
+                  <Aside />
+                  <PreviewBoard serviceData={undefined} />
+                  <Slider />
+                  <Footer />
+                </>
+              );
+            if (data) {
+              return (
+                <>
+                  <MapMain serviceData={data} />
+                  <Aside />
+                  <PreviewBoard serviceData={data} />
+                  <Slider />
+                  <Footer />
+                </>
+              );
             }
           }}
         </Query>
       </>
-    )
+    );
   }
 }
 
-
-export default IndexMain
+export default IndexMain;

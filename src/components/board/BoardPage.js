@@ -10,7 +10,10 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
       title
       contents
       price
-      address
+      address1
+      address2
+      lat
+      lon
       startAt
       endAt
       progress
@@ -35,7 +38,10 @@ const NEW_SERVICE_SUBSCRIPTION = gql`
       title
       contents
       price
-      address
+      address1
+      address2
+      lat
+      lon
       startAt
       endAt
       progress
@@ -57,7 +63,8 @@ class BoardPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: "",
+      address1: "",
+      address2: "",
       ansUser: "",
       contents: "",
       endAt: "",
@@ -74,12 +81,10 @@ class BoardPage extends Component {
     subscribeToMore({
       document: NEW_SERVICE_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
-        console.log(prev)
+        console.log(prev);
         if (!subscriptionData.data) return prev;
         const newServiceData = subscriptionData.data.newService;
-        const exists = prev.showServices.find(
-          ({ id }) => id === newServiceData.id
-        );
+        const exists = prev.showServices.find(({ id }) => id === newServiceData.id);
         if (exists) return prev;
 
         return Object.assign({}, prev, {
@@ -101,11 +106,11 @@ class BoardPage extends Component {
   }
 
   render() {
-    const proceeding = this.state.proceeding
+    const proceeding = this.state.proceeding;
     const mapToComponent = (data) => {
       if (data[0]) {
         return data.map((serviceBoardData, i) => {
-          if(!serviceBoardData.progress){
+          if (!serviceBoardData.progress) {
             return (
               <BoardPageArticle
                 serviceBoardData={serviceBoardData}
@@ -138,25 +143,25 @@ class BoardPage extends Component {
             // this.state = data.serviceAll.reverse() // graphql query 셀렉트로 가져온 값
             return (
               <>
-                {proceeding ? <>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <button onClick={this.notProceeding.bind(this)}>
-                  진행 중
-                  </button>
-                </> : <>
-                <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <button onClick={this.nowProceeding.bind(this)}>
-                    모집 중
-                  </button>
-                </>}
+                {proceeding ? (
+                  <>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <button onClick={this.notProceeding.bind(this)}>진행 중</button>
+                  </>
+                ) : (
+                  <>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <button onClick={this.nowProceeding.bind(this)}>모집 중</button>
+                  </>
+                )}
                 <div>
                   <section className="boardmain">
                     <div className="board">{mapToComponent(this.state)}</div>
