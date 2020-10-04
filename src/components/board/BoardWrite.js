@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
-import {KeyboardDateTimePicker} from "@material-ui/pickers";
+import { KeyboardDateTimePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
+import FileUpload from "./FileUpload";
 
 const BOARD_UPROAD_MUTATION = gql`
   mutation BoardUproadMutation(
     $title: String!
     $contents: String!
     $price: Int
-    $address: String
+    $address1: String
+    $address2: Stirng
+    $lat: Float
+    $lon: Float
+    $imgFiles: [String]
     $startAt: DateTime
     $endAt: DateTime
   ) {
@@ -18,7 +23,11 @@ const BOARD_UPROAD_MUTATION = gql`
       title: $title
       contents: $contents
       price: $price
-      address: $address
+      address1: $address1
+      address2: $address2
+      lat: $lat
+      lon: $lon
+      imgFiles: $imgFiles
       startAt: $startAt
       endAt: $endAt
     )
@@ -33,6 +42,7 @@ class BoardWrite extends Component {
       contents: "",
       price: Number,
       address: "",
+      imgFiles: "",
       startAt: Date(),
       endAt: Date(),
     };
@@ -44,18 +54,19 @@ class BoardWrite extends Component {
     });
   }
 
+  updateImages = (newImages) => {
+    this.setState({
+      imgFiles: newImages,
+    });
+  };
+
   render() {
-    const { title, contents, price, address, startAt, endAt } = this.state;
+    const { title, contents, price, address1, imgFiles, startAt, endAt } = this.state;
 
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <div className="writeform">
-          <img
-            alt="글쓰기"
-            className="nomargin"
-            src="writecat.png"
-            width="80px"
-          ></img>
+          <img alt="글쓰기" className="nomargin" src="writecat.png" width="80px"></img>
           <div className="writetitle">제목</div>
           <input
             className="writetitleinput"
@@ -76,50 +87,51 @@ class BoardWrite extends Component {
             className="writetitleinput"
             onChange={(e) => this.setState({ address: e.target.value })}
           ></input>
+          <FileUpload refreshFunction={this.updateImages.bind(this)} />
           <div className="startday">
-          <KeyboardDateTimePicker
-            disableToolbar
-            value={this.state.startAt}
-            onChange={this.changePickerData.bind(this, "startAt")}
-            format="yyyy/MM/DD LT"
-            label="시작 예정일"
-            KeyboardButtonProps={{ "aria-label": "change time" }}
-          />
+            <KeyboardDateTimePicker
+              disableToolbar
+              value={this.state.startAt}
+              onChange={this.changePickerData.bind(this, "startAt")}
+              format="yyyy/MM/DD LT"
+              label="시작 예정일"
+              KeyboardButtonProps={{ "aria-label": "change time" }}
+            />
           </div>
           <div className="endday">
-          <KeyboardDateTimePicker
-            disableToolbar
-            value={this.state.endAt}
-            onChange={this.changePickerData.bind(this, "endAt")}
-            format="yyyy/MM/DD LT"
-            label="종료 예정일"
-            KeyboardButtonProps={{ "aria-label": "change time" }}
-          />
+            <KeyboardDateTimePicker
+              disableToolbar
+              value={this.state.endAt}
+              onChange={this.changePickerData.bind(this, "endAt")}
+              format="yyyy/MM/DD LT"
+              label="종료 예정일"
+              KeyboardButtonProps={{ "aria-label": "change time" }}
+            />
           </div>
           <form>
-          <a href="/board">
-            <Mutation
-              mutation={BOARD_UPROAD_MUTATION}
-              variables={{ title, contents, price, address, startAt, endAt}}
-            >
-              {(mutation) => (
-                <input
-                  className="writesubmit"
-                  onClick={mutation}
-                  value="제출"
-                  readOnly
-                >
-                </input>
-              )}
-            </Mutation>
+            <a href="/board">
+              <Mutation
+                mutation={BOARD_UPROAD_MUTATION}
+                variables={{ title, contents, price, address1, imgFiles, startAt, endAt }}
+              >
+                {(mutation) => (
+                  <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
+                )}
+              </Mutation>
             </a>
-            <input type="reset" className="writereset" onClick={this.reload} readOnly value="초기화"></input>
+            <input
+              type="reset"
+              className="writereset"
+              onClick={this.reload}
+              readOnly
+              value="초기화"
+            ></input>
           </form>
         </div>
-        </MuiPickersUtilsProvider>
+      </MuiPickersUtilsProvider>
     );
   }
-  reload(){
+  reload() {
     window.location.reload();
   }
 }
