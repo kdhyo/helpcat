@@ -97,7 +97,6 @@ class BoardUpdate extends Component {
               placeholder={beforeData.address2}
               onChange={(e) => this.setState({ address2: e.target.value })}
             ></input>
-            {/* DropZone */}
             <FileUpload refreshFunction={this.updateImages.bind(this)} />
             <KeyboardDateTimePicker
               disableToolbar
