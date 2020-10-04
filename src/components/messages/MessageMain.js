@@ -3,7 +3,6 @@ import MessageUsers from "./MessageUsers"
 import Message from "./Message"
 
 
-
 class MessageMain extends Component {
   render() {
     return (

@@ -54,13 +54,13 @@ class Header extends Component {
                               window.location.href="/";
                             }}
                           >
-                            <span class="loginpng2">로그아웃</span>
+                            <span className="loginpng2">로그아웃</span>
                           </ul>
 
                         </>
                         ) : (
                           <Link to="/login">
-                            <span class="loginpng4">로그인</span>
+                            <span className="loginpng4">로그인</span>
                           </Link>
                         )}
                       </div>
@@ -88,12 +88,12 @@ class Header extends Component {
                             window.location.href="/";
                           }}
                         >
-                          <span class="loginpng2">로그아웃</span>
+                          <span className="loginpng2">로그아웃</span>
                         </ul>
                       </>
                       ) : (
                         <Link to="/login">
-                          <span class="loginpng4">로그인</span>
+                          <span className="loginpng4">로그인</span>
                         </Link>
                       )}
                     </div>

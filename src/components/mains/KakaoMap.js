@@ -9,6 +9,7 @@ class KakaoMap extends Component {
     this.state = {
       mapGpsOn: false,
       tokenData: localStorage.getItem("auth-token"),
+      userData:"",
     };
   }
 
@@ -23,9 +24,10 @@ class KakaoMap extends Component {
     }));
   };
 
-
   render() {
-    const userData = this.props.meData.me //현재 로그인된 유저 데이터
+    if(this.props.meData){
+      this.state.userData = this.props.meData.me
+    }
     const serviceData = this.props.serviceData // 등록되있는 서비스 데이터
     const authToken = localStorage.getItem(AUTH_TOKEN)
     const API_KEY = API.kakaoMapAPI.API_KEY;
@@ -42,7 +44,6 @@ class KakaoMap extends Component {
         const errandPlace = []; // DB에서 온 심부름장소 담을 배열 생성
         for(let i = 0; i < serviceData.length; i++){ //심부름 장소 담기
           errandPlace[i] = {id: i, name: serviceData[i].title, place: serviceData[i].address}
-          console.log(serviceData[i].id, serviceData[i].title, serviceData[i].address)
         }
 
         //마커 아이콘 바꾸기
@@ -57,10 +58,8 @@ class KakaoMap extends Component {
 
         // 로그인이 되어있고, 토글이 true이면 유저집으로 세팅 / false면 현재위치 지도 세팅
         if (authToken && !(this.state.mapGpsOn)) { //로그인 되있고, GPS기능 꺼져 있을때
-
-          // GPS기능을 사용안할경우 유저의 집으로 지도의 메인을 정함
-
-          geocoder.addressSearch(userData.address, function(result, status) {
+          //주소로 위도경도 검색
+          geocoder.addressSearch(this.state.userData.address, function(result, status) {
 
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {

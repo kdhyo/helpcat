@@ -1,14 +1,15 @@
+/*global kakao*/
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import API from "../../config/apikey.json"
 import { AUTH_TOKEN } from "../../constants";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
 const SIGNUP_MUTATION = gql`
-  mutation signup($email: Email!, $password: String!, $userName: String!,
-    $nickName: String!, $gender: String!, $phone: String!, $address: String!, $birh: String!) {
+  mutation signup($email: Email!, $password: String!, $userName: String!, $lat: Float!, $lon: Float!,
+    $nickName: String!, $gender: String!, $phone: String!, $address: String!, $birth: String!) {
     signup(email: $email, password: $password, userName: $userName, nickName: $nickName,
-      gender: $gender, phone:$phone, address: $address, birh: $birh){
+      gender: $gender, phone:$phone, address: $address, birth: $birth, lat:$lat, lon:$lon){
         token
       }
   }
@@ -35,7 +36,9 @@ class SignupPage extends Component {
       gender: "",
       phone: "",
       address: "",
-      birh: ""
+      birth: "",
+      lat: Number,
+      lon: Number,
     };
   }
 
@@ -51,13 +54,41 @@ class SignupPage extends Component {
     }
   }
 
-  emailAlert() {
-    alert("이메일 인증이 필요합니다.")
-  }
-
   render() {
-    const { email, password, userName, nickName, gender, phone, address, birh } = this.state;
-    console.log(this.state.emailAuthenticationValue)
+    const API_KEY = API.kakaoMapAPI.API_KEY;
+    const { email, password, userName, nickName, gender, phone, address, birth, lat, lon} = this.state;
+    const getLatLon = () => {
+      const mapScript = document.createElement("script");
+      mapScript.async = true;
+      mapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false&libraries=services`;
+      document.head.appendChild(mapScript);
+      mapScript.onload = () => {
+        kakao.maps.load(() => { // 카카오 맵이 로딩이 다 되면
+          // 주소-좌표 변환 객체를 생성합니다
+          const geocoder = new kakao.maps.services.Geocoder();
+          geocoder.addressSearch(this.state.address, function(result, status) {
+            // 정상적으로 검색이 완료됐으면
+            if (status === kakao.maps.services.Status.OK) {
+              let lat = Number(result[0].y); // 위도
+              let lon = Number(result[0].x); // 경도
+              lonlatstate(lat, lon)
+            }
+          });
+        });
+      }
+      return (
+        <>
+        </>
+      );
+    };
+    const lonlatstate = (klat, klon)=>{
+      this.setState({
+        lat : klat,
+        lon : klon
+      })
+    }
+
+    console.log(lat, lon, address, this.state.emailAuthenticationValue)
     return (
       <>
         <div className="signup">
@@ -165,8 +196,8 @@ class SignupPage extends Component {
             </div>
             <div className="birth">
               <input
-                value={birh}
-                onChange={(e) => this.setState({ birh: e.target.value })}
+                value={birth}
+                onChange={(e) => this.setState({ birth: e.target.value })}
                 type="text"
                 placeholder="생년월일을 -없이 입력해주세요                        ex)971006"
               />
@@ -182,7 +213,7 @@ class SignupPage extends Component {
             <div className="address">
               <input
                 value={address}
-                onChange={(e) => this.setState({ address: e.target.value })}
+                onChange={(e) => {this.setState({ address: e.target.value});getLatLon() }}
                 type="text"
                 placeholder="주소를 입력해주세요"
               />
@@ -191,7 +222,7 @@ class SignupPage extends Component {
             {this.state.emailComplete ?
               <Mutation
                 mutation={SIGNUP_MUTATION}
-                variables={{ email, password, userName, nickName, gender, phone, address, birh }}
+                variables={{ email, password, userName, nickName, gender, phone, address, birth, lat ,lon }}
                 onCompleted={(data) => this._confirm(data)}
               >
                   {(mutation) => (
@@ -208,6 +239,9 @@ class SignupPage extends Component {
         </div>
       </>
     );
+  }
+  emailAlert() {
+    alert("이메일 인증이 필요합니다.")
   }
   reload(){
     window.location.reload();

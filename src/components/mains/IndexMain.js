@@ -46,7 +46,15 @@ class IndexMain extends Component {
                   <div>Loading...</div>
                 </>
               );
-            if (error) return console.log(error);
+            if (error) return (
+              <>
+              <MapMain serviceData={undefined} />
+              <Aside />
+              <PreviewBoard serviceData={undefined} />
+              <Slider />
+              <Footer />
+              </>
+            )
             if(data){
               return(
               <>
@@ -56,16 +64,6 @@ class IndexMain extends Component {
                 <Slider />
                 <Footer />
               </>
-              )
-            }else{
-              return(
-                <>
-                <MapMain serviceData={undefined} />
-                <Aside />
-                <PreviewBoard serviceData={undefined} />
-                <Slider />
-                <Footer />
-                </>
               )
             }
           }}
