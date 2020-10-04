@@ -41,8 +41,9 @@ class BoardWrite extends Component {
       title: "",
       contents: "",
       price: Number,
-      address: "",
-      imgFiles: "",
+      address1: "",
+      address2: "",
+      imgFiles: [],
       startAt: Date(),
       endAt: Date(),
     };
@@ -55,14 +56,15 @@ class BoardWrite extends Component {
   }
 
   updateImages = (newImages) => {
+    console.log(newImages)
     this.setState({
       imgFiles: newImages,
     });
   };
 
   render() {
-    const { title, contents, price, address1, imgFiles, startAt, endAt } = this.state;
-
+    const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
+    console.log(title, contents, price, address1, address2, imgFiles, startAt, endAt)
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <div className="writeform">
@@ -82,10 +84,15 @@ class BoardWrite extends Component {
             className="writetitleinput"
             onChange={(e) => this.setState({ price: Number(e.target.value) })}
           ></input>
-          <div className="writecontent">주소</div>
+          <div className="writecontent">도로명 주소</div>
           <input
             className="writetitleinput"
-            onChange={(e) => this.setState({ address: e.target.value })}
+            onChange={(e) => this.setState({ address1: e.target.value })}
+          ></input>
+          <div className="writecontent">상세주소</div>
+          <input
+            className="writetitleinput"
+            onChange={(e) => this.setState({ address2: e.target.value })}
           ></input>
           <FileUpload refreshFunction={this.updateImages.bind(this)} />
           <div className="startday">
@@ -112,7 +119,7 @@ class BoardWrite extends Component {
             <a href="/board">
               <Mutation
                 mutation={BOARD_UPROAD_MUTATION}
-                variables={{ title, contents, price, address1, imgFiles, startAt, endAt }}
+                variables={{ title, contents, price, address1, address2, imgFiles, startAt, endAt }}
               >
                 {(mutation) => (
                   <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>

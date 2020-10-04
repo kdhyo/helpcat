@@ -10,7 +10,8 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
       title
       contents
       price
-      address
+      address1
+      address2
       startAt
       endAt
       progress
@@ -35,7 +36,8 @@ const NEW_SERVICE_SUBSCRIPTION = gql`
       title
       contents
       price
-      address
+      address1
+      address2
       startAt
       endAt
       progress
@@ -57,7 +59,8 @@ class UserRequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: "",
+      address1: "",
+      address2: "",
       ansUser: "",
       contents: "",
       endAt: "",

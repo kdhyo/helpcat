@@ -11,7 +11,8 @@ const USER_DATA_QUERY = gql`
       id
       email
       userName
-      address
+      address1
+      address2
     }
   }
 `;
@@ -83,7 +84,7 @@ class BoardDetail extends Component {
                     <div className="writecontent">주소</div>
                     <input
                       className="writetitleinput"
-                      value={serviceBoardData.address}
+                      value={serviceBoardData.address1 + ", " + serviceBoardData.address2}
                       readOnly
                     ></input>
                     <div className="writecontent">시작일</div>
@@ -132,7 +133,7 @@ class BoardDetail extends Component {
                   <div className="writecontent">주소</div>
                   <input
                     className="writetitleinput"
-                    value={serviceBoardData.address}
+                    value={serviceBoardData.address1 + ", " + serviceBoardData.address2}
                     readOnly
                   ></input>
                   <div className="writecontent">시작일</div>

@@ -34,7 +34,7 @@ class UserBoardArticle extends Component {
             <br />
             price : {serviceBoardData.price}
             <br />
-            address : {serviceBoardData.address}
+            address : {serviceBoardData.address1}, {serviceBoardData.address2}
             <br />
             시작일 : {serviceBoardData.startAt}
             <br />

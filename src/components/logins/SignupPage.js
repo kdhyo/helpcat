@@ -7,9 +7,9 @@ import gql from "graphql-tag";
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: Email!, $password: String!, $userName: String!, $lat: Float!, $lon: Float!,
-    $nickName: String!, $gender: String!, $phone: String!, $address: String!, $birth: String!) {
+    $nickName: String!, $gender: String!, $phone: String!, $address1: String!, $address2: String!, $birth: String!) {
     signup(email: $email, password: $password, userName: $userName, nickName: $nickName,
-      gender: $gender, phone:$phone, address: $address, birth: $birth, lat:$lat, lon:$lon){
+      gender: $gender, phone:$phone, address1: $address1, address2: $address2, birth: $birth, lat:$lat, lon:$lon){
         token
       }
   }
@@ -35,7 +35,8 @@ class SignupPage extends Component {
       nickName: "",
       gender: "",
       phone: "",
-      address: "",
+      address1: "",
+      address2: "",
       birth: "",
       lat: Number,
       lon: Number,
@@ -56,7 +57,7 @@ class SignupPage extends Component {
 
   render() {
     const API_KEY = API.kakaoMapAPI.API_KEY;
-    const { email, password, userName, nickName, gender, phone, address, birth, lat, lon} = this.state;
+    const { email, password, userName, nickName, gender, phone, address1, address2, birth, lat, lon} = this.state;
     const getLatLon = () => {
       const mapScript = document.createElement("script");
       mapScript.async = true;
@@ -66,7 +67,7 @@ class SignupPage extends Component {
         kakao.maps.load(() => { // 카카오 맵이 로딩이 다 되면
           // 주소-좌표 변환 객체를 생성합니다
           const geocoder = new kakao.maps.services.Geocoder();
-          geocoder.addressSearch(this.state.address, function(result, status) {
+          geocoder.addressSearch(this.state.address1, function(result, status) {
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {
               let lat = Number(result[0].y); // 위도
@@ -212,17 +213,25 @@ class SignupPage extends Component {
             </div>
             <div className="address">
               <input
-                value={address}
-                onChange={(e) => {this.setState({ address: e.target.value});getLatLon() }}
+                value={address1}
+                onChange={(e) => {this.setState({ address1: e.target.value});getLatLon() }}
                 type="text"
-                placeholder="주소를 입력해주세요"
+                placeholder="도로명주소를 입력해주세요"
+              />
+            </div>
+            <div className="address">
+              <input
+                value={address2}
+                onChange={(e) => this.setState({ address2: e.target.value})}
+                type="text"
+                placeholder="상세주소를 입력해주세요"
               />
             </div>
             <div>
             {this.state.emailComplete ?
               <Mutation
                 mutation={SIGNUP_MUTATION}
-                variables={{ email, password, userName, nickName, gender, phone, address, birth, lat ,lon }}
+                variables={{ email, password, userName, nickName, gender, phone, address1, address2, birth, lat ,lon }}
                 onCompleted={(data) => this._confirm(data)}
               >
                   {(mutation) => (

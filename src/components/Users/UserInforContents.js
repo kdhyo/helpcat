@@ -16,7 +16,7 @@ const USER_DATA_QUERY = gql`
       id
       email
       userName
-      address
+      address1
     }
   }
 `;

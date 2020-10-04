@@ -12,7 +12,8 @@ const BOARD_UPDATE_MUTATION = gql`
     $title: String!
     $contents: String!
     $price: Int!
-    $address: String!
+    $address1: String!
+    $address2: String!
     $imgFiles: [String]
     $startAt: DateTime!
     $endAt: DateTime!
@@ -22,7 +23,8 @@ const BOARD_UPDATE_MUTATION = gql`
       title: $title
       contents: $contents
       price: $price
-      address: $address
+      address1: $address1
+      address2: $address2
       imgFiles: [String]
       startAt: $startAt
       endAt: $endAt
@@ -35,7 +37,8 @@ class BoardUpdate extends Component {
     title: this.props.location.serviceBoardData.title,
     contents: "",
     price: Number,
-    address: "",
+    address1: "",
+    address2: "",
     imgFiles: [],
     startAt: "",
     endAt: "",
@@ -56,7 +59,7 @@ class BoardUpdate extends Component {
 
   render() {
     const beforeData = this.props.location.serviceBoardData;
-    const { title, contents, price, address, imgFiles, startAt, endAt } = this.state;
+    const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
     console.log(title, contents);
 
     const id = Number(beforeData.id);
@@ -85,8 +88,14 @@ class BoardUpdate extends Component {
             <div className="writecontent">주소</div>
             <input
               className="writetitleinput"
-              placeholder={beforeData.address}
-              onChange={(e) => this.setState({ address: e.target.value })}
+              placeholder={beforeData.address1}
+              onChange={(e) => this.setState({ address1: e.target.value })}
+            ></input>
+            <div className="writecontent">주소</div>
+            <input
+              className="writetitleinput"
+              placeholder={beforeData.address2}
+              onChange={(e) => this.setState({ address2: e.target.value })}
             ></input>
             {/* DropZone */}
             <FileUpload refreshFunction={this.updateImages.bind(this)} />
@@ -116,7 +125,7 @@ class BoardUpdate extends Component {
               <a href="/board">
                 <Mutation
                   mutation={BOARD_UPDATE_MUTATION}
-                  variables={{ id, title, contents, price, address, imgFiles, startAt, endAt }}
+                  variables={{ id, title, contents, price, address1, address2, imgFiles, startAt, endAt }}
                 >
                   {(mutation) => (
                     <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>

@@ -43,7 +43,7 @@ class KakaoMap extends Component {
 
         const errandPlace = []; // DB에서 온 심부름장소 담을 배열 생성
         for(let i = 0; i < serviceData.length; i++){ //심부름 장소 담기
-          errandPlace[i] = {id: i, name: serviceData[i].title, place: serviceData[i].address}
+          errandPlace[i] = {id: i, name: serviceData[i].title, place: serviceData[i].address1}
         }
 
         //마커 아이콘 바꾸기
@@ -59,7 +59,7 @@ class KakaoMap extends Component {
         // 로그인이 되어있고, 토글이 true이면 유저집으로 세팅 / false면 현재위치 지도 세팅
         if (authToken && !(this.state.mapGpsOn)) { //로그인 되있고, GPS기능 꺼져 있을때
           //주소로 위도경도 검색
-          geocoder.addressSearch(this.state.userData.address, function(result, status) {
+          geocoder.addressSearch(this.state.userData.address1, function(result, status) {
 
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {

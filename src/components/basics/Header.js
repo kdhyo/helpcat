@@ -2,15 +2,8 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { withRouter } from "react-router";
 import { AUTH_TOKEN } from '../../constants'
-import { Mutation } from "react-apollo";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-
-const USER_REMOVE_MUTATION = gql`
-  mutation UserRemoveMutaion{
-    removeUser
-  }
-`;
 
 const USER_DATA_QUERY = gql`
   query {
@@ -18,7 +11,6 @@ const USER_DATA_QUERY = gql`
       id
       email
       userName
-      address
       nickName
     }
   }
