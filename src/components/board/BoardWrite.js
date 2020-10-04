@@ -12,7 +12,7 @@ const BOARD_UPROAD_MUTATION = gql`
     $contents: String!
     $price: Int
     $address1: String
-    $address2: Stirng
+    $address2: String
     $lat: Float
     $lon: Float
     $imgFiles: [String]
@@ -43,6 +43,8 @@ class BoardWrite extends Component {
       price: Number,
       address1: "",
       address2: "",
+      lat: Number,
+      lon: Number,
       imgFiles: [],
       startAt: Date(),
       endAt: Date(),
@@ -50,21 +52,34 @@ class BoardWrite extends Component {
   }
 
   changePickerData(target, value) {
+    console.log(value);
     this.setState({
       [target]: value,
     });
   }
 
   updateImages = (newImages) => {
-    console.log(newImages)
+    console.log(newImages);
     this.setState({
       imgFiles: newImages,
     });
   };
 
   render() {
-    const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
-    console.log(title, contents, price, address1, address2, imgFiles, startAt, endAt)
+    const {
+      title,
+      contents,
+      price,
+      address1,
+      address2,
+      lat,
+      lon,
+      imgFiles,
+      startAt,
+      endAt,
+    } = this.state;
+    console.log(title, contents, price, address1, address2, lat, lon, imgFiles, startAt, endAt);
+
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <div className="writeform">
@@ -84,16 +99,17 @@ class BoardWrite extends Component {
             className="writetitleinput"
             onChange={(e) => this.setState({ price: Number(e.target.value) })}
           ></input>
-          <div className="writecontent">도로명 주소</div>
+          <div className="writecontent">주소</div>
           <input
             className="writetitleinput"
             onChange={(e) => this.setState({ address1: e.target.value })}
           ></input>
-          <div className="writecontent">상세주소</div>
+          <div className="writecontent">주소</div>
           <input
             className="writetitleinput"
             onChange={(e) => this.setState({ address2: e.target.value })}
           ></input>
+          {/* DropZone */}
           <FileUpload refreshFunction={this.updateImages.bind(this)} />
           <div className="startday">
             <KeyboardDateTimePicker
@@ -116,16 +132,26 @@ class BoardWrite extends Component {
             />
           </div>
           <form>
-            <a href="/board">
-              <Mutation
-                mutation={BOARD_UPROAD_MUTATION}
-                variables={{ title, contents, price, address1, address2, imgFiles, startAt, endAt }}
-              >
-                {(mutation) => (
-                  <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
-                )}
-              </Mutation>
-            </a>
+            <Mutation
+              mutation={BOARD_UPROAD_MUTATION}
+              variables={{
+                title,
+                contents,
+                price,
+                address1,
+                address2,
+                lat,
+                lon,
+                imgFiles,
+                startAt,
+                endAt,
+              }}
+              onCompleted={(data) => this._confirm(data)}
+            >
+              {(mutation) => (
+                <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
+              )}
+            </Mutation>
             <input
               type="reset"
               className="writereset"
@@ -138,6 +164,11 @@ class BoardWrite extends Component {
       </MuiPickersUtilsProvider>
     );
   }
+  _confirm = async (data) => {
+    console.log(data);
+    this.props.history.push(`/`);
+  };
+
   reload() {
     window.location.reload();
   }

@@ -60,7 +60,6 @@ class BoardUpdate extends Component {
   render() {
     const beforeData = this.props.location.serviceBoardData;
     const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
-    console.log(title, contents);
 
     const id = Number(beforeData.id);
     return (
@@ -125,7 +124,17 @@ class BoardUpdate extends Component {
               <a href="/board">
                 <Mutation
                   mutation={BOARD_UPDATE_MUTATION}
-                  variables={{ id, title, contents, price, address1, address2, imgFiles, startAt, endAt }}
+                  variables={{
+                    id,
+                    title,
+                    contents,
+                    price,
+                    address1,
+                    address2,
+                    imgFiles,
+                    startAt,
+                    endAt,
+                  }}
                 >
                   {(mutation) => (
                     <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
