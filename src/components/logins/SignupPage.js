@@ -88,7 +88,7 @@ class SignupPage extends Component {
       })
     }
 
-    console.log(lat, lon, address, this.state.emailAuthenticationValue)
+    console.log(this.state.emailAuthenticationValue)
     return (
       <>
         <div className="signup">

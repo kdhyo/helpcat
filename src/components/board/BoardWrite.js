@@ -39,7 +39,6 @@ class BoardWrite extends Component {
   }
 
   changePickerData(target, value) {
-    console.log(value);
     this.setState({
       [target]: value,
     });

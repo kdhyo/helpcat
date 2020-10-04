@@ -1,7 +1,26 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+import MessageUserDetail from "./MessageUserDetail";
 
 
+const MESSAGES_VIEW_QUERY = gql`
+  query {
+    seeRooms {
+      roomId
+      UserOnRoom{
+        user{
+          id
+          nickName
+        }
+      }
+      message{
+        text
+      }
+    }
+  }
+`;
 
 class MessageUsers extends Component {
   render() {
@@ -10,25 +29,28 @@ class MessageUsers extends Component {
         <ul className="chatting-title">
           <div className="chattitle">대화 상대</div><br/>
           <Link to={{pathname:""}}>
-            <div className="chatting-box">
-            <li className="chatting-user">문승익</li><br></br>
-            <p className="chatting-text">부재중</p>
-            <p className="chatting-time">4:33 PM</p>
-            </div>
-          </Link>
-          <Link to={{pathname:""}}>
-          <div className="chatting-box">
-            <li className="chatting-user">최지율</li><br></br>
-            <p className="chatting-text">죽고 싶다.</p>
-            <p className="chatting-time">4:30 PM</p>
-            </div>
-          </Link>
-          <Link to={{pathname:""}}>
-          <div className="chatting-box">
-            <li className="chatting-user">김동효</li><br></br>
-            <p className="chatting-text">롤토체스</p>
-            <p className="chatting-time">4:27 PM</p>
-            </div>
+          <Query query={MESSAGES_VIEW_QUERY}>
+          {({ loading, error, data }) => {
+            if (loading)
+              return (
+                <>
+                </>
+              );
+            if (error){
+              return (
+              <>
+              </>
+              );
+            }
+            return data.seeRooms.map((messageData, i) => {
+              console.log(messageData.roomId)
+              return (
+                <MessageUserDetail key={messageData.roomId} value={messageData} meData={this.props.meData} />
+              );
+            })
+          }}
+        </Query>
+
           </Link>
         </ul>
       </>

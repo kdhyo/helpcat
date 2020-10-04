@@ -8,11 +8,11 @@ import Footer from "../basics/Footer"
 
 class IndexWrite extends Component {
   render() {
-      return (
-        <>
-        <Route component={BoardWrite} />
-        <Aside />
-        <Footer />
+    return (
+    <>
+      <Route component={BoardWrite} />
+      <Aside />
+      <Footer />
     </>
     )
   }
