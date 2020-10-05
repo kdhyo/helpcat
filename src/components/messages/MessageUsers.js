@@ -8,7 +8,6 @@ import MessageUserDetail from "./MessageUserDetail";
 const MESSAGES_VIEW_QUERY = gql`
   query {
     seeRooms {
-      roomId
       UserOnRoom{
         user{
           id
@@ -16,7 +15,9 @@ const MESSAGES_VIEW_QUERY = gql`
         }
       }
       message{
+        id
         text
+        createdAt
       }
     }
   }
@@ -43,9 +44,8 @@ class MessageUsers extends Component {
               );
             }
             return data.seeRooms.map((messageData, i) => {
-              console.log(messageData.roomId)
               return (
-                <MessageUserDetail key={messageData.roomId} value={messageData} meData={this.props.meData} />
+                <MessageUserDetail value={messageData} meData={this.props.meData} />
               );
             })
           }}

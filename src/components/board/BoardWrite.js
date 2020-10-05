@@ -59,7 +59,6 @@ class BoardWrite extends Component {
   }
 
   updateImages = (newImages) => {
-    console.log(newImages);
     this.setState({
       imgFiles: newImages,
     });
