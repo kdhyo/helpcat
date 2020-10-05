@@ -45,7 +45,7 @@ class BoardWrite extends Component {
       address2: "",
       lat: Number,
       lon: Number,
-      imgFiles: ["enenen", "enenen"],
+      imgFiles: [],
       startAt: Date(),
       endAt: Date(),
     };
