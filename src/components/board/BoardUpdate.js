@@ -8,15 +8,16 @@ import FileUpload from "./FileUpload";
 
 const BOARD_UPDATE_MUTATION = gql`
   mutation BoardUpdateMutation(
-    $id: Int!
     $title: String!
     $contents: String!
     $price: Int!
-    $address1: String!
-    $address2: String!
-    $imgFiles: [String]
-    $startAt: DateTime!
-    $endAt: DateTime!
+    $address1: String
+    $address2: String
+    $lat: Float
+    $lon: Float
+    $imgFiles: [String!]
+    $startAt: DateTime
+    $endAt: DateTime
   ) {
     editService(
       id: $id

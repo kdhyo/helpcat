@@ -10,12 +10,12 @@ const BOARD_UPROAD_MUTATION = gql`
   mutation BoardUproadMutation(
     $title: String!
     $contents: String!
-    $price: Int
+    $price: Int!
     $address1: String
     $address2: String
     $lat: Float
     $lon: Float
-    $imgFiles: [String]
+    $imgFiles: [String!]
     $startAt: DateTime
     $endAt: DateTime
   ) {
@@ -45,7 +45,7 @@ class BoardWrite extends Component {
       address2: "",
       lat: Number,
       lon: Number,
-      imgFiles: [],
+      imgFiles: ["enenen", "enenen"],
       startAt: Date(),
       endAt: Date(),
     };
@@ -66,7 +66,7 @@ class BoardWrite extends Component {
   };
 
   render() {
-    const {
+    let {
       title,
       contents,
       price,
