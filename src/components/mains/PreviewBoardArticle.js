@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class BoardPageArticle extends Component {
+class PreviewBoardArticle extends Component {
   render() {
     const serviceBoardData = this.props.serviceBoardData;
-    if (this.props.Proceeding) {
-      if (serviceBoardData.ansUser) {
-        //수락자가 없다면 출력하기
+      if (serviceBoardData.ansUser) {//수락자가 있다면 출력하기
         return (
           <>
             <Link
@@ -15,7 +13,8 @@ class BoardPageArticle extends Component {
                 serviceBoardData: serviceBoardData,
               }}
             >
-              <article className="articleBPA">
+              <article className="previewArea">
+                진행중<br />
                 title : {serviceBoardData.title}
                 <br />
                 contents : {serviceBoardData.contents}
@@ -34,12 +33,7 @@ class BoardPageArticle extends Component {
           </>
         );
       } else {
-        return <></>;
-      }
-    } else {
-      if (!serviceBoardData.ansUser) {
-        //수락자가 없다면 출력하기
-        return (
+        return(
           <>
             <Link
               to={{
@@ -47,7 +41,8 @@ class BoardPageArticle extends Component {
                 serviceBoardData: serviceBoardData,
               }}
             >
-              <article className="articleBPA">
+              <article className="previewArea">
+                모집중<br />
                 title : {serviceBoardData.title}
                 <br />
                 contents : {serviceBoardData.contents}
@@ -64,12 +59,9 @@ class BoardPageArticle extends Component {
               </article>
             </Link>
           </>
-        );
-      } else {
-        return <></>;
+        )
       }
-    }
   }
 }
 
-export default BoardPageArticle;
+export default PreviewBoardArticle;
