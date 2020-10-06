@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Aside from "../basics/Aside";
 import PreviewBoard from "./PreviewBoard";
-import Slider from "./Slider";
+import MainPageReview from "./MainPageReview";
 import Footer from "../basics/Footer";
 import MapMain from "./MapMain";
 
@@ -50,7 +50,7 @@ class IndexMain extends Component {
                   <MapMain serviceData={undefined} />
                   <Aside />
                   <PreviewBoard serviceData={undefined} />
-                  <Slider />
+                  <MainPageReview />
                   <Footer />
                 </>
               );
@@ -60,7 +60,7 @@ class IndexMain extends Component {
                   <MapMain serviceData={data} />
                   <Aside />
                   <PreviewBoard serviceData={data} />
-                  <Slider />
+                  <MainPageReview />
                   <Footer />
                 </>
               );

@@ -3,8 +3,10 @@ import Dropzone from "react-dropzone";
 import { CloudDownloadOutlined } from "@ant-design/icons";
 import axios from "axios";
 
-function FileUpload(props) {
-  const [Images, setImages] = useState([]);
+function FileReUpload(props) {
+  const [Images, setImages] = useState(
+    props.imgLinks.map((data, i)=>(data.imglink))
+  );
 
   const dropHandler = (files) => {
     let formData = new FormData();
@@ -29,6 +31,7 @@ function FileUpload(props) {
     setImages(newImages);
     props.refreshFunction(newImages);
   };
+
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <Dropzone onDrop={dropHandler}>
@@ -61,4 +64,4 @@ function FileUpload(props) {
   );
 }
 
-export default FileUpload;
+export default FileReUpload;

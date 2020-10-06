@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import { KeyboardDateTimePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
-import FileUpload from "./FileUpload";
+import FileReUpload from "./FileReUpload";
 
 const BOARD_UPDATE_MUTATION = gql`
   mutation BoardUpdateMutation(
@@ -103,7 +103,7 @@ class BoardUpdate extends Component {
               placeholder={beforeData.address2}
               onChange={(e) => this.setState({ address2: e.target.value })}
             ></input>
-            <FileUpload
+            <FileReUpload
               imgLinks={beforeData.serviceimgfiles}
               refreshFunction={this.updateImages.bind(this)}
             />

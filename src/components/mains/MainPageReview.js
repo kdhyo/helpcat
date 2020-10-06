@@ -8,7 +8,7 @@ const slideImages = [
   "images/slide_4.jpg"
 ];
 
-class Slider extends Component {
+class MainPageReview extends Component {
   render() {
     return (
       <>
@@ -36,4 +36,4 @@ class Slider extends Component {
   }
 };
 
-export default Slider;
+export default MainPageReview;
