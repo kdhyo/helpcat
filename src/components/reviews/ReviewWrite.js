@@ -3,8 +3,8 @@ import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
 const REVIEW_WRITE_MUTATION = gql`
-  mutation ReviewWriteMutation($userId: Int!, $rating: Int!, $review: String!) {
-    addReview(userId: $userId, rating: $rating, review: $review) {
+  mutation ReviewWriteMutation($serviceId: Int!, $rating: Int!, $review: String!) {
+    addReview(serviceId: $serviceId, rating: $rating, review: $review) {
       id
       rating
       review
@@ -34,7 +34,6 @@ class ReviewWrite extends Component {
     const { rating, review } = this.state;
     const serviceId = Number(this.props.location.serviceBoardData.id);
     const serviceTitle = this.props.location.serviceBoardData.title;
-    const userId = Number(this.props.location.userData.me.id);
     return (
       <>
         <div className="writeform">
@@ -74,7 +73,7 @@ class ReviewWrite extends Component {
             <>
               <Mutation
                 mutation={REVIEW_WRITE_MUTATION}
-                variables={{ userId, rating, review }}
+                variables={{ serviceId, rating, review }}
                 onCompleted={() => this._confirm()}
               >
                 {(mutation) => (
