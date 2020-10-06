@@ -42,7 +42,7 @@ class BoardDetail extends Component {
   }
 
   render() {
-    const paramsId = this.props.match.params.id
+    const paramsId = this.props.match.params.id;
     const serviceBoardData = this.props.location.serviceBoardData; //게시글 전체 값
     const serviceId = Number(serviceBoardData.id);
     const startAt = new Date(serviceBoardData.startAt);
@@ -63,6 +63,7 @@ class BoardDetail extends Component {
               return (
                 <>
                   <div className="writeform">
+                    <img alt="글쓰기" className="nomargin" src="writecat.png" width="80px"></img>
                     <div className="writetitle">제목</div>
                     <input
                       className="writetitleinput"
@@ -112,6 +113,7 @@ class BoardDetail extends Component {
             return (
               <>
                 <div className="writeform">
+                  <img alt="글쓰기" className="nomargin" src="writecat.png" width="80px"></img>
                   <div className="writetitle">제목</div>
                   <input
                     className="writetitleinput"
@@ -147,26 +149,24 @@ class BoardDetail extends Component {
                     readOnly
                     onClick={this.Goback}
                   ></input>
-                  {serviceBoardData.progress ? (//서비스가 완료 되었으면 아무버튼 안뜨게
-                  <></>
-                  ):(serviceBoardData.ansUser ? ( // 서비스 수락자가 있다면
-                    (this.state.requesterTrue ? ( // 서비스 수락자가 있고 글쓴이라면
+                  {serviceBoardData.progress ? ( //서비스가 완료 되었으면 아무버튼 안뜨게
+                    <></>
+                  ) : serviceBoardData.ansUser ? ( // 서비스 수락자가 있다면
+                    this.state.requesterTrue ? ( // 서비스 수락자가 있고 글쓴이라면
                       <Link
                         to={{
                           pathname: `/reviewWrite`,
                           serviceBoardData: serviceBoardData,
                           serviceBoardId: serviceId,
-                          userData: data
+                          userData: data,
                         }}
                       >
-                        <button className="writereset">
-                          완료하고 후기 작성하기
-                        </button>
+                        <button className="writereset">완료하고 후기 작성하기</button>
                       </Link>
-
-                      ):(<></>)//서비스 수락자가 있고 글쓴이가 아니라면 아무 버튼없음
-                    )
-                  ) : (this.state.requesterTrue ? ( //서비스 수락자가 없고 글쓴이라면
+                    ) : (
+                      <></>
+                    ) //서비스 수락자가 있고 글쓴이가 아니라면 아무 버튼없음
+                  ) : this.state.requesterTrue ? ( //서비스 수락자가 없고 글쓴이라면
                     <>
                       <a href="/board">
                         <Mutation
@@ -194,15 +194,11 @@ class BoardDetail extends Component {
                         ></input>
                       </Link>
                     </>
-                    )
-                    :
-                    ( // 서비스 수락자가 없고 글쓴이가 아니라면
+                  ) : (
+                    // 서비스 수락자가 없고 글쓴이가 아니라면
                     <>
-                    <a href="/board">
-                        <Mutation
-                          mutation={SERVICE_ACCEPT_MUTATION}
-                          variables={{ serviceId }}
-                        >
+                      <a href="/board">
+                        <Mutation mutation={SERVICE_ACCEPT_MUTATION} variables={{ serviceId }}>
                           {(mutation) => (
                             <button className="writereset" onClick={mutation}>
                               신청하기
@@ -211,10 +207,7 @@ class BoardDetail extends Component {
                         </Mutation>
                       </a>
                     </>
-                    )
-                    )
-                  )
-                  }
+                  )}
                 </div>
               </>
             );

@@ -4,9 +4,7 @@ import { CloudDownloadOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 function FileUpload(props) {
-  const [Images, setImages] = useState(
-    props.imgLinks.map((data, i)=>(data.imglink))
-  );
+  const [Images, setImages] = useState(props.imgLinks.map((data, i) => data.imglink));
 
   const dropHandler = (files) => {
     let formData = new FormData();
