@@ -150,32 +150,24 @@ class BoardPage extends Component {
             this._subscribeToNewLinks(subscribeToMore);
             // this.state = data.serviceAll.reverse() // graphql query 셀렉트로 가져온 값
             return (
+              <div className="writeform2">
               <>
                 {proceeding ? (
                   <>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <button onClick={this.notProceeding.bind(this)}>진행 중</button>
+                    <button className="boardbtn1" onClick={this.notProceeding.bind(this)}>진행 중</button>
                   </>
                 ) : (
                   <>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <button onClick={this.nowProceeding.bind(this)}>모집 중</button>
+                    <button className="boardbtn1" onClick={this.nowProceeding.bind(this)}>모집 중</button>
                   </>
                 )}
                 <div>
-                  <section className="boardmain">
-                    <div className="board">{mapToComponent(this.state)}</div>
+                  <section className="boardmain2">
+                    {mapToComponent(this.state)}
                   </section>
                 </div>
               </>
+              </div>
             );
           }}
         </Query>
