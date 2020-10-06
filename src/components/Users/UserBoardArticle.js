@@ -22,25 +22,25 @@ class UserBoardArticle extends Component {
             }
           >
             {serviceBoardData.progress ? (
-              <h1>심부름 완료!</h1>
+              <h1 className="colorblue2">심부름 완료</h1>
             ) : serviceBoardData.ansUser ? (
-              <h1>진행중!</h1>
+              <h1 className="colorblue2">진행중</h1>
             ) : (
-              <h1>모집중!</h1>
+              <h1 className="colorblue2">모집중</h1>
             )}
-            title : {serviceBoardData.title}
+            <span className="colorblue">제목</span> : {serviceBoardData.title}
             <br />
-            contents : {serviceBoardData.contents}
+            <span className="colorblue">내용</span> : {serviceBoardData.contents}
             <br />
-            price : {serviceBoardData.price}
+            <span className="colorblue">가격</span> : {serviceBoardData.price}
             <br />
-            address : {serviceBoardData.address1}, {serviceBoardData.address2}
+            <span className="colorblue">주소</span> : {serviceBoardData.address1}, {serviceBoardData.address2}
             <br />
-            시작일 : {serviceBoardData.startAt}
+            <span className="colorblue">시작일</span> : {serviceBoardData.startAt}
             <br />
-            종료일 : {serviceBoardData.endAt}
+            <span className="colorblue">종료일</span> : {serviceBoardData.endAt}
             <br />
-            닉네임: {serviceBoardData.reqUser.nickName}
+            <span className="colorblue">닉네임</span>: {serviceBoardData.reqUser.nickName}
           </article>
         </Link>
       </>

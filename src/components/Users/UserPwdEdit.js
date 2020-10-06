@@ -42,7 +42,7 @@ class UserPwdEdit extends Component {
                 variables={{ oldPwd, newPwd }}
               >
                 {(mutation) => (
-                  <button className="signButton" onClick={mutation}>
+                  <button className="pwdEditbutton" onClick={mutation}>
                     수정하기
                   </button>
                 )}
