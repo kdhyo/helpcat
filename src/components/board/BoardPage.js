@@ -27,6 +27,10 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
         userName
         nickName
       }
+      serviceimgfiles {
+        id
+        imglink
+      }
     }
   }
 `;
@@ -54,6 +58,10 @@ const NEW_SERVICE_SUBSCRIPTION = gql`
         id
         userName
         nickName
+      }
+      serviceimgfiles {
+        id
+        imglink
       }
     }
   }

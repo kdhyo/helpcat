@@ -6,6 +6,18 @@ import axios from "axios";
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
 
+  /* 여기서부터 */
+  const imgLinks = [];
+  console.log(props.imgLinks);
+  console.log(imgLinks);
+  if (props.imgLinks && imgLinks.length === 0) {
+    props.imgLinks.forEach((data) => {
+      imgLinks.push(data.imglink);
+    });
+    setImages(imgLinks);
+  }
+  /* 여기까지 */
+
   const dropHandler = (files) => {
     let formData = new FormData();
     const config = {

@@ -20,13 +20,14 @@ const BOARD_UPDATE_MUTATION = gql`
     $endAt: DateTime
   ) {
     editService(
-      id: $id
       title: $title
       contents: $contents
       price: $price
       address1: $address1
       address2: $address2
-      imgFiles: [String]
+      lat: $lat
+      lon: $lon
+      imgFiles: $imgFiles
       startAt: $startAt
       endAt: $endAt
     )
@@ -40,9 +41,11 @@ class BoardUpdate extends Component {
     price: Number,
     address1: "",
     address2: "",
+    lat: Number,
+    lon: Number,
     imgFiles: [],
-    startAt: "",
-    endAt: "",
+    startAt: Date(),
+    endAt: Date(),
   };
 
   changePickerData(target, value) {
@@ -61,6 +64,8 @@ class BoardUpdate extends Component {
   render() {
     const beforeData = this.props.location.serviceBoardData;
     const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
+    console.log(beforeData);
+    console.log(imgFiles);
 
     const id = Number(beforeData.id);
     return (
@@ -97,7 +102,10 @@ class BoardUpdate extends Component {
               placeholder={beforeData.address2}
               onChange={(e) => this.setState({ address2: e.target.value })}
             ></input>
-            <FileUpload refreshFunction={this.updateImages.bind(this)} />
+            <FileUpload
+              imgLinks={beforeData.serviceimgfiles}
+              refreshFunction={this.updateImages.bind(this)}
+            />
             <KeyboardDateTimePicker
               disableToolbar
               value={startAt ? startAt : beforeData.startAt}
