@@ -4,10 +4,11 @@ import gql from "graphql-tag";
 import { KeyboardDateTimePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
-import FileUpload from "./FileUpload";
+import FileReUpload from "./FileReUpload";
 
 const BOARD_UPDATE_MUTATION = gql`
   mutation BoardUpdateMutation(
+    $id: Int!
     $title: String!
     $contents: String!
     $price: Int!
@@ -20,6 +21,7 @@ const BOARD_UPDATE_MUTATION = gql`
     $endAt: DateTime
   ) {
     editService(
+      id: $id
       title: $title
       contents: $contents
       price: $price
@@ -64,10 +66,9 @@ class BoardUpdate extends Component {
   render() {
     const beforeData = this.props.location.serviceBoardData;
     const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
-    console.log(beforeData);
-    console.log(imgFiles);
-
     const id = Number(beforeData.id);
+    console.log(id);
+
     return (
       <>
         <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -102,7 +103,7 @@ class BoardUpdate extends Component {
               placeholder={beforeData.address2}
               onChange={(e) => this.setState({ address2: e.target.value })}
             ></input>
-            <FileUpload
+            <FileReUpload
               imgLinks={beforeData.serviceimgfiles}
               refreshFunction={this.updateImages.bind(this)}
             />
