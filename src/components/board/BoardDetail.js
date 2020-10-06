@@ -63,36 +63,37 @@ class BoardDetail extends Component {
               return (
                 <>
                   <div className="writeform">
-                    <div className="writetitle">제목</div>
+                  <img alt="글쓰기" className="nomargin" src="./boardcat.png" width="80px"></img>
+                    <div className="nolog-title">제목</div>
                     <input
                       className="writetitleinput"
                       value={serviceBoardData.title}
                       readOnly
-                    ></input>
-                    <div className="writecontent">내용</div>
+                    ></input><br></br>
+                    <div className="nolog-title">내용</div>
                     <textarea
                       className="writecontentinput"
                       value={serviceBoardData.contents}
                       readOnly
-                    ></textarea>
-                    <div className="writecontent">가격</div>
+                    ></textarea><br></br>
+                    <div className="nolog-title">가격</div>
                     <input
                       className="writetitleinput"
                       value={serviceBoardData.price}
                       readOnly
-                    ></input>
-                    <div className="writecontent">주소</div>
+                    ></input><br></br>
+                    <div className="nolog-title">주소</div>
                     <input
                       className="writetitleinput"
                       value={serviceBoardData.address1 + ", " + serviceBoardData.address2}
                       readOnly
-                    ></input>
-                    <div className="writecontent">시작일</div>
+                    ></input><br></br>
+                    <div className="nolog-title">시작일</div>
                     <Moment format="YYYY년MM월DD일 hh시mm분">{startAt}</Moment>
-                    <div className="writecontent">종료일</div>
+                    <div className="nolog-title">종료일</div>
                     <Moment format="YYYY년MM월DD일 hh시mm분">{endAt}</Moment>
                     <input
-                      className="writereset"
+                      className="writereset2"
                       type="reset"
                       value="뒤로가기"
                       readOnly
@@ -112,7 +113,7 @@ class BoardDetail extends Component {
             return (
               <>
                 <div className="writeform">
-                  <div className="writetitle">제목</div>
+                  <div className="writetitle">제목asdasdas</div>
                   <input
                     className="writetitleinput"
                     value={serviceBoardData.title}

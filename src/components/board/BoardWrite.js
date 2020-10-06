@@ -83,6 +83,7 @@ class BoardWrite extends Component {
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <div className="writeform">
           <img alt="글쓰기" className="nomargin" src="writecat.png" width="80px"></img>
+          <div className="writeformgruop1">
           <div className="writetitle">제목</div>
           <input
             className="writetitleinput"
@@ -103,13 +104,19 @@ class BoardWrite extends Component {
             className="writetitleinput"
             onChange={(e) => this.setState({ address1: e.target.value })}
           ></input>
-          <div className="writecontent">주소</div>
+          <div className="writecontent">상세주소</div>
           <input
             className="writetitleinput"
             onChange={(e) => this.setState({ address2: e.target.value })}
           ></input>
+          </div>
           {/* DropZone */}
+          <div className="writeformgruop2">
+            <div className="fileupload">
+            <div className="writecontent">파일 첨부</div>
           <FileUpload refreshFunction={this.updateImages.bind(this)} />
+          </div>
+          </div>
           <div className="startday">
             <KeyboardDateTimePicker
               disableToolbar

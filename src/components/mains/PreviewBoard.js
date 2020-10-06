@@ -133,13 +133,14 @@ class PreviewBoard extends Component {
             // this.state = data.serviceAll.reverse() // graphql query 셀렉트로 가져온 값
             return (
               <>
-                <a href="/board">
-                  <div className="viewall">더보기</div>
-                </a>
                 <div>
                   <section className="previewsection">
-                    <div className="article">{mapToComponent(this.state)}</div>
+                    {mapToComponent(this.state)}
+                    <a href="/board">
+                    <div className="viewall">더보기</div>
+                    </a>
                   </section>
+                  
                 </div>
               </>
             );

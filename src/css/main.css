@@ -42,9 +42,10 @@ title{
 }
 
 .fileupload {
-  width: 100%;
-  height: 220px;
-  margin-left: 35%;
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  float: right;
 }
 
 .gender{
@@ -288,17 +289,25 @@ main{
   transition: 0.15s;
 }
 
-.previewsection{
-  height: 460px;
-  width: 45%;
-  margin-left: 28%;
-  margin-top: 2%;
-  position: relative;
-  z-index: 4;
-}
-
 .board{
   display: flex;
+}
+
+.boardbtn1{
+  background-color: white;
+  border: 3px solid #1877f2;
+  border-radius: 15px;
+  font-size: 1.7rem;
+  padding: 10px;
+  text-align: center;
+  margin-left: 45%;
+  margin-top: 5%;
+  outline: none;
+}
+
+.boardbtn1:hover{
+  background-color: #1877f2;
+  color: white;
 }
 
 article{
@@ -312,23 +321,24 @@ article{
 }
 
 .articleBPA{
-  width: 400px;
+  width: 90%;
   height: 180px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
-  margin-top: 15px;
   background-color: white;
-  font-size: 14px;
-  line-height: 1rem;
+  font-size: 0.8rem;
+  line-height: 19px;
   text-align: left;
   margin-top: 30px;
   margin-left: 100px;
+  padding: 15px;
+  font-weight: 700;
 }
 
 .colorblue{
   color: #1877f2;
   font-weight: bolder;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .colorblue2{
@@ -336,23 +346,24 @@ article{
   font-size: 1.1rem;
   border: 2px solid #1877f2;
   border-radius: 10px;
-  width: 22%;
+  width: 25%;
   text-align: center;
   margin-left: 40%;
 }
 
 .articleUBA1{
-  width: 400px;
+  width: 70%;
   height: 180px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
-  margin-top: 15px;
-  background-color: rgba(243, 60, 60, 0.342);
+  background-color: white;
   font-size: 0.8rem;
-  line-height: 1rem;
+  line-height: 19px;
   text-align: left;
   margin-top: 30px;
   margin-left: 100px;
+  padding: 15px;
+  font-weight: 700;
 }
 .articleUBA2{
   width: 70%;
@@ -369,31 +380,103 @@ article{
   font-weight: 700;
 }
 .articleUBA3{
-  width: 400px;
+  width: 70%;
   height: 180px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
-  margin-top: 15px;
-  background-color: rgba(0, 255, 76, 0.37);
-  font-size: 14px;
-  line-height: 1rem;
+  background-color: white;
+  font-size: 0.8rem;
+  line-height: 19px;
   text-align: left;
   margin-top: 30px;
   margin-left: 100px;
+  padding: 15px;
+  font-weight: 700;
 }
 
-.board .article .previewArea{
-  font-size: 1rem;
-  color: #1877f2;
-  text-align: center;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  font-weight: bolder;
+.previewsection{
+  width: 45%;
+  margin-left: 28%;
+  margin-top: 2%;
+  display: block;
+  margin-bottom: 5%;
 }
-.board .article .previewTitle{
-  font-size: 1rem;
-  font-weight: bolder;
+
+.previewArea{
+  width: 100%;
+  height: 200px;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 0.8rem;
+  line-height: 19px;
+  text-align: left;
+  padding: 15px;
+  font-weight: 700;
+
+}
+
+.previewArea2{
+  width: 30%;
+  height: 160px;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 0.8rem;
+  line-height: 19px;
+  text-align: left;
+  padding: 10px;
+  font-weight: 700;
+  margin-left: 1%;
+  display: inline-block;
+}
+
+.pva-title {
   text-align: center;
+  margin-left: 40%;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid #1877f2;
+  padding: 5px;
+  width: 20%;
+}
+
+.pva-sub1{
+  width: 50%;
+  float: left;
+  font-size: 0.8rem;
+}
+
+.pva-sub2{
+  width: 50%;
+  float: right;
+  font-size: 0.8rem;
+}
+
+.pva-sub2{
+  width: 20%;
+  float: right;
+  font-size: 0.8rem;
+}
+
+.pva-sub3{
+  width: 35%;
+  float: left;
+  margin-left: 20%;
+  font-size: 0.8rem;
+}
+
+.pva-sub4{
+  width: 35%;
+  float: right;
+  margin-right: 10%;
+  font-size: 0.8rem;
+}
+
+
+.pva-main{
+  color: #1877f2;
+  font-size: 1rem;
 }
 
 .BPA p{
@@ -409,32 +492,30 @@ article{
   background-color: white;
   box-shadow: 0px 0px 15px -6px black;
   border-radius: 5px;
-  float: right;
   margin: 0px 10px 0px 0px;
-  position: relative;
-  z-index: 1;
+  margin-left: 43%;
+  margin-top: 2%;
+
 }
 
 .viewall:hover{
   background-color: #1877f2;
   color: white;
-  z-index: 5;
-  position: relative;
 }
 
 .review{
   width: 45%;
   height: 200px;
-  margin-top: 50px;
   text-align: center;
   line-height: 200px;
   font-weight: bold;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
-  font-size: 20px;
+  font-size: 1rem;
   background-color: white;
   margin-left: 28%;
-  position: relative;
+  display: block;
+  margin-top: 0;
 }
 
 .slidetext span{
@@ -775,6 +856,10 @@ article{
   margin-top: 75px;
 }
 
+.boardmain2{
+  height: 1200px;
+}
+
 .boardmain .board .article{
   width: 615px;
   height: 350px;
@@ -787,7 +872,7 @@ article{
 
 .writeform{
   width: 45%;
-  height: 1200px;
+  height: 800px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
   box-sizing: border-box;
@@ -795,6 +880,28 @@ article{
   margin-top: 5%;
   margin-left: 28%;
   font-size: 1rem;
+}
+
+.writeform2{
+  width: 70%;
+  height: 1400px;
+  box-shadow: 0px 0px 20px -12px black;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  margin-top: 5%;
+  margin-left: 16%;
+  font-size: 1rem;
+}
+
+.writeformgroup1{
+  width: 45%;
+  float: left;
+}
+
+.writeformgroup2{
+  width: 30%;
+  float: right;
 }
 
 .writeheader{
@@ -807,9 +914,17 @@ article{
   margin: 70px 0px 20px 50px
 }
 
+.nolog-title{
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 70px 0px 20px 50px;
+  display: inline-block;
+  margin-left: 15%;
+}
+
 .writetitleinput{
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 30px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
   font-size: 1rem;
@@ -825,9 +940,11 @@ article{
   margin: 20px 0px 20px 50px;
 }
 
+
+
 .writecontentinput{
-  width: 90%;
-  height: 250px;
+  width: 51%;
+  height: 150px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
   font-size: 1rem;
@@ -845,31 +962,31 @@ article{
 }
 
 .startday{
-  width: 35%;
+  width: 25%;
   height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
   font-size: 1rem;
   line-height: 20px;
-  margin-top: 3%;
-  margin-left: 13%;
+  margin-top: 1%;
+  margin-left: 25%;
   display: inline-block;
 }
 
 .endday{
-  width: 35%;
+  width: 25%;
   height: 40px;
   border: 2px solid #bababa;
   outline-color: #1877f2;
   font-size: 1rem;
   line-height: 20px;
-  margin-top: 3%;
+  margin-top: 0%;
   margin-left: 5%;
   display: inline-block;
 }
 
 .writesubmit{
-  margin-top: 50px;
+  margin-top: 20px;
   background-color: #f0f2f5;
   border: 2px solid #bababa;
   outline-color: #1877f2;
@@ -899,6 +1016,23 @@ article{
   height: 56px;
 }
 .writereset:hover{
+  background-color: #1877f2;
+  color: white;
+  border-color: #1877f2;
+}
+
+.writereset2{
+  background-color: #f0f2f5;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  margin-left: 45%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  width: 15%;
+  height: 56px;
+}
+.writereset2:hover{
   background-color: #1877f2;
   color: white;
   border-color: #1877f2;
@@ -1192,7 +1326,6 @@ footer{
     font-size: 1px;
     display: none;
   }
-
 }
 
 /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
