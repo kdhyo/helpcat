@@ -8,6 +8,7 @@ import FileUpload from "./FileUpload";
 
 const BOARD_UPDATE_MUTATION = gql`
   mutation BoardUpdateMutation(
+    $id: Int!
     $title: String!
     $contents: String!
     $price: Int!
@@ -20,6 +21,7 @@ const BOARD_UPDATE_MUTATION = gql`
     $endAt: DateTime
   ) {
     editService(
+      id: $id
       title: $title
       contents: $contents
       price: $price
@@ -64,10 +66,9 @@ class BoardUpdate extends Component {
   render() {
     const beforeData = this.props.location.serviceBoardData;
     const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
-    console.log(beforeData);
-    console.log(imgFiles);
-
     const id = Number(beforeData.id);
+    console.log(id);
+
     return (
       <>
         <MuiPickersUtilsProvider utils={MomentUtils}>
