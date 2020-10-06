@@ -41,6 +41,12 @@ title{
   font-weight: bold;
 }
 
+.fileupload {
+  width: 100%;
+  height: 220px;
+  margin-left: 35%;
+}
+
 .gender{
   display: flex;
   margin-left: 45%;
@@ -319,6 +325,22 @@ article{
   margin-left: 100px;
 }
 
+.colorblue{
+  color: #1877f2;
+  font-weight: bolder;
+  font-size: 0.9rem;
+}
+
+.colorblue2{
+  font-weight: bolder;
+  font-size: 1.1rem;
+  border: 2px solid #1877f2;
+  border-radius: 10px;
+  width: 22%;
+  text-align: center;
+  margin-left: 40%;
+}
+
 .articleUBA1{
   width: 400px;
   height: 180px;
@@ -326,24 +348,25 @@ article{
   border-radius: 15px;
   margin-top: 15px;
   background-color: rgba(243, 60, 60, 0.342);
-  font-size: 14px;
+  font-size: 0.8rem;
   line-height: 1rem;
   text-align: left;
   margin-top: 30px;
   margin-left: 100px;
 }
 .articleUBA2{
-  width: 400px;
+  width: 70%;
   height: 180px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
-  margin-top: 15px;
-  background-color: rgba(0, 162, 255, 0.37);
-  font-size: 14px;
-  line-height: 1rem;
+  background-color: white;
+  font-size: 0.8rem;
+  line-height: 19px;
   text-align: left;
   margin-top: 30px;
   margin-left: 100px;
+  padding: 15px;
+  font-weight: 700;
 }
 .articleUBA3{
   width: 400px;
@@ -467,7 +490,7 @@ article{
 
 .signupform3{
   width: 45%;
-  height: 350px;
+  height: 450px;
   font-weight: bold;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
@@ -477,6 +500,32 @@ article{
   margin-left: 28%;
   margin-top: 2%;
   text-align: center;
+}
+
+.updatePWD input{
+  width: 70%;
+  height: 40px;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-top: 50%;
+}
+
+.updateNewPWD input{
+  width: 70%;
+  height: 40px;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-top: 1%;
 }
 
 .signupinput1{
@@ -654,6 +703,22 @@ article{
   margin-left: 0%;
 }
 
+.pwdEditbutton{
+  width:30%;
+  height: 40px;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  font-size: 1rem;
+  line-height: 20px;
+  margin-top: 5px;
+}
+
+.pwdEditbutton:hover{
+  background-color: #1877f2;
+  color: white;
+  border: 2px solid #1877f2;
+}
+
 .loginform .signButton{
   width:30%;
   height: 40px;
@@ -722,7 +787,7 @@ article{
 
 .writeform{
   width: 45%;
-  height: 1000px;
+  height: 1200px;
   box-shadow: 0px 0px 20px -12px black;
   border-radius: 15px;
   box-sizing: border-box;
