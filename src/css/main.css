@@ -922,6 +922,15 @@ article{
   margin-left: 15%;
 }
 
+.nolog-title2{
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 70px 0px 20px 50px;
+  display: inline-block;
+  margin-left: 15%;
+  margin-top: 20%;
+}
+
 .writetitleinput{
   width: 50%;
   height: 30px;
@@ -993,7 +1002,7 @@ article{
   margin-left: 320px;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1rem;
   width: 120px;
   height: 50px;
 }
@@ -1011,7 +1020,7 @@ article{
   margin-left: 20px;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1rem;
   width: 128px;
   height: 56px;
 }
@@ -1028,11 +1037,30 @@ article{
   margin-left: 45%;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1rem;
   width: 15%;
   height: 56px;
+  margin-top: 5%;
 }
 .writereset2:hover{
+  background-color: #1877f2;
+  color: white;
+  border-color: #1877f2;
+}
+
+.writereset3{
+  background-color: #f0f2f5;
+  border: 2px solid #bababa;
+  outline-color: #1877f2;
+  margin-left: 27%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 15%;
+  height: 56px;
+  margin-top: 5%;
+}
+.writereset3:hover{
   background-color: #1877f2;
   color: white;
   border-color: #1877f2;
