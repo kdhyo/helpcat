@@ -4,9 +4,9 @@ import { CloudDownloadOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 function FileUpload(props) {
-  const [Images, setImages] = useState([]);
-
-  const beforeImages = props.imgLinks
+  const [Images, setImages] = useState(
+    props.imgLinks.map((data, i)=>(data.imglink))
+  );
 
   const dropHandler = (files) => {
     let formData = new FormData();
@@ -53,9 +53,9 @@ function FileUpload(props) {
       </Dropzone>
 
       <div style={{ display: "flex", width: "350px", height: "257px", overflowX: "scroll" }}>
-        {beforeImages.map((image, index) => (
+        {Images.map((image, index) => (
           <div onClick={() => deleteHandler(image)} key={index}>
-            <img style={{ minWidth: "300px", width: "300px", height: "240px" }} src={`${image.imglink}`} />
+            <img style={{ minWidth: "300px", width: "300px", height: "240px" }} src={`${image}`} />
           </div>
         ))}
       </div>
