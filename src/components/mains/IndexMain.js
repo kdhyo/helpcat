@@ -49,7 +49,7 @@ class IndexMain extends Component {
                 <>
                   <MapMain serviceData={undefined} />
                   <Aside />
-                  <PreviewBoard serviceData={undefined} />
+                  {/* <PreviewBoard serviceData={undefined} /> */}
                   <MainPageReview />
                   <Footer />
                 </>
@@ -59,7 +59,7 @@ class IndexMain extends Component {
                 <>
                   <MapMain serviceData={data} />
                   <Aside />
-                  <PreviewBoard serviceData={data} />
+                  {/* <PreviewBoard serviceData={data} /> */}
                   <MainPageReview />
                   <Footer />
                 </>

@@ -52,7 +52,6 @@ class BoardWrite extends Component {
   }
 
   changePickerData(target, value) {
-    console.log(value);
     this.setState({
       [target]: value,
     });
@@ -77,7 +76,6 @@ class BoardWrite extends Component {
       startAt,
       endAt,
     } = this.state;
-    console.log(title, contents, price, address1, address2, lat, lon, imgFiles, startAt, endAt);
 
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -164,7 +162,6 @@ class BoardWrite extends Component {
     );
   }
   _confirm = async (data) => {
-    console.log(data);
     this.props.history.push(`/`);
   };
 

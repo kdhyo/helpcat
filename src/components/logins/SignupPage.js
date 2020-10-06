@@ -77,6 +77,7 @@ class SignupPage extends Component {
       });
     }
   }
+  
 
   render() {
     const API_KEY = API.kakaoMapAPI.API_KEY;
@@ -131,7 +132,7 @@ class SignupPage extends Component {
       });
     };
 
-    // console.log(this.state.emailAuthenticationValue);
+    console.log(this.state.emailAuthenticationValue);
     return (
       <>
         <div className="signup">
