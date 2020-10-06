@@ -6,17 +6,7 @@ import axios from "axios";
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
 
-  /* 여기서부터 */
-  const imgLinks = [];
-  console.log(props.imgLinks);
-  console.log(imgLinks);
-  if (props.imgLinks && imgLinks.length === 0) {
-    props.imgLinks.forEach((data) => {
-      imgLinks.push(data.imglink);
-    });
-    setImages(imgLinks);
-  }
-  /* 여기까지 */
+  const beforeImages = props.imgLinks
 
   const dropHandler = (files) => {
     let formData = new FormData();
@@ -63,9 +53,9 @@ function FileUpload(props) {
       </Dropzone>
 
       <div style={{ display: "flex", width: "350px", height: "257px", overflowX: "scroll" }}>
-        {Images.map((image, index) => (
+        {beforeImages.map((image, index) => (
           <div onClick={() => deleteHandler(image)} key={index}>
-            <img style={{ minWidth: "300px", width: "300px", height: "240px" }} src={`${image}`} />
+            <img style={{ minWidth: "300px", width: "300px", height: "240px" }} src={`${image.imglink}`} />
           </div>
         ))}
       </div>
