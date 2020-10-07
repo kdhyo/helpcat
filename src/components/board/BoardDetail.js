@@ -93,9 +93,11 @@ class BoardDetail extends Component {
                     ></input>
                     <br></br>
                     <div className="nolog-title">시작일&nbsp;</div>
-                    <Moment format="YYYY년MM월DD일 hh시mm분">{startAt}</Moment>
+                    <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">
+                      {startAt}
+                    </Moment>
                     <div className="nolog-title">종료일&nbsp;</div>
-                    <Moment format="YYYY년MM월DD일 hh시mm분">{endAt}</Moment>
+                    <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">{endAt}</Moment>
                     <input
                       className="writereset2"
                       type="reset"
@@ -147,9 +149,9 @@ class BoardDetail extends Component {
                   ></input>
                   <br></br>
                   <div className="nolog-title">시작일&nbsp;</div>
-                  <Moment format="YYYY년MM월DD일 hh시mm분">{startAt}</Moment>
+                  <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">{startAt}</Moment>
                   <div className="nolog-title">종료일&nbsp;</div>
-                  <Moment format="YYYY년MM월DD일 hh시mm분">{endAt}</Moment>
+                  <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">{endAt}</Moment>
                   <input
                     className="writereset3"
                     type="reset"
@@ -169,7 +171,7 @@ class BoardDetail extends Component {
                           userData: data,
                         }}
                       >
-                        <button className="writereset">완료하고 후기 작성하기</button>
+                        <button className="writereset">거래완료</button>
                       </Link>
                     ) : (
                       <></>

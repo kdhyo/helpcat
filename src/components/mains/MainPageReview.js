@@ -29,19 +29,24 @@ const REVIEW_ALL_QUERY = gql`
 class MainPageReview extends Component {
   render() {
     const mapToComponent = (review, i) => {
-      console.log(review, " 나오는 곳");
-      return (
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[i]})` }}>
-            <div className="slidetext">
-              게시자: {review.rating_reqUser.nickName}
-              제목: {review.service.title}
-              후기: {review.review}
-              <span> 평점: {review.rating}</span>
+      if (i < 5) {
+        console.log(review, " 나오는 곳");
+        return (
+          <div className="each-slide">
+              <div className="slidetext">
+                <div className="sliderr">
+                <span className="colorblue3">{review.review}</span>
+                <div style={{ backgroundImage: `url(${slideImages[i]})` }}>
+                  <br></br>
+                <span className="colorblue4">의뢰인</span> {review.rating_reqUser.nickName}&nbsp;&nbsp;&nbsp;
+                <span className="colorblue4">평점</span> {review.rating}점
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      } else {
+      }
     };
 
     return (
@@ -52,15 +57,12 @@ class MainPageReview extends Component {
             if (error) {
               return <></>;
             }
-            console.log(data)
             if (data) {
               return (
                 <div className="review">
                   <Slide easing="ease">
                     {data.seeReviews.map((review, i) => {
-                      if(i<5){
-                        return mapToComponent(review, i);
-                      }
+                      return <>{mapToComponent(review, i)}</>;
                     })}
                   </Slide>
                 </div>
