@@ -8,7 +8,6 @@ class MessageUserDetail extends Component {
     const opponentData = this.props.value.UserOnRoom[0].user[0] // 상대방 정보
     const lastData = (this.props.value.message.length - 1)
     const message = this.props.value.message[lastData]
-console.log(meData,opponentData,lastData,message)
     const messageTime = () => {
       if (message) {
         const messaget = message.createdAt
@@ -40,7 +39,7 @@ console.log(meData,opponentData,lastData,message)
         return <></>;
       }
     };
-
+    console.log(this.props.value.UserOnRoom[0])
     if(this.props.value.UserOnRoom[0].user[0].id !== meData.id){
       return (
         <>

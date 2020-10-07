@@ -148,7 +148,6 @@ class BoardPage extends Component {
               this.state = data.showServices;
             }
             this._subscribeToNewLinks(subscribeToMore);
-            // this.state = data.serviceAll.reverse() // graphql query 셀렉트로 가져온 값
             return (
               <div className="writeform2">
               <>

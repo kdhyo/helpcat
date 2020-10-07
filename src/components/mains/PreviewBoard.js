@@ -140,7 +140,6 @@ class PreviewBoard extends Component {
                     <div className="viewall">더보기</div>
                     </a>
                   </section>
-                  
                 </div>
               </>
             );
