@@ -5,8 +5,8 @@ import gql from "graphql-tag";
 import MessageText from "./MessageText";
 
 const MESSAGE_VIEW_QUERY = gql`
-  query {
-    seeRoom(roomId:1) {
+  query seeRoom($roomId: Int!) {
+    seeRoom(roomId:$roomId) {
       UserOnRoom{
         user{
           id
@@ -41,8 +41,8 @@ const SEND_MESSAGE_MUTATION = gql`
 `;
 
 const NEW_SERVICE_SUBSCRIPTION = gql`
-  subscription {
-    newMessage(roomId:1) {
+  subscription newMessage($roomId: Int!) {
+    newMessage(roomId:$roomId) {
       id
       text
       to
@@ -67,9 +67,7 @@ class Message extends Component {
         if (!subscriptionData.data) return prev;
         const newMessageData = subscriptionData.data.newMessage;
         const exists = prev.seeRoom.message[prev.seeRoom.message.length-1].id === newMessageData.id;
-        console.log(prev.seeRoom.message, newMessageData)
         if (exists) return prev;
-
         return Object.assign({}, prev.seeRoom, {
           message: [newMessageData, ...prev.seeRoom.message],
         });
@@ -84,7 +82,12 @@ class Message extends Component {
     console.log(room, message, this.props)
     return (
       <>
-      <Query query={MESSAGE_VIEW_QUERY}>
+      <Query
+        query={MESSAGE_VIEW_QUERY}
+        variables={{
+          roomId: room,
+        }}
+      >
           {({ loading, error, data, subscribeToMore }) => {
             if (loading)
               return (
@@ -98,7 +101,7 @@ class Message extends Component {
               );
             }
             if (data) {
-              this.state = data.seeRoom;
+              this.state = data.seeRoom.message;
             }
             this._subscribeToNewLinks(subscribeToMore);
             console.log(this.state)
