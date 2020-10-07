@@ -36,33 +36,39 @@ class ReviewWrite extends Component {
     const serviceTitle = this.props.location.serviceBoardData.title;
     return (
       <>
-        <div className="writeform">
-          <div className="writetitle">제목</div>
+        <div className="writeform5">
+          <br></br><br></br><br></br>
+          <div className="writetitle">제목
           <input
             value={serviceTitle}
             className="writetitleinput"
             readOnly
-          ></input>
-          <div className="writecontent">후기</div>
+          ></input></div>
+          
+          <div className="writecontent">후기
           <textarea
+            placeholder="후기를 입력해주세요"
             className="writecontentinput"
             onChange={(e) => this.setState({ review: e.target.value })}
-          ></textarea>
-          <div className="writecontent">평점</div>
+          ></textarea></div>
+          
+          <div className="writecontent">평점
           <textarea
+            placeholder="숫자로 입력해주세요"
             className="writecontentinput"
             onChange={(e) => this.setState({ rating: Number(e.target.value) })}
-          ></textarea>
+          ></textarea></div>
+          
           {this.state.reviewFinish ? (
             <>
-              <div>후기 작성이 완료되었습니다!</div>
+              <div className="center"><span className="colorblue">후기 작성이 완료되었습니다!</span></div>
               <Mutation
                 mutation={FINISH_SERVICE_BOARD_MUTATION}
                 variables={{ serviceId }}
               >
                 {(mutation) => (
                 <a href="/">
-                  <button className="writereset" onClick={mutation}>
+                  <button className="writereset5" onClick={mutation}>
                     심부름 완료
                   </button>
                 </a>
@@ -78,18 +84,16 @@ class ReviewWrite extends Component {
               >
                 {(mutation) => (
                   <input
-                    className="writereset"
+                    className="writereset5"
                     onClick={mutation}
                     readOnly
                     value="후기 작성"
                   ></input>
                 )}
               </Mutation>
-              <br />
-              <br />
-              <br />
-              <button className="writereset" onClick={this.reviewDontClear}>
-                심부름 완료
+              <br></br>
+              <button className="writereset6" onClick={this.reviewDontClear}>
+                거래 완료
               </button>
             </>
           )}
