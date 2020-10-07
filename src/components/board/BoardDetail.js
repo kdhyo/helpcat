@@ -63,7 +63,7 @@ class BoardDetail extends Component {
               return (
                 <>
                   <div className="writeform">
-                    <img alt="" className="nomargin" src="boardcat.png" width="80px"></img>
+                    <img alt="" className="nomargin" src="/boardcat.png" width="80px"></img>
                     <div className="nolog-title2">제목</div>
                     <input
                       className="writetitleinput"
