@@ -89,17 +89,16 @@ title{
 }
 
 .loginpng2{
-  box-sizing: border-box;
   width: 100%;
-  height: 50px;
+  height: 35px;
   border-radius: 15px;
   background-color: white;
   border: 2px solid black;
   z-index: 8;
-  position: relative;
   font-size: 1rem;
-  display: inline-block;
-  line-height: 3rem;
+  display: block;
+  line-height: 2.2;
+  margin-top: 12px;
 }
 
 .loginpng3{
@@ -114,17 +113,16 @@ title{
 
 .loginpng4{
   margin-right: 65px;
-  box-sizing: border-box;
   width: 60%;
-  height: 50px;
+  height: 35px;
   border-radius: 15px;
   background-color: white;
   border: 2px solid black;
   z-index: 8;
-  position: relative;
   font-size: 1rem;
-  display: inline-block;
-  line-height: 3rem;
+  display: block;
+  margin-top: 12px;
+  line-height: 2.2;
 }
 
 .loginpng:hover{
