@@ -79,41 +79,55 @@ class BoardWrite extends Component {
 
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
-        <div className="writeform">
+        <div className="writeform10">
           <img alt="글쓰기" className="nomargin" src="writecat.png" width="80px"></img>
           <div className="writeformgruop1">
-          <div className="writetitle">제목</div>
+          <div className="writetitle">제목
           <input
-            className="writetitleinput"
+            placeholder="의뢰 제목을 입력해주세요"
+            className="writetitleinput2"
             onChange={(e) => this.setState({ title: e.target.value })}
           ></input>
-          <div className="writecontent">내용</div>
+          </div>
+          <div className="writecontent">내용
           <textarea
-            className="writecontentinput"
+          placeholder="의뢰 내용을 적어주세요"
+            className="writecontentinput2"
             onChange={(e) => this.setState({ contents: e.target.value })}
           ></textarea>
-          <div className="writecontent">가격</div>
+          </div>
+          <div className="writecontent">비용
           <input
-            className="writetitleinput"
+          placeholder="의뢰 비용을 숫자로 입력해주세요"
+            className="writetitleinput2"
             onChange={(e) => this.setState({ price: Number(e.target.value) })}
           ></input>
-          <div className="writecontent">주소</div>
+          </div>
+          <div className="writecontent">주소
           <input
-            className="writetitleinput"
+          placeholder="의뢰 지역을 설정해주세요"
+            className="writetitleinput2"
             onChange={(e) => this.setState({ address1: e.target.value })}
           ></input>
-          <div className="writecontent">상세주소</div>
+          </div>
+          <div className="writecontent">상세
           <input
-            className="writetitleinput"
+          placeholder="의뢰 지역의 자세한 위치를 안내해주세요"
+            className="writetitleinput2"
             onChange={(e) => this.setState({ address2: e.target.value })}
           ></input>
           </div>
+          </div>
           {/* DropZone */}
-          <div className="writeformgruop2">
-            <div className="fileupload">
-            <div className="writecontent">파일 첨부</div>
+          <div className="writecontent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파일 첨부
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          미리보기</div>
+          <div className="fileuploader">
           <FileUpload refreshFunction={this.updateImages.bind(this)} />
           </div>
+          <div className="writeformgruop2">
           </div>
           <div className="startday">
             <KeyboardDateTimePicker
@@ -156,6 +170,7 @@ class BoardWrite extends Component {
                 <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
               )}
             </Mutation>
+            
             <input
               type="reset"
               className="writereset"

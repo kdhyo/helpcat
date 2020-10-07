@@ -21,6 +21,7 @@ class UserPwdEdit extends Component {
       <>
             <div className="loginInput">
               <div className="updatePWD">
+              <img alt="" className="nomargin" src="/membercat.png" width="80px"></img>
                 <input
                   value={oldPwd}
                   onChange={(e) => this.setState({ oldPwd: e.target.value })}
