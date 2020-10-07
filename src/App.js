@@ -28,8 +28,9 @@ class App extends Component {
         <Route path="/write" exact={true} component={Write} />
         <Route path="/validateEmail" exact={true} component={ValidateEmail} />
         <Route path="/userInfor" component={IndexUsers} />
-        <Route path="/reviewWrite" component={ReviewWrite} />
-        <Route path="/message" component={IndexMessage} />
+        <Route path="/reviewWrite" exact={true} component={ReviewWrite} />
+        <Route path="/message" exact={true} component={IndexMessage} />
+        <Route path="/message/:id" exact={true} component={IndexMessage} />
       </>
     )
   }

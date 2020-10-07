@@ -7,6 +7,7 @@ import UserInformation from "./UserInformation";
 
 class IndexUsers extends Component {
   render() {
+    console.log(this.props)
     return (
       <>
         <UserInformation />
