@@ -509,10 +509,10 @@ article{
   background-color: white;
   margin-left: 28%;
   display: block;
-  border-top: 4px solid #48bbff;
-  border-bottom: 9px solid #1877f2;
-  border-right: 7px solid #48a6ff;
-  border-left: 7px solid #48a6ff;
+  border-top: 2px solid #48bbff;
+  border-bottom: 8px solid #1877f2;
+  border-right: 4px solid #48a6ff;
+  border-left: 4px solid #48a6ff;
 }
 
 .slidetext{
