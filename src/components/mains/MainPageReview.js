@@ -44,7 +44,9 @@ class MainPageReview extends Component {
               </div>
             </div>
           </div>
-      );
+        );
+      } else {
+      }
     };
 
     return (
@@ -55,15 +57,12 @@ class MainPageReview extends Component {
             if (error) {
               return <></>;
             }
-            console.log(data)
             if (data) {
               return (
                 <div className="review">
                   <Slide easing="ease">
                     {data.seeReviews.map((review, i) => {
-                      if(i<5){
-                        return mapToComponent(review, i);
-                      }
+                      return <>{mapToComponent(review, i)}</>;
                     })}
                   </Slide>
                 </div>
