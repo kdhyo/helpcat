@@ -63,7 +63,12 @@ class BoardDetail extends Component {
               return (
                 <>
                   <div className="writeform">
-                    <img alt="" className="nomargin" src="/boardcat.png" width="80px"></img>
+                    <img
+                      alt=""
+                      className="nomargin"
+                      src="/boardcat.png"
+                      width="80px"
+                    ></img>
                     <div className="nolog-title2">제목</div>
                     <input
                       className="writetitleinput"
@@ -88,7 +93,11 @@ class BoardDetail extends Component {
                     <div className="nolog-title">주소</div>
                     <input
                       className="writetitleinput"
-                      value={serviceBoardData.address1 + ", " + serviceBoardData.address2}
+                      value={
+                        serviceBoardData.address1 +
+                        ", " +
+                        serviceBoardData.address2
+                      }
                       readOnly
                     ></input>
                     <br></br>
@@ -97,7 +106,9 @@ class BoardDetail extends Component {
                       {startAt}
                     </Moment>
                     <div className="nolog-title">종료일&nbsp;</div>
-                    <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">{endAt}</Moment>
+                    <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">
+                      {endAt}
+                    </Moment>
                     <input
                       className="writereset2"
                       type="reset"
@@ -119,7 +130,12 @@ class BoardDetail extends Component {
             return (
               <>
                 <div className="writeform">
-                  <img alt="" className="nomargin" src="/boardcat.png" width="80px"></img>
+                  <img
+                    alt=""
+                    className="nomargin"
+                    src="/boardcat.png"
+                    width="80px"
+                  ></img>
                   <div className="nolog-title2">제목</div>
                   <input
                     className="writetitleinput"
@@ -144,14 +160,18 @@ class BoardDetail extends Component {
                   <div className="nolog-title">주소</div>
                   <input
                     className="writetitleinput"
-                    value={serviceBoardData.address1 + ", " + serviceBoardData.address2}
+                    value={
+                      serviceBoardData.address1 +
+                      ", " +
+                      serviceBoardData.address2
+                    }
                     readOnly
                   ></input>
                   <br></br>
-                  <div className="nolog-title">시작일&nbsp;</div>
-                  <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">{startAt}</Moment>
-                  <div className="nolog-title">종료일&nbsp;</div>
-                  <Moment format="YYYY년&nbsp;MM월&nbsp;DD일&nbsp;hh시&nbsp;mm분">{endAt}</Moment>
+                  <div className="nolog-title">시작일 </div>
+                  <Moment format="YY년 MM월 DD일 hh시 mm분">{startAt}</Moment>
+                  <div className="nolog-title">종료일 </div>
+                  <Moment format="YY년 MM월 DD일 hh시 mm분">{endAt}</Moment>
                   <input
                     className="writereset3"
                     type="reset"
@@ -208,7 +228,10 @@ class BoardDetail extends Component {
                     // 서비스 수락자가 없고 글쓴이가 아니라면
                     <>
                       <a href="/board">
-                        <Mutation mutation={SERVICE_ACCEPT_MUTATION} variables={{ serviceId }}>
+                        <Mutation
+                          mutation={SERVICE_ACCEPT_MUTATION}
+                          variables={{ serviceId }}
+                        >
                           {(mutation) => (
                             <button className="writereset" onClick={mutation}>
                               신청하기
