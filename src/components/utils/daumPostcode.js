@@ -43,17 +43,17 @@ class AddressModal extends Component {
     const height = 450;
     const modalStyle = {
       position: "absolute",
-      top: 0,
-      left: "178px",
+      top: "30%",
+      left: "35%",
       zIndex: "100",
-      border: "1px solid #000000",
+      border: "2px solid #bababa",
       overflow: "hidden",
     };
     return (
       <div className="modalRow">
         <div className="modalCell">
           <div className="cellFirst">
-            <button type="button" onClick={this.handleOpenPost}>
+            <button className="postbtn" type="button" onClick={this.handleOpenPost}>
               <span>우편번호 찾기</span>
             </button>
           </div>

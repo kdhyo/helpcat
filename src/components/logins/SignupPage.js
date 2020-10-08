@@ -262,7 +262,7 @@ class SignupPage extends Component {
                   value={birth}
                   onChange={(e) => this.setState({ birth: e.target.value })}
                   type="text"
-                  placeholder="생년월일을 -없이 입력해주세요                        ex)971006"
+                  placeholder="생년월일을 -없이 입력해주세요&nbsp;&nbsp;&nbsp;&nbsp;ex)971006"
                 />
               </div>
               <div className="phone">
@@ -270,17 +270,17 @@ class SignupPage extends Component {
                   value={phone}
                   onChange={(e) => this.setState({ phone: e.target.value })}
                   type="text"
-                  placeholder="전화번호를 -없이 입력해주세요                        ex)01012345678"
+                  placeholder="전화번호를 -없이 입력해주세요&nbsp;&nbsp;&nbsp;&nbsp;ex)01012345678"
                 />
               </div>
               <div className="address">
-                <AddressModal refreshFunction={takeAddress.bind(this)} />
                 <input
                   value={address1}
                   readOnly
                   type="text"
-                  placeholder="도로명주소를 입력해주세요"
+                  placeholder="우편번호 찾기를 이용해주세요"
                 />
+                <AddressModal refreshFunction={takeAddress.bind(this)} />
               </div>
               <div className="address">
                 <input
