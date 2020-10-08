@@ -104,6 +104,7 @@ class Message extends Component {
               const to = 1
               return (
                 <div className="map4">
+                  <div className="chat-title">서비스 제목</div>
                   <div className="chat-input-box">
                     <MessageText meData={this.props.meData} message={data} />
                     <input
@@ -115,7 +116,7 @@ class Message extends Component {
                       variables={{ room, message, to }}
                     >
                       {(mutation) => (
-                        <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
+                        <input className="writesubmit2" onClick={mutation} value="제출" readOnly></input>
                       )}
                     </Mutation>
                   </div>

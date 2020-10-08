@@ -34,8 +34,8 @@ class MessageText extends Component {
         return (
           <>
             <div className="my-message">
-            {message.text}<br></br>
-            {messageTime}
+            <span className="bigfont">{message.text}</span><br></br>
+            <span className="smallfont">{messageTime}</span>
             </div>
           </>
         )
@@ -64,8 +64,8 @@ class MessageText extends Component {
         return (
           <>
             <div key={i} className="your-message">
-              {message.text}<br></br>
-              {messageTime}
+              <span className="bigfont">{message.text}</span><br></br>
+              <span className="smallfont">{messageTime}</span>
             </div>
           </>
         )
