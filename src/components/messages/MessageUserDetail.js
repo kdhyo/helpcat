@@ -10,7 +10,7 @@ class MessageUserDetail extends Component {
       const roomId = opponentData.UserOnRoom[0].roomId
       return (
         <>
-        <Link to={"/message/",{roomId}}>
+        <Link to={`/message/${roomId}`}>
           <div className="chatting-box">
             <li className="chatting-user">{opponentData.UserOnRoom[0].user[0] ==  meData.id? opponentData.UserOnRoom[1].user[0].nickName : opponentData.UserOnRoom[0].user[0].nickName}</li><br></br>
             {/* <li className="chatting-text">{roomId}</li> */}
