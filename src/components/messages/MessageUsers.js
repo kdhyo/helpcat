@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import MessageUserDetail from "./MessageUserDetail";
@@ -31,7 +30,6 @@ class MessageUsers extends Component {
       <>
         <ul className="chatting-title">
           <div className="chattitle">대화 상대</div><br/>
-          <Link to={{pathname:""}}>
           <Query query={MESSAGES_VIEW_QUERY}>
           {({ loading, error, data }) => {
             if (loading)
@@ -53,8 +51,6 @@ class MessageUsers extends Component {
             })
           }}
         </Query>
-
-          </Link>
         </ul>
       </>
     )
