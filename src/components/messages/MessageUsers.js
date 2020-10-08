@@ -9,6 +9,8 @@ const MESSAGES_VIEW_QUERY = gql`
   query {
     seeRooms {
       UserOnRoom{
+        id
+        roomId
         user{
           id
           nickName

@@ -1,24 +1,22 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom";
 
-
 class MessageUserDetail extends Component {
   render() {
     const meData = this.props.meData.me; // 로그인 된 내 정보
     const opponentData = this.props.value // 상대방 정보
-    const lastData = (this.props.value.message.length - 1)
-    const message = this.props.value.message[lastData]
     console.log(opponentData)
-    if(this.props.value.UserOnRoom[0].user[0].id !== meData.id){
+    if(opponentData.UserOnRoom[0].user[0].id == meData.id || opponentData.UserOnRoom[1].user[0].id == meData.id) {
+      const roomId = opponentData.UserOnRoom[0].roomId
       return (
         <>
           <div className="chatting-box">
-            <li className="chatting-user">{opponentData.nickName}</li><br></br>
+            <li className="chatting-user">{opponentData.UserOnRoom[0].user[0] ==  meData.id? opponentData.UserOnRoom[1].user[0].nickName : opponentData.UserOnRoom[0].user[0].nickName}</li><br></br>
+            {/* <li className="chatting-text">{roomId}</li> */}
           </div>
         </>
       );
-    }else{
-      return(<></>)
+      }else{
     }
   }
 }

@@ -101,55 +101,40 @@ class Message extends Component {
             }
             refetch();
             // if(meData.id == data.messages[0].id){
-              const to = 1
-              return (
-                <div className="map4">
-                  <div className="chat-title">서비스 제목</div>
-                  <div className="chat-input-box">
-                    <MessageText meData={this.props.meData} message={data} />
-                    <input
-                      className="chat-input"
-                      onChange={(e) => this.setState({ message: e.target.value })}
-                    ></input>
-                    <Mutation
-                      mutation={SEND_MESSAGE_MUTATION}
-                      variables={{ room, message, to }}
-                    >
-                      {(mutation) => (
-                        <input className="writesubmit2" onClick={mutation} value="제출" readOnly></input>
-                      )}
-                    </Mutation>
-                  </div>
+            const to = 1
+            return (
+              <div className="map4">
+                <div className="chat-title">서비스 제목</div>
+                <div className="chat-input-box">
+                  <MessageText meData={this.props.meData} message={data} />
+                  <input
+                    className="chat-input"
+                    value={message}
+                    onChange={(e) => this.setState({ message: e.target.value })}
+                  ></input>
+                  <Mutation
+                    mutation={SEND_MESSAGE_MUTATION}
+                    variables={{ room, message, to }}
+                    onCompleted={() => this._confirm()}
+                  >
+                    {(mutation) => (
+                      <input className="writesubmit2" onClick={mutation} value="제출" readOnly></input>
+                    )}
+                  </Mutation>
                 </div>
-              )
-            // }
-            // else{
-            //   const to = Number(data.messages[0].id)
-            //   return (
-            //     <div className="map4">
-            //       <div className="chat-input-box">
-            //         <MessageText meData={this.props.meData} message={data.messages} />
-            //         <input
-            //           className="chat-input"
-            //           onChange={(e) => this.setState({ message: e.target.value })}
-            //         ></input>
-            //         <Mutation
-            //           mutation={SEND_MESSAGE_MUTATION}
-            //           variables={{ room, message, to }}
-            //         >
-            //           {(mutation) => (
-            //             <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
-            //           )}
-            //         </Mutation>
-            //       </div>
-            //     </div>
-            //   )
-            // }
+              </div>
+            )
           }}
         </Query>
       </>
     )
   }
+  _confirm = async data => {
+    this.setState({
+      message: ""
+    })
+    console.log(this.state.message)
+  };
 }
 
 
