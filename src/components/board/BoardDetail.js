@@ -41,22 +41,13 @@ class BoardDetail extends Component {
     };
   }
 
-  imgForEach(data) {
-    console.log(data)
-    data.forEach((imglink) => {
-      console.log(imglink)
-      return(
-        <img alt="게시글 사진" src={imglink.imglink} />
-      )
-    })
-  }
-
   render() {
     const paramsId = this.props.match.params.id;
     const serviceBoardData = this.props.location.serviceBoardData; //게시글 전체 값
     const serviceId = Number(serviceBoardData.id);
     const startAt = new Date(serviceBoardData.startAt);
     const endAt = new Date(serviceBoardData.endAt);
+    const { serviceimgfiles } = serviceBoardData;
     this.state.requester = serviceBoardData.reqUser.id;
     // console.log(serviceBoardData.serviceimgfiles[0].imglink)
     return (
@@ -93,7 +84,11 @@ class BoardDetail extends Component {
                       value={serviceBoardData.contents}
                       readOnly
                     ></textarea>
-                    {this.imgForEach.bind(serviceBoardData.serviceimgfiles)}
+                    {serviceimgfiles.map((data, i) => {
+                      return (
+                        <img key={i} alt="게시글 사진" src={data.imglink} />
+                      );
+                    })}
                     <br></br>
                     <div className="nolog-title">가격</div>
                     <input
@@ -162,6 +157,9 @@ class BoardDetail extends Component {
                     readOnly
                   ></textarea>
                   <br></br>
+                  {serviceimgfiles.map((data, i) => {
+                    return <img key={i} alt="게시글 사진" src={data.imglink} />;
+                  })}
                   <div className="nolog-title">가격</div>
                   <input
                     className="writetitleinput"
