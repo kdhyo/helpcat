@@ -43,6 +43,7 @@ class BoardDetail extends Component {
 
   render() {
     const paramsId = this.props.match.params.id;
+    console.log(paramsId)
     const serviceBoardData = this.props.location.serviceBoardData; //게시글 전체 값
     const serviceId = Number(serviceBoardData.id);
     const startAt = new Date(serviceBoardData.startAt);
@@ -217,7 +218,7 @@ class BoardDetail extends Component {
                       <a href="/board">
                         <Mutation
                           mutation={DELETE_SERVICE_BOARD_MUTATION}
-                          variables={{ serviceId }}
+                          variables={{ paramsId }}
                         >
                           {(mutation) => (
                             <button className="writereset" onClick={mutation}>
@@ -228,7 +229,7 @@ class BoardDetail extends Component {
                       </a>
                       <Link
                         to={{
-                          pathname: `/board/update/${serviceId}`,
+                          pathname: `/board/update/${paramsId}`,
                           serviceBoardData: serviceBoardData,
                         }}
                       >
@@ -246,7 +247,7 @@ class BoardDetail extends Component {
                       <a href="/board">
                         <Mutation
                           mutation={SERVICE_ACCEPT_MUTATION}
-                          variables={{ serviceId }}
+                          variables={{ paramsId }}
                         >
                           {(mutation) => (
                             <button className="writereset" onClick={mutation}>
