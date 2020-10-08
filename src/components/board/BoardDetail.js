@@ -64,7 +64,7 @@ class BoardDetail extends Component {
               //비 로그인시
               return (
                 <>
-                  <div className="writeform">
+                  <div className="writeform33">
                     <img
                       alt=""
                       className="nomargin"
@@ -84,11 +84,13 @@ class BoardDetail extends Component {
                       value={serviceBoardData.contents}
                       readOnly
                     ></textarea>
+                    <div className="imgbox">
                     {serviceimgfiles.map((data, i) => {
                       return (
-                        <img key={i} alt="게시글 사진" src={data.imglink} />
+                        <img className="detailimg" key={i} alt="게시글 사진" src={data.imglink}/>
                       );
                     })}
+                    </div>
                     <br></br>
                     <div className="nolog-title">가격</div>
                     <input
@@ -136,7 +138,7 @@ class BoardDetail extends Component {
             //로그인 시
             return (
               <>
-                <div className="writeform">
+                <div className="writeform33">
                   <img
                     alt=""
                     className="nomargin"
@@ -157,9 +159,13 @@ class BoardDetail extends Component {
                     readOnly
                   ></textarea>
                   <br></br>
+                  <div className="imgbox">
                   {serviceimgfiles.map((data, i) => {
-                    return <img key={i} alt="게시글 사진" src={data.imglink} />;
+                    return (
+                    <img className="detailimg" key={i} alt="게시글 사진" src={data.imglink} />
+                    );
                   })}
+                  </div>
                   <div className="nolog-title">가격</div>
                   <input
                     className="writetitleinput"
