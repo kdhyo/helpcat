@@ -41,6 +41,16 @@ class BoardDetail extends Component {
     };
   }
 
+  imgForEach(data) {
+    console.log(data)
+    data.forEach((imglink) => {
+      console.log(imglink)
+      return(
+        <img alt="게시글 사진" src={imglink.imglink} />
+      )
+    })
+  }
+
   render() {
     const paramsId = this.props.match.params.id;
     const serviceBoardData = this.props.location.serviceBoardData; //게시글 전체 값
@@ -48,6 +58,7 @@ class BoardDetail extends Component {
     const startAt = new Date(serviceBoardData.startAt);
     const endAt = new Date(serviceBoardData.endAt);
     this.state.requester = serviceBoardData.reqUser.id;
+    // console.log(serviceBoardData.serviceimgfiles[0].imglink)
     return (
       <>
         <Query query={USER_DATA_QUERY}>
@@ -82,6 +93,7 @@ class BoardDetail extends Component {
                       value={serviceBoardData.contents}
                       readOnly
                     ></textarea>
+                    {this.imgForEach.bind(serviceBoardData.serviceimgfiles)}
                     <br></br>
                     <div className="nolog-title">가격</div>
                     <input

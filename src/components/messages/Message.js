@@ -40,7 +40,7 @@ const SEND_MESSAGE_MUTATION = gql`
   }
 `;
 
-const NEW_SERVICE_SUBSCRIPTION = gql`
+const newMessage = gql`
   subscription newMessage($roomId: Int!) {
     newMessage(roomId:$roomId) {
       id
@@ -52,6 +52,8 @@ const NEW_SERVICE_SUBSCRIPTION = gql`
   }
 `;
 
+let unsubscribe = null;
+
 class Message extends Component {
   constructor(props) {
     super(props);
@@ -60,26 +62,10 @@ class Message extends Component {
     };
   }
 
-  _subscribeToNewLinks = (subscribeToMore) => {
-    subscribeToMore({
-      document: NEW_SERVICE_SUBSCRIPTION,
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const newMessageData = subscriptionData.data.newMessage;
-        const exists = prev.seeRoom.message[prev.seeRoom.message.length-1].id === newMessageData.id;
-        if (exists) return prev;
-        return Object.assign({}, prev.seeRoom, {
-          message: [newMessageData, ...prev.seeRoom.message],
-        });
-      },
-    });
-  };
-
   render() {
     const meData = this.props.meData.me; // 로그인 된 내 정보
     const { message } = this.state
     const room = Number(this.props.roomId)
-    console.log(room, message, this.props)
     return (
       <>
       <Query
@@ -88,7 +74,7 @@ class Message extends Component {
           roomId: room,
         }}
       >
-          {({ loading, error, data, subscribeToMore }) => {
+          {({ loading, error, data, subscribeToMore, refetch }) => {
             if (loading)
               return (
                 <>
@@ -100,11 +86,28 @@ class Message extends Component {
               </>
               );
             }
-            if (data) {
-              this.state = data.seeRoom.message;
+            if (!unsubscribe) {
+              unsubscribe = subscribeToMore({
+                document: newMessage,
+                variables: {
+                  roomId:room
+                },
+                updateQuery: (prev, { subscriptionData }) => {
+                  if (!subscriptionData.data) {
+                    return prev;
+                  }
+                  const { newMessage } = subscriptionData.data;
+                  console.log(newMessage, prev)
+                  return {
+                    ...prev.seeRoom,
+                    message: [...prev.seeRoom.message, newMessage]
+                  };
+                }
+              });
+              refetch();
             }
-            this._subscribeToNewLinks(subscribeToMore);
-            console.log(this.state)
+            refetch();
+            // console.log(this.state)
             if(meData.id == data.seeRoom.UserOnRoom[0].user[0].id){
               const to = Number(data.seeRoom.UserOnRoom[1].user[0].id)
               return (
