@@ -31,7 +31,7 @@ class MessageMain extends Component {
                 <>
                 <div className="UserInformation">
                   <div className="UserInformation-article1">
-                    <MessageUsers meData={data} />
+                    <MessageUsers meData={data} roomId={this.props.match.params.id} />
                   </div>
                   <div className="UserInformation-article2">
                     <Message meData={data} roomId={this.props.match.params.id} />

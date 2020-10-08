@@ -5,21 +5,13 @@ import gql from "graphql-tag";
 import MessageText from "./MessageText";
 
 const MESSAGE_VIEW_QUERY = gql`
-  query seeRoom($roomId: Int!) {
-    seeRoom(roomId:$roomId) {
-      UserOnRoom{
-        user{
-          id
-          nickName
-        }
-      }
-      message{
-        id
-        text
-        to
-        from
-        createdAt
-      }
+  query messages($room: Int!) {
+    messages(room:$room) {
+      id
+      text
+      to
+      from
+      createdAt
     }
   }
 `;
@@ -71,7 +63,7 @@ class Message extends Component {
       <Query
         query={MESSAGE_VIEW_QUERY}
         variables={{
-          roomId: room,
+          room: room,
         }}
       >
           {({ loading, error, data, subscribeToMore, refetch }) => {
@@ -86,6 +78,7 @@ class Message extends Component {
               </>
               );
             }
+            console.log(data)
             if (!unsubscribe) {
               unsubscribe = subscribeToMore({
                 document: newMessage,
@@ -99,21 +92,20 @@ class Message extends Component {
                   const { newMessage } = subscriptionData.data;
                   console.log(newMessage, prev)
                   return {
-                    ...prev.seeRoom,
-                    message: [...prev.seeRoom.message, newMessage]
+                    ...prev,
+                    messages: [...prev.messages, newMessage]
                   };
                 }
               });
               refetch();
             }
             refetch();
-            // console.log(this.state)
-            if(meData.id == data.seeRoom.UserOnRoom[0].user[0].id){
-              const to = Number(data.seeRoom.UserOnRoom[1].user[0].id)
+            // if(meData.id == data.messages[0].id){
+              const to = 1
               return (
                 <div className="map4">
                   <div className="chat-input-box">
-                    <MessageText meData={this.props.meData} message={data.seeRoom.message} />
+                    <MessageText meData={this.props.meData} message={data} />
                     <input
                       className="chat-input"
                       onChange={(e) => this.setState({ message: e.target.value })}
@@ -129,28 +121,29 @@ class Message extends Component {
                   </div>
                 </div>
               )
-            }else{
-              const to = Number(data.seeRoom.UserOnRoom[0].user[0].id)
-              return (
-                <div className="map4">
-                  <div className="chat-input-box">
-                    <MessageText meData={this.props.meData} message={data.seeRoom.message} />
-                    <input
-                      className="chat-input"
-                      onChange={(e) => this.setState({ message: e.target.value })}
-                    ></input>
-                    <Mutation
-                      mutation={SEND_MESSAGE_MUTATION}
-                      variables={{ room, message, to }}
-                    >
-                      {(mutation) => (
-                        <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
-                      )}
-                    </Mutation>
-                  </div>
-                </div>
-              )
-            }
+            // }
+            // else{
+            //   const to = Number(data.messages[0].id)
+            //   return (
+            //     <div className="map4">
+            //       <div className="chat-input-box">
+            //         <MessageText meData={this.props.meData} message={data.messages} />
+            //         <input
+            //           className="chat-input"
+            //           onChange={(e) => this.setState({ message: e.target.value })}
+            //         ></input>
+            //         <Mutation
+            //           mutation={SEND_MESSAGE_MUTATION}
+            //           variables={{ room, message, to }}
+            //         >
+            //           {(mutation) => (
+            //             <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
+            //           )}
+            //         </Mutation>
+            //       </div>
+            //     </div>
+            //   )
+            // }
           }}
         </Query>
       </>
