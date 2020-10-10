@@ -36,8 +36,9 @@ class AddressModal extends Component {
   };
 
   render() {
-    const { isModalShow, isModalClose } = this.props;
-    const { isDaumPost, fullAddress } = this.state;
+    // const { isModalShow, isModalClose } = this.props;
+    // const { fullAddress } = this.state;
+    const { isDaumPost } = this.state;
     // DaumPostCode style
     const width = 595;
     const height = 450;

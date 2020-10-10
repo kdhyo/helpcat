@@ -5,6 +5,8 @@ import { KeyboardDateTimePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
 import FileUpload from "./FileUpload";
+import { Link } from "react-router-dom";
+
 
 const BOARD_UPROAD_MUTATION = gql`
   mutation BoardUproadMutation(
@@ -150,27 +152,27 @@ class BoardWrite extends Component {
             />
           </div>
           <form>
-            <Mutation
-              mutation={BOARD_UPROAD_MUTATION}
-              variables={{
-                title,
-                contents,
-                price,
-                address1,
-                address2,
-                lat,
-                lon,
-                imgFiles,
-                startAt,
-                endAt,
-              }}
-              onCompleted={(data) => this._confirm(data)}
-            >
-              {(mutation) => (
-                <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
-              )}
-            </Mutation>
-            
+            <Link to={"/"}>
+              <Mutation
+                mutation={BOARD_UPROAD_MUTATION}
+                variables={{
+                  title,
+                  contents,
+                  price,
+                  address1,
+                  address2,
+                  lat,
+                  lon,
+                  imgFiles,
+                  startAt,
+                  endAt,
+                }}
+              >
+                {(mutation) => (
+                  <input className="writesubmit" onClick={mutation} value="제출" readOnly></input>
+                )}
+              </Mutation>
+            </Link>
             <input
               type="reset"
               className="writereset"
@@ -183,9 +185,6 @@ class BoardWrite extends Component {
       </MuiPickersUtilsProvider>
     );
   }
-  _confirm = async (data) => {
-    this.props.history.push(`/`);
-  };
 
   reload() {
     window.location.reload();

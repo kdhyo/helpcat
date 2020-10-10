@@ -46,7 +46,7 @@ class MessageUsers extends Component {
             console.log(data)
             return data.seeRooms.map((messageData, i) => {
               return (
-                <MessageUserDetail value={messageData} meData={this.props.meData} />
+                <MessageUserDetail value={messageData} myData={this.props.myData} />
               );
             })
           }}

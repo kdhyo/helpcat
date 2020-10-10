@@ -30,7 +30,6 @@ class MainPageReview extends Component {
   render() {
     const mapToComponent = (review, i) => {
       if (i < 5) {
-        console.log(review, " 나오는 곳");
         return (
           <div className="each-slide">
               <div className="slidetext">
@@ -38,8 +37,8 @@ class MainPageReview extends Component {
                 <span className="colorblue3">{review.review}</span>
                 <div style={{ backgroundImage: `url(${slideImages[i]})` }}>
                   <br></br>
-                <span className="colorblue4">의뢰인</span> {review.rating_reqUser.nickName}&nbsp;&nbsp;&nbsp;
-                <span className="colorblue4">평점</span> {review.rating}점
+                  <span className="colorblue4">의뢰인</span> {review.rating_reqUser.nickName}&nbsp;&nbsp;&nbsp;
+                  <span className="colorblue4">평점</span> {review.rating}점
                 </div>
               </div>
             </div>

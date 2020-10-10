@@ -3,6 +3,7 @@ import MessageUsers from "./MessageUsers";
 import Message from "./Message";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import ErrorNotLogin from "../basics/ErrorNotLogin";
 
 const USER_DATA_QUERY = gql`
   query {
@@ -24,17 +25,18 @@ class MessageMain extends Component {
               return <div>Loading...</div>
             }
             if (error) return (
-              <div>로그인이 안되었습니다.</div>
+              <ErrorNotLogin />
             )
             if (data) {
+              const myData = data;
               return (
                 <>
                 <div className="UserInformation">
                   <div className="UserInformation-article1">
-                    <MessageUsers meData={data} roomId={this.props.match.params.id} />
+                    <MessageUsers myData={myData} roomId={this.props.match.params.id} />
                   </div>
                   <div className="UserInformation-article2">
-                    <Message meData={data} roomId={this.props.match.params.id} />
+                    <Message myData={myData} roomId={this.props.match.params.id} />
                   </div>
                 </div>
                 </>

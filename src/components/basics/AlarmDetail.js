@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import PreviewBoardArticle from "./PreviewBoardArticle";
 
 const VIEW_SERVICES_BOARD_QUERY = gql`
   query {
@@ -26,6 +25,10 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
         id
         userName
         nickName
+      }
+      serviceimgfiles {
+        id
+        imglink
       }
     }
   }
@@ -55,11 +58,15 @@ const NEW_SERVICE_SUBSCRIPTION = gql`
         userName
         nickName
       }
+      serviceimgfiles {
+        id
+        imglink
+      }
     }
   }
 `;
 
-class PreviewBoard extends Component {
+class AlarmDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,34 +90,28 @@ class PreviewBoard extends Component {
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const newServiceData = subscriptionData.data.newService;
+        console.log(prev, newServiceData)
         const exists = prev.showServices.find(({ id }) => id === newServiceData.id);
+        this.state = newServiceData;
         if (exists) return prev;
-
-        return Object.assign({}, prev, {
-          showServices: [newServiceData, ...prev.showServices],
-        });
+          return Object.assign({}, prev, {
+            showServices: [newServiceData],
+          });
       },
     });
   };
-
-
   render() {
-    const proceeding = this.state.proceeding;
     const mapToComponent = (data) => {
       if (data[0]) {
         return data.map((serviceBoardData, i) => {
           if (!serviceBoardData.progress) {
             return (
-              <PreviewBoardArticle
-                serviceBoardData={serviceBoardData}
-                key={i}
-                Proceeding={proceeding}
-              />
+              <></>
             );
           }
         });
       } else {
-        return <div className="center">등록된 게시글이 없습니다.</div>;
+        return <div>등록된 게시글이 없습니다.</div>;
       }
     };
 
@@ -125,22 +126,13 @@ class PreviewBoard extends Component {
                 </>
               );
             if (error) return console.log(error);
-            if (data) {
-              this.state = data.showServices;
-            }
             this._subscribeToNewLinks(subscribeToMore);
-            // this.state = data.serviceAll.reverse() // graphql query 셀렉트로 가져온 값
             return (
-              <>
-                <div>
-                  <section className="previewsection">
-                    {mapToComponent(this.state)}
-                    <a href="/board">
-                      <div className="viewall">더보기</div>
-                    </a>
-                  </section>
-                </div>
-              </>
+              <ul> 알림창
+                <li>
+                  {this.state.title}
+                </li>
+              </ul>
             );
           }}
         </Query>
@@ -149,4 +141,4 @@ class PreviewBoard extends Component {
   }
 }
 
-export default PreviewBoard;
+export default AlarmDetail;

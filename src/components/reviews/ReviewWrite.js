@@ -44,21 +44,21 @@ class ReviewWrite extends Component {
             className="writetitleinput"
             readOnly
           ></input></div>
-          
+
           <div className="writecontent">후기
           <textarea
             placeholder="후기를 입력해주세요"
             className="writecontentinput"
             onChange={(e) => this.setState({ review: e.target.value })}
           ></textarea></div>
-          
+
           <div className="writecontent">평점
           <textarea
             placeholder="숫자로 입력해주세요"
             className="writecontentinput"
             onChange={(e) => this.setState({ rating: Number(e.target.value) })}
           ></textarea></div>
-          
+
           {this.state.reviewFinish ? (
             <>
               <div className="center"><span className="colorblue">후기 작성이 완료되었습니다!</span></div>

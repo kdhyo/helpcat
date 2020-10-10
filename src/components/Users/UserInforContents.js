@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Route, Switch, Redirect } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import UserAccComplete from "./UserAccComplete";
@@ -43,7 +43,7 @@ class UserInforContents extends Component {
                 <Route path="/userInfor/accComplete" exact render={() => <UserAccComplete me={data}/>} />
                 <Route path="/userInfor/pwdEdit" exact component={UserPwdEdit} />
                 <Route path="/userInfor/userEdit" exact component={UserEdit} />
-                <Route path="/userInfor/userWithdrawal" exact component={UserWithdrawal} />
+                <Route path="/userInfor/userWithdrawal" exact render={() => <UserWithdrawal me={data}/>} />
               </Switch>
               </div>
             )

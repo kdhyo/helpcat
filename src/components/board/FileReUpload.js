@@ -56,7 +56,7 @@ function FileReUpload(props) {
       <div style={{ display: "flex", width: "350px", height: "257px", overflowX: "scroll" }}>
         {Images.map((image, index) => (
           <div onClick={() => deleteHandler(image)} key={index}>
-            <img style={{ minWidth: "300px", width: "300px", height: "240px" }} src={`${image}`} />
+            <img alt="reUploadImages" style={{ minWidth: "300px", width: "300px", height: "240px" }} src={`${image}`} />
           </div>
         ))}
       </div>

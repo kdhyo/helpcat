@@ -13,7 +13,6 @@ class BoardPageArticle extends Component {
             <Link
               to={{
                 pathname: `/board/${serviceBoardData.id}`,
-                serviceBoardData: serviceBoardData,
               }}
             >
               <article className="previewArea2">

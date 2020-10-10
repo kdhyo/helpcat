@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 import { Query } from "react-apollo";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
@@ -6,7 +6,7 @@ import MessageText from "./MessageText";
 
 const MESSAGE_VIEW_QUERY = gql`
   query messages($room: Int!) {
-    messages(room:$room) {
+    messages(room: $room) {
       id
       text
       to
@@ -16,17 +16,27 @@ const MESSAGE_VIEW_QUERY = gql`
   }
 `;
 
+const ROOM_DATA_QUERY = gql`
+  query seeRoom($room: Int!) {
+    seeRoom(roomId: $room) {
+      id
+      UserOnRoom{
+        roomId
+        user{
+          id
+          nickName
+        }
+        service{
+          title
+        }
+      }
+    }
+  }
+`;
+
 const SEND_MESSAGE_MUTATION = gql`
-  mutation SendMessageMutation(
-    $room: Int
-    $message: String!
-    $to: Int!
-  ) {
-    sendMessage(
-      room: $room
-      message: $message
-      to: $to
-    ){
+  mutation SendMessageMutation($room: Int, $message: String!, $to: Int!) {
+    sendMessage(room: $room, message: $message, to: $to) {
       text
     }
   }
@@ -34,7 +44,7 @@ const SEND_MESSAGE_MUTATION = gql`
 
 const newMessage = gql`
   subscription newMessage($roomId: Int!) {
-    newMessage(roomId:$roomId) {
+    newMessage(roomId: $roomId) {
       id
       text
       to
@@ -51,91 +61,125 @@ class Message extends Component {
     super(props);
     this.state = {
       message: "",
+      to: "",
     };
   }
 
+  settingTo(data, myId){
+    if(this.state.to === ""){
+      if(data[0].user[0].id === myId){
+        this.setState({
+          to: Number(data[1].user[0].id)
+        })
+      }else if(data[1].user[0].id === myId){
+        this.setState({
+          to: Number(data[0].user[0].id)
+        })
+      }
+    }
+  }
+
   render() {
-    const meData = this.props.meData.me; // 로그인 된 내 정보
-    const { message } = this.state
-    const room = Number(this.props.roomId)
+    const myData = this.props.myData.me; // 로그인 된 내 정보
+    const myId = myData.id;
+    const { message } = this.state;
+    const room = Number(this.props.roomId);
     return (
       <>
-      <Query
-        query={MESSAGE_VIEW_QUERY}
-        variables={{
-          room: room,
-        }}
-      >
-          {({ loading, error, data, subscribeToMore, refetch }) => {
-            if (loading)
-              return (
-                <>
-                </>
-              );
-            if (error){
-              return (
-              <>
-              </>
-              );
+        <Query
+          query={ROOM_DATA_QUERY}
+          variables={{
+            room: room,
+          }}
+        >
+          {({ loading, error, data }) => {
+            if (loading) {
+              return <div>Loading...</div>;
             }
-            console.log(data)
-            if (!unsubscribe) {
-              unsubscribe = subscribeToMore({
-                document: newMessage,
-                variables: {
-                  roomId:room
-                },
-                updateQuery: (prev, { subscriptionData }) => {
-                  if (!subscriptionData.data) {
-                    return prev;
-                  }
-                  const { newMessage } = subscriptionData.data;
-                  console.log(newMessage, prev)
-                  return {
-                    ...prev,
-                    messages: [...prev.messages, newMessage]
-                  };
-                }
-              });
-              refetch();
-            }
-            refetch();
-            // if(meData.id == data.messages[0].id){
-            const to = 1
+            if (error) return <></>;
+            const roomData = data;
             return (
-              <div className="map4">
-                <div className="chat-title">서비스 제목</div>
-                <div className="chat-input-box">
-                  <MessageText meData={this.props.meData} message={data} />
-                  <input
-                    className="chat-input"
-                    value={message}
-                    onChange={(e) => this.setState({ message: e.target.value })}
-                  ></input>
-                  <Mutation
-                    mutation={SEND_MESSAGE_MUTATION}
-                    variables={{ room, message, to }}
-                    onCompleted={() => this._confirm()}
-                  >
-                    {(mutation) => (
-                      <input className="writesubmit2" onClick={mutation} value="제출" readOnly></input>
-                    )}
-                  </Mutation>
-                </div>
-              </div>
-            )
+              <>
+                <Query
+                  query={MESSAGE_VIEW_QUERY}
+                  variables={{
+                    room: room,
+                  }}
+                >
+                  {({ loading, error, data, subscribeToMore, refetch }) => {
+                    if (loading) return <></>;
+                    if (error) {
+                      return <></>;
+                    }
+                    if (!unsubscribe) {
+                      unsubscribe = subscribeToMore({
+                        document: newMessage,
+                        variables: {
+                          roomId: room,
+                        },
+                        updateQuery: (prev, { subscriptionData }) => {
+                          if (!subscriptionData.data) {
+                            return prev;
+                          }
+                          const { newMessage } = subscriptionData.data;
+                          return {
+                            ...prev,
+                            messages: [...prev.messages, newMessage],
+                          };
+                        },
+                      });
+                      refetch();
+                    }
+                    refetch();
+                    this.settingTo(roomData.seeRoom.UserOnRoom, myId)
+                    const to = this.state.to;
+                    return (
+                      <div className="map4">
+                        <div className="chat-title">방제목 : {roomData.seeRoom.UserOnRoom[0].service.title}</div>
+                        <div className="chat-input-box">
+                          <MessageText
+                            myData={this.props.myData}
+                            roomData={roomData}
+                            message={data}
+                          />
+                          <input
+                            className="chat-input"
+                            value={message}
+                            onChange={(e) =>
+                              this.setState({ message: e.target.value })
+                            }
+                          ></input>
+                          <Mutation
+                            mutation={SEND_MESSAGE_MUTATION}
+                            variables={{ room, message, to }}
+                            onCompleted={() => this._confirm()}
+                          >
+                            {(mutation) => (
+                              <input
+                                className="writesubmit2"
+                                onClick={mutation}
+                                value="제출"
+                                readOnly
+                              ></input>
+                            )}
+                          </Mutation>
+                        </div>
+                      </div>
+                    );
+                  }}
+                </Query>
+              </>
+            );
           }}
         </Query>
       </>
-    )
+    );
   }
-  _confirm = async data => {
+  _confirm = async (data) => {
     this.setState({
-      message: ""
-    })
-    console.log(this.state.message)
+      message: "",
+    });
   };
 }
 
-
-export default Message
+export default Message;
