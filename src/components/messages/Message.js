@@ -20,13 +20,13 @@ const ROOM_DATA_QUERY = gql`
   query seeRoom($room: Int!) {
     seeRoom(roomId: $room) {
       id
-      UserOnRoom{
+      UserOnRoom {
         roomId
-        user{
+        user {
           id
           nickName
         }
-        service{
+        service {
           title
         }
       }
@@ -65,16 +65,16 @@ class Message extends Component {
     };
   }
 
-  settingTo(data, myId){
-    if(this.state.to === ""){
-      if(data[0].user[0].id === myId){
+  settingTo(data, myId) {
+    if (this.state.to === "") {
+      if (data[0].user[0].id === myId) {
         this.setState({
-          to: Number(data[1].user[0].id)
-        })
-      }else if(data[1].user[0].id === myId){
+          to: Number(data[1].user[0].id),
+        });
+      } else if (data[1].user[0].id === myId) {
         this.setState({
-          to: Number(data[0].user[0].id)
-        })
+          to: Number(data[0].user[0].id),
+        });
       }
     }
   }
@@ -131,38 +131,50 @@ class Message extends Component {
                       refetch();
                     }
                     refetch();
-                    this.settingTo(roomData.seeRoom.UserOnRoom, myId)
+                    this.settingTo(roomData.seeRoom.UserOnRoom, myId);
                     const to = this.state.to;
                     return (
                       <div className="map4">
-                        <div className="chat-title">방제목 : {roomData.seeRoom.UserOnRoom[0].service.title}</div>
+                        <div className="chat-title">
+                          방제목 :{" "}
+                          {roomData.seeRoom.UserOnRoom[0].service.title}
+                        </div>
                         <div className="chat-input-box">
-                        <div className="map5">
-                          <MessageText
-                            myData={this.props.myData}
-                            roomData={roomData}
-                            message={data}
-                          />
+                          <div className="map5">
+                            <MessageText
+                              myData={this.props.myData}
+                              roomData={roomData}
+                              message={data}
+                            />
                           </div>
-                          <input
-                            className="chat-input"
-                            value={message}
-                            onChange={(e) =>
-                              this.setState({ message: e.target.value })
-                            }
-                          ></input>
                           <Mutation
                             mutation={SEND_MESSAGE_MUTATION}
-                            variables={{ room, message, to }}
                             onCompleted={() => this._confirm()}
                           >
                             {(mutation) => (
-                              <input
-                                className="writesubmit2"
-                                onClick={mutation}
-                                value="제출"
-                                readOnly
-                              ></input>
+                              <form
+                                onSubmit={(e) => {
+                                  e.preventDefault();
+                                  mutation({
+                                    variables: { room, message, to },
+                                  });
+                                }}
+                              >
+                                <input
+                                  className="chat-input"
+                                  value={message}
+                                  onChange={(e) =>
+                                    this.setState({ message: e.target.value })
+                                  }
+                                ></input>
+                                <button
+                                  type="submit"
+                                  className="writesubmit2"
+                                  readOnly
+                                >
+                                  제출
+                                </button>
+                              </form>
                             )}
                           </Mutation>
                         </div>
