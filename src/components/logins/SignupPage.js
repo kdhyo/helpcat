@@ -142,6 +142,7 @@ class SignupPage extends Component {
             <div className="signupform">
               <img alt="회원가입" className="nomargin" src="signupcat.png" width="80px"></img>
               <div className="email">
+                {!this.state.emailComplete ?
                 <input
                   className="signupinput1"
                   value={email}
@@ -149,6 +150,15 @@ class SignupPage extends Component {
                   type="text"
                   placeholder="인증받으실 이메일을 입력해주세요"
                 />
+                :
+                <input
+                  className="signupinput1"
+                  value={email}
+                  onChange={(e) => this.setState({ email: e.target.value })}
+                  type="text"
+                  readOnly
+                />
+                }
               </div>
               <Mutation
                 mutation={SEND_EMAIL_MUTATION}
@@ -159,6 +169,8 @@ class SignupPage extends Component {
                   <>
                     {this.state.emailAuthenticationValue ? (
                       <>
+                      {!this.state.emailComplete ? (
+                        <>
                         <h1>발송 되었습니다!</h1>
                         <input
                           className="mailsubmit"
@@ -166,6 +178,9 @@ class SignupPage extends Component {
                           onClick={mutation}
                           value="재발송하기"
                         ></input>
+                        </>
+                      ): ""
+                      }
                       </>
                     ) : (
                       <input
@@ -178,6 +193,7 @@ class SignupPage extends Component {
                   </>
                 )}
               </Mutation>
+              {!this.state.emailComplete ?
               <div className="email">
                 <input
                   className="signupinput2"
@@ -186,6 +202,8 @@ class SignupPage extends Component {
                   placeholder="전송받으신 인증코드를 입력해주세요"
                 />
               </div>
+              :""
+              }
               {!this.state.emailComplete ? ( //이메일이 인증이 안되었는지 묻기
                 <>
                   {this.state.emailNotComplete ? ( //이메일 인증 안된상태로 버튼 눌렀는지 묻기

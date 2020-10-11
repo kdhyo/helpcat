@@ -18,6 +18,9 @@ const VIEW_SERVICES_BOARD_QUERY = gql`
       startAt
       endAt
       progress
+      serviceimgfiles{
+        imglink
+      }
       reqUser {
         id
         userName

@@ -40,10 +40,13 @@ class KakaoMap extends Component {
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();
 
-        console.log(serviceData)
+        console.log(serviceData[0].progress)
         const errandPlace = []; // DB에서 온 심부름장소 담을 배열 생성
         for(let i = 0; i < serviceData.length; i++){ //심부름 장소 담기
-          errandPlace[i] = {id: serviceData[i].id, name: serviceData[i].title, place: serviceData[i].address1}
+          console.log(serviceData[i].progress === false)
+          if(serviceData[i].progress === false){
+            errandPlace[errandPlace.length] = {id: serviceData[i].id, name: serviceData[i].title, place: serviceData[i].address1}
+          }
         }
 
         //마커 아이콘 바꾸기
@@ -127,8 +130,6 @@ class KakaoMap extends Component {
                   image: icon
                 });
                 marker.setMap(map); // 마커가 지도 위에 표시되도록 설정
-
-                console.log(errandPlace[i])
                 //커스텀 오버레이에 표시될 텍스트
                 var content = `
                   <div class="customoverlay">

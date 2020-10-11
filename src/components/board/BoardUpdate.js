@@ -16,7 +16,8 @@ const BOARD_UPDATE_MUTATION = gql`
     $address2: String
     $lat: Float
     $lon: Float
-    $imgFiles: [String!]
+    $addImgs: [String!]
+    $removeImgs: [String!]
     $startAt: DateTime
     $endAt: DateTime
   ) {
@@ -29,7 +30,8 @@ const BOARD_UPDATE_MUTATION = gql`
       address2: $address2
       lat: $lat
       lon: $lon
-      imgFiles: $imgFiles
+      addImgs: $addImgs
+      removeImgs: $removeImgs
       startAt: $startAt
       endAt: $endAt
     )
@@ -46,6 +48,8 @@ class BoardUpdate extends Component {
     lat: Number,
     lon: Number,
     imgFiles: [],
+    addImgs:[],
+    removeImgs:[],
     startAt: Date(),
     endAt: Date(),
   };
@@ -56,18 +60,43 @@ class BoardUpdate extends Component {
     });
   }
 
-  updateImages = (newImages) => {
-    console.log(newImages);
-    this.setState({
-      imgFiles: newImages,
-    });
+  updateImages = (newImages, removeImages, newImage) => {
+    console.log(newImages, removeImages === undefined, newImage )
+    if(removeImages === undefined){
+      let newimg = this.state.addImgs //기존의 새로들어온 이미지 담고있는 배열 잠시 저장
+      if(newimg[0] === undefined){
+        this.setState({
+          imgFiles: newImages,
+          addImgs: [newImage]
+        });
+      }else{
+        this.setState({
+          imgFiles: newImages,
+          addImgs: [newImage, ...newimg],
+        });
+      }
+    }else{
+      let rmimg = this.state.removeImgs //기존의 삭제할 이미지 담고있는 배열 잠시 저장
+      if(rmimg[0] === undefined){
+        this.setState({
+          imgFiles: newImages,
+          removeImgs: [removeImages],
+        });
+      }else{
+        this.setState({
+          imgFiles: newImages,
+          removeImgs: [removeImages, ...rmimg],
+        });
+      }
+    }
   };
 
   render() {
     const beforeData = this.props.location.serviceBoardData;
-    const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
+    const { title, contents, price, address1, address2, imgFiles, addImgs, removeImgs, startAt, endAt } = this.state;
     const id = Number(beforeData.id);
-    console.log(id, title, contents, price, address1, address2, imgFiles, startAt, endAt);
+    console.log(imgFiles, removeImgs, addImgs);
+    console.log(imgFiles[0], removeImgs[0], addImgs[0]);
 
     return (
       <>
@@ -140,7 +169,8 @@ class BoardUpdate extends Component {
                     price,
                     address1,
                     address2,
-                    imgFiles,
+                    addImgs,
+                    removeImgs,
                     startAt,
                     endAt,
                   }}

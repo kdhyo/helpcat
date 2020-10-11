@@ -7,7 +7,6 @@ function FileReUpload(props) {
   const [Images, setImages] = useState(
     props.imgLinks.map((data, i)=>(data.imglink))
   );
-
   const dropHandler = (files) => {
     let formData = new FormData();
     const config = {
@@ -16,8 +15,10 @@ function FileReUpload(props) {
     formData.append("imgFile", files[0]);
     axios.post("http://localhost:4000/api/upload", formData, config).then((response) => {
       if (response.data.location) {
-        setImages([...Images, response.data.location]);
-        props.refreshFunction([...Images, response.data.location]);
+        let newimage = response.data.location; //새로 들어오는 이미지 링크
+        console.log(newimage)
+        setImages([...Images, newimage]);
+        props.refreshFunction([...Images, newimage],undefined ,newimage);
       } else {
         alert("파일을 저장하는 데에 실패했습니다.");
       }
@@ -27,9 +28,10 @@ function FileReUpload(props) {
   const deleteHandler = (image) => {
     const currentIndex = Images.indexOf(image);
     let newImages = [...Images];
+    let removeImages = Images[currentIndex]
     newImages.splice(currentIndex, 1);
     setImages(newImages);
-    props.refreshFunction(newImages);
+    props.refreshFunction(newImages, removeImages, undefined);
   };
 
   return (
