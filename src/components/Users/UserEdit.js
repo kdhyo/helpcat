@@ -114,6 +114,8 @@ class UserEdit extends Component {
             }
             if (error){return <ErrorNotLogin />}
             const myData = data
+            console.log(myData.me.email)
+            this.state = myData.me
             return (
               <>
                 <div className="signup">

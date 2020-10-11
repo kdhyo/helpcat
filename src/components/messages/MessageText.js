@@ -4,10 +4,9 @@ class MessageText extends Component {
   render() {
     const myData = this.props.myData.me; // 로그인 된 내 정보
     const message = this.props.message;
-
     return message.messages.map((message, i) => {
       const mtime = message.createdAt;
-      if(message.from === myData.id){
+      if(message.from === Number(myData.id)){
         let a = mtime.substring(0,8);
         let b = Number(mtime.substring(8,10));
         let c = Number(mtime.substring(11,13))+9;
