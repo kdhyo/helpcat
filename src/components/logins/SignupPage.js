@@ -54,6 +54,7 @@ class SignupPage extends Component {
       emailAuthenticationValue: false, //이메일 인증코드 값
       emailUserInput: null, // 이메일 인증코드 사용자 입력값
       password: "",
+      passwordCheck: "",
       userName: "",
       nickName: "",
       gender: "",
@@ -84,6 +85,7 @@ class SignupPage extends Component {
     const {
       email,
       password,
+      passwordCheck,
       userName,
       nickName,
       gender,
@@ -231,7 +233,15 @@ class SignupPage extends Component {
                 />
               </div>
               <div className="passwordcheck">
-                <input type="password" placeholder="비밀번호를 재입력해주세요"></input>
+                <input
+                type="password"
+                placeholder="비밀번호를 재입력해주세요"
+                onChange={(e) => this.setState({ passwordCheck: e.target.value })}
+                ></input>
+                {password && passwordCheck ?
+                  <div>{password === passwordCheck ? "확인되었습니다" : "올바르지 않습니다."}</div>
+                  : ""
+                }
               </div>
             </div>
           </form>

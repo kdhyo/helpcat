@@ -67,7 +67,7 @@ class BoardUpdate extends Component {
     const beforeData = this.props.location.serviceBoardData;
     const { title, contents, price, address1, address2, imgFiles, startAt, endAt } = this.state;
     const id = Number(beforeData.id);
-    console.log(id);
+    console.log(id, title, contents, price, address1, address2, imgFiles, startAt, endAt);
 
     return (
       <>
@@ -91,13 +91,13 @@ class BoardUpdate extends Component {
               placeholder={beforeData.price}
               onChange={(e) => this.setState({ price: Number(e.target.value) })}
             ></input>
-            <div className="writecontent">주소</div>
+            <div className="writecontent">도로명주소</div>
             <input
               className="writetitleinput"
               placeholder={beforeData.address1}
               onChange={(e) => this.setState({ address1: e.target.value })}
             ></input>
-            <div className="writecontent">주소</div>
+            <div className="writecontent">상세주소</div>
             <input
               className="writetitleinput"
               placeholder={beforeData.address2}

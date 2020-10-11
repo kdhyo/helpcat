@@ -47,22 +47,10 @@ class UserEdit extends Component {
     birth: "",
     lat: Number,
     lon: Number,
+    firstInData: false,
   };
   render() {
     const API_KEY = API.kakaoMapAPI.API_KEY;
-    const {
-      email,
-      password,
-      userName,
-      nickName,
-      gender,
-      phone,
-      address1,
-      address2,
-      birth,
-      lat,
-      lon,
-    } = this.state;
 
     const takeAddress = (takeAddress) => {
       this.setState({
@@ -114,8 +102,25 @@ class UserEdit extends Component {
             }
             if (error){return <ErrorNotLogin />}
             const myData = data
-            console.log(myData.me.email)
-            this.state = myData.me
+            const firstInData = this.state.firstInData
+            if(firstInData === false){
+              this.state = myData.me
+              this.state.firstInData = true
+            }
+            const {
+              email,
+              password,
+              userName,
+              nickName,
+              gender,
+              phone,
+              address1,
+              address2,
+              birth,
+              lat,
+              lon,
+            } = this.state;
+            console.log(this.state)
             return (
               <>
                 <div className="signup">
@@ -125,7 +130,7 @@ class UserEdit extends Component {
                       <div className="email">
                         <input
                           className="signupinput1"
-                          value={email}
+                          value={this.state.email}
                           onChange={(e) => this.setState({ email: e.target.value })}
                           type="text"
                           placeholder="인증받으실 이메일을 입력해주세요"
