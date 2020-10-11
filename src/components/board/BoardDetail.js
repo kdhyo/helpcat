@@ -281,7 +281,7 @@ class BoardDetail extends Component {
                               <a href="/board">
                                 <Mutation
                                   mutation={DELETE_SERVICE_BOARD_MUTATION}
-                                  variables={{ paramsId }}
+                                  variables={{ serviceId }}
                                 >
                                   {(mutation) => (
                                     <button
@@ -295,7 +295,7 @@ class BoardDetail extends Component {
                               </a>
                               <Link
                                 to={{
-                                  pathname: `/board/update/${paramsId}`,
+                                  pathname: `/board/update/${serviceId}`,
                                   serviceBoardData: serviceBoardData,
                                 }}
                               >
@@ -313,7 +313,7 @@ class BoardDetail extends Component {
                               <a href="/board">
                                 <Mutation
                                   mutation={SERVICE_ACCEPT_MUTATION}
-                                  variables={{ paramsId }}
+                                  variables={{ serviceId }}
                                 >
                                   {(mutation) => (
                                     <button

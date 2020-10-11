@@ -9,6 +9,7 @@ import UserPwdEdit from "./UserPwdEdit";
 import UserReqComplete from "./UserReqComplete";
 import UserRequest from "./UserRequest";
 import UserWithdrawal from "./UserWithdrawal";
+import ErrorNotLogin from "../basics/ErrorNotLogin";
 
 const USER_DATA_QUERY = gql`
   query {
@@ -33,7 +34,7 @@ class UserInforContents extends Component {
                 </div>
               )
             }
-            if (error){console.log(error)}
+            if (error){return <ErrorNotLogin />}
             return(
               <div className="map3">
               <Switch>
@@ -43,7 +44,7 @@ class UserInforContents extends Component {
                 <Route path="/userInfor/accComplete" exact render={() => <UserAccComplete me={data}/>} />
                 <Route path="/userInfor/pwdEdit" exact component={UserPwdEdit} />
                 <Route path="/userInfor/userEdit" exact component={UserEdit} />
-                <Route path="/userInfor/userWithdrawal" exact render={() => <UserWithdrawal me={data}/>} />
+                <Route path="/userInfor/userWithdrawal" exact component={UserWithdrawal} />
               </Switch>
               </div>
             )
