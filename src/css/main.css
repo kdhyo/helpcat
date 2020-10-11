@@ -398,6 +398,12 @@ article{
   font-size: 0.8rem;
 }
 
+.colorblack{
+  color: black;
+  font-weight: bolder;
+  font-size: 0.8rem;
+}
+
 .colorblue2{
   font-weight: bolder;
   font-size: 1.1rem;

@@ -239,7 +239,7 @@ class SignupPage extends Component {
                 onChange={(e) => this.setState({ passwordCheck: e.target.value })}
                 ></input>
                 {password && passwordCheck ?
-                  <div>{password === passwordCheck ? "확인되었습니다" : "올바르지 않습니다."}</div>
+                  <div>{password === passwordCheck ? <span className="colorblue">확인되었습니다.</span> :<span className="colorblack">올바르지 않습니다.</span>}</div>
                   : ""
                 }
               </div>
