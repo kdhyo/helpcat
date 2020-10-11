@@ -128,7 +128,14 @@ class AlarmDetail extends Component {
             if (error) return console.log(error);
             this._subscribeToNewLinks(subscribeToMore);
             return (
-              <ul> 알림창
+              <ul>
+                <img
+              className="asiderpng"
+              src="/alarm2.png"
+              width="px"
+              title="알람"
+              alt="알람"
+            ></img>
                 <li>
                   {this.state.title}
                 </li>
