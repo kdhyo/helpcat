@@ -137,11 +137,13 @@ class Message extends Component {
                       <div className="map4">
                         <div className="chat-title">방제목 : {roomData.seeRoom.UserOnRoom[0].service.title}</div>
                         <div className="chat-input-box">
+                        <div className="map5">
                           <MessageText
                             myData={this.props.myData}
                             roomData={roomData}
                             message={data}
                           />
+                          </div>
                           <input
                             className="chat-input"
                             value={message}
