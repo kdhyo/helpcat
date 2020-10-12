@@ -1,3 +1,4 @@
+/*global kakao*/
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
@@ -6,6 +7,7 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
 import FileUpload from "./FileUpload";
 import { Link } from "react-router-dom";
+import AddressModal from "../utils/daumPostcode";
 
 
 const BOARD_UPROAD_MUTATION = gql`
@@ -66,6 +68,7 @@ class BoardWrite extends Component {
   };
 
   render() {
+    const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
     let {
       title,
       contents,
@@ -78,6 +81,43 @@ class BoardWrite extends Component {
       startAt,
       endAt,
     } = this.state;
+
+    const takeAddress = (takeAddress) => {
+      this.setState({
+        address1: takeAddress,
+      });
+      getLatLon();
+    };
+
+    const getLatLon = () => {
+      const mapScript = document.createElement("script");
+      mapScript.async = true;
+      mapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false&libraries=services`;
+      document.head.appendChild(mapScript);
+      mapScript.onload = () => {
+        kakao.maps.load(() => {
+          // 카카오 맵이 로딩이 다 되면
+          // 주소-좌표 변환 객체를 생성합니다
+          const geocoder = new kakao.maps.services.Geocoder();
+          geocoder.addressSearch(this.state.address1, function (result, status) {
+            // 정상적으로 검색이 완료됐으면
+            if (status === kakao.maps.services.Status.OK) {
+              let lat = Number(result[0].y); // 위도
+              let lon = Number(result[0].x); // 경도
+              lonlatstate(lat, lon);
+            }
+          });
+        });
+      };
+      return <></>;
+    };
+
+    const lonlatstate = (klat, klon) => {
+      this.setState({
+        lat: klat,
+        lon: klon,
+      });
+    };
 
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -107,10 +147,14 @@ class BoardWrite extends Component {
           </div>
           <div className="writecontent">주소
           <input
-          placeholder="의뢰 지역을 설정해주세요"
             className="writetitleinput2"
+            value={address1}
+            readOnly
+            type="text"
+            placeholder="우편번호 찾기를 이용해주세요"
             onChange={(e) => this.setState({ address1: e.target.value })}
           ></input>
+          <AddressModal refreshFunction={takeAddress.bind(this)} />
           </div>
           <div className="writecontent">상세
           <input

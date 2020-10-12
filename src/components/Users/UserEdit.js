@@ -5,9 +5,6 @@ import AddressModal from "../utils/daumPostcode";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import ErrorNotLogin from "../basics/ErrorNotLogin";
-require('dotenv').config()
-
-
 
 const USER_DATA_QUERY = gql`
   query {
@@ -121,7 +118,6 @@ class UserEdit extends Component {
               lat,
               lon,
             } = this.state;
-            console.log(this.state)
             return (
               <>
                 <div className="signup">

@@ -1,7 +1,6 @@
 /*global kakao*/
 import React, { Component } from "react"
 import { AUTH_TOKEN } from '../../constants'
-require('dotenv').config()
 
 class KakaoMap extends Component {
   constructor(props) {

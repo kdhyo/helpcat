@@ -4,7 +4,6 @@ import { AUTH_TOKEN } from "../../constants";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import AddressModal from "../utils/daumPostcode";
-require('dotenv').config()
 
 const SIGNUP_MUTATION = gql`
   mutation signup(
@@ -78,7 +77,7 @@ class SignupPage extends Component {
       });
     }
   }
-  
+
 
   render() {
     const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
