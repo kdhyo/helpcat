@@ -34,7 +34,7 @@ class Header extends Component {
                 <header>
                   <nav>
                   <div className="helpcatlogomain">
-                    <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="/logo.png"/></Link>
+                    <Link to={{pathname:"/"}}><img className="logopng" alt="Home" src="/logo.png" title="로고이미지"/></Link>
                   </div>
                     <li>
                       <div className="">
