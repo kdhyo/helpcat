@@ -1,3 +1,4 @@
+/*global kakao*/
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
@@ -5,6 +6,8 @@ import { KeyboardDateTimePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
 import FileReUpload from "./FileReUpload";
+import AddressModal from "../utils/daumPostcode";
+
 
 const BOARD_UPDATE_MUTATION = gql`
   mutation BoardUpdateMutation(
@@ -61,7 +64,6 @@ class BoardUpdate extends Component {
   }
 
   updateImages = (newImages, removeImages, newImage) => {
-    console.log(newImages, removeImages === undefined, newImage )
     if(removeImages === undefined){
       let newimg = this.state.addImgs //기존의 새로들어온 이미지 담고있는 배열 잠시 저장
       if(newimg[0] === undefined){
@@ -92,11 +94,47 @@ class BoardUpdate extends Component {
   };
 
   render() {
+    const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
     const beforeData = this.props.location.serviceBoardData;
-    const { title, contents, price, address1, address2, imgFiles, addImgs, removeImgs, startAt, endAt } = this.state;
+    const { title, contents, price, address1, address2, imgFiles, addImgs, removeImgs, startAt, endAt, lat, lon } = this.state;
     const id = Number(beforeData.id);
-    console.log(imgFiles, removeImgs, addImgs);
-    console.log(imgFiles[0], removeImgs[0], addImgs[0]);
+
+    const takeAddress = (takeAddress) => {
+      this.setState({
+        address1: takeAddress,
+      });
+      getLatLon();
+    };
+
+    const getLatLon = () => {
+      const mapScript = document.createElement("script");
+      mapScript.async = true;
+      mapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false&libraries=services`;
+      document.head.appendChild(mapScript);
+      mapScript.onload = () => {
+        kakao.maps.load(() => {
+          // 카카오 맵이 로딩이 다 되면
+          // 주소-좌표 변환 객체를 생성합니다
+          const geocoder = new kakao.maps.services.Geocoder();
+          geocoder.addressSearch(this.state.address1, function (result, status) {
+            // 정상적으로 검색이 완료됐으면
+            if (status === kakao.maps.services.Status.OK) {
+              let lat = Number(result[0].y); // 위도
+              let lon = Number(result[0].x); // 경도
+              lonlatstate(lat, lon);
+            }
+          });
+        });
+      };
+      return <></>;
+    };
+
+    const lonlatstate = (klat, klon) => {
+      this.setState({
+        lat: klat,
+        lon: klon,
+      });
+    };
 
     return (
       <>
@@ -123,9 +161,13 @@ class BoardUpdate extends Component {
             <div className="writecontent">도로명주소</div>
             <input
               className="writetitleinput"
+              value={address1}
+              readOnly
+              type="text"
               placeholder={beforeData.address1}
               onChange={(e) => this.setState({ address1: e.target.value })}
             ></input>
+            <AddressModal refreshFunction={takeAddress.bind(this)} />
             <div className="writecontent">상세주소</div>
             <input
               className="writetitleinput"
@@ -169,6 +211,8 @@ class BoardUpdate extends Component {
                     price,
                     address1,
                     address2,
+                    lat,
+                    lon,
                     addImgs,
                     removeImgs,
                     startAt,

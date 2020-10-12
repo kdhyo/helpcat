@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import UserBoardArticle from "./UserBoardArticle";
+import ErrorUrlPage from "../basics/ErrorUrlPage";
+
 
 const VIEW_SERVICES_BOARD_QUERY = gql`
   query {
@@ -76,7 +78,6 @@ class UserRequest extends Component {
     subscribeToMore({
       document: NEW_SERVICE_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
-        console.log(prev)
         if (!subscriptionData.data) return prev;
         const newServiceData = subscriptionData.data.newService;
         const exists = prev.showServices.find(
@@ -125,7 +126,7 @@ class UserRequest extends Component {
                   <div>Loading...</div>
                 </>
               );
-            if (error) return console.log(error);
+            if (error) return <ErrorUrlPage />;
             if (data) {
               this.state = data.showServices;
             }
