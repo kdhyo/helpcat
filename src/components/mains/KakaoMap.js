@@ -1,7 +1,7 @@
 /*global kakao*/
 import React, { Component } from "react"
-import API from "../../config/apikey.json"
 import { AUTH_TOKEN } from '../../constants'
+require('dotenv').config()
 
 class KakaoMap extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class KakaoMap extends Component {
     }
     const serviceData = this.props.serviceData // 등록되있는 서비스 데이터
     const authToken = localStorage.getItem(AUTH_TOKEN)
-    const API_KEY = API.kakaoMapAPI.API_KEY;
+    const API_KEY = process.env.REACT_APP_KAKAO_API_KEY
     const mapScript = document.createElement("script");
     mapScript.async = true;
     mapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false&libraries=services`;
