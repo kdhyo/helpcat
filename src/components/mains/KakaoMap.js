@@ -38,11 +38,8 @@ class KakaoMap extends Component {
       kakao.maps.load(() => { // 카카오 맵이 로딩이 다 되면
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();
-
-        console.log(serviceData[0].progress)
         const errandPlace = []; // DB에서 온 심부름장소 담을 배열 생성
         for(let i = 0; i < serviceData.length; i++){ //심부름 장소 담기
-          console.log(serviceData[i].progress === false)
           if(serviceData[i].progress === false){
             errandPlace[errandPlace.length] = {id: serviceData[i].id, name: serviceData[i].title, place: serviceData[i].address1}
           }
