@@ -8,9 +8,7 @@ import "../css/main.css";
 class Board extends Component {
   render() {
 		return (
-			
       <Route component={IndexBoard} />
-      
     )
   }
 }

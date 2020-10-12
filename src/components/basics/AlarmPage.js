@@ -23,7 +23,6 @@ class AlarmPage extends Component {
 
   render() {
     const { alarmState }  = this.state
-    console.log(alarmState)
     return (
       <>
         {!alarmState ?
