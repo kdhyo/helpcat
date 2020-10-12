@@ -1,11 +1,12 @@
 /*global kakao*/
 import React, { Component } from "react";
 import { Query } from "react-apollo";
-import API from "../../config/apikey.json";
 import AddressModal from "../utils/daumPostcode";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import ErrorNotLogin from "../basics/ErrorNotLogin";
+require('dotenv').config()
+
 
 
 const USER_DATA_QUERY = gql`
@@ -50,7 +51,7 @@ class UserEdit extends Component {
     firstInData: false,
   };
   render() {
-    const API_KEY = API.kakaoMapAPI.API_KEY;
+    const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
 
     const takeAddress = (takeAddress) => {
       this.setState({
