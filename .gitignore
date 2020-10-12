@@ -5,6 +5,7 @@
 /src/config/apikey.json
 /.pnp
 .pnp.js
+.env
 
 
 # testing
